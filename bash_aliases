@@ -1,5 +1,6 @@
 # -*- mode: Shell-script; -*-
 
+
 function launch() {
     local -r temp="$(mktemp)"
     echo "'$@' skal til ${temp}."
@@ -126,6 +127,12 @@ function anki-format() {
 function veke() {
     date "+%V"
 }
+
+
+if [ -f ~/.bash_aliases_mach_specific ]; then
+    . ~/.bash_aliases_mach_specific
+fi
+
 
 xmodmap ~/.Xmodmaprc
 
