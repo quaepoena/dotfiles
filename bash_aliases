@@ -1,3 +1,5 @@
+# -*- mode: Shell-script; -*-
+
 function launch() {
     local -r temp="$(mktemp)"
     echo "'$@' skal til ${temp}."
