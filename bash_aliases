@@ -119,7 +119,6 @@ function declinatio::print_passive() {
     return 0
 }
 
-
 function anki-format() {
     echo -e "$(cat "/dev/stdin" | tr '\n' ';')"
 }
