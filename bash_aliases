@@ -88,8 +88,6 @@ declinatio::check_mt() {
     # Relevant for verbs like "atmen."
     if [[ "$1" =~ (.*m)(s{,1}t.*) ]]; then
 	echo "${BASH_REMATCH[1]}e${BASH_REMATCH[2]}"
-#    elif [[ "$1" =~ (.*m)(t.*) ]]; then
-#	echo "${BASH_REMATCH"
     else
 	echo "$1"
     fi
