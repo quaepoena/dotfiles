@@ -15,7 +15,7 @@ function pw() {
 	return 1
     fi
 
-    gpg -qd ~/pw/"${1}".gpg;
+    gpg -qd ~/pw/"${1}".gpg.asc;
 }
 
 function declinatio() {
