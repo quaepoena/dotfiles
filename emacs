@@ -12,7 +12,7 @@
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(custom-enabled-themes (quote (wheatgrass)))
- '(package-selected-packages (quote (go-mode))))
+ '(package-selected-packages (quote (disable-mouse go-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -149,6 +149,10 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 (require 'mozc)
 (setq default-input-method "japanese-mozc")
 (setq mozc-candidate-style 'overlay)
+
+; https://emacs.stackexchange.com/questions/3650/compose-key-in-emacs-multi-key-is-undefined
+; Unset XMODIFIERS to fix emacs not recognizing Multi_key as Compose
+(setenv "XMODIFIERS" "@im=none")
 
 ;; https://github.com/purcell/disable-mouse
 (global-disable-mouse-mode)
