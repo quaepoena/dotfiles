@@ -133,7 +133,7 @@ fi
 
 xmodmap ~/.Xmodmaprc
 
-
+# for pinentry-tty
 export GPG_TTY="$(tty)"
 
 alias x='xmodmap ~/.Xmodmaprc'
