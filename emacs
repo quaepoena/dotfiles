@@ -1,3 +1,5 @@
+; -*- mode: Emacs-lisp; -*-
+
 (package-initialize)
 
 (custom-set-variables
