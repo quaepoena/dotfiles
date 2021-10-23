@@ -149,3 +149,6 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 (require 'mozc)
 (setq default-input-method "japanese-mozc")
 (setq mozc-candidate-style 'overlay)
+
+;; https://github.com/purcell/disable-mouse
+(global-disable-mouse-mode)
