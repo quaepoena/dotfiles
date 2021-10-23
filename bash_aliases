@@ -140,3 +140,7 @@ alias x='xmodmap ~/.Xmodmaprc'
 alias af="anki-format"
 alias d="declinatio"
 alias l="launch"
+
+# https://emacs.stackexchange.com/questions/3650/compose-key-in-emacs-multi-key-is-undefined
+# Unset XMODIFIERS to fix emacs not recognizing Multi_key as Compose
+alias emacs='XMODIFIERS=@im=none emacs'
