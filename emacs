@@ -167,3 +167,5 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
+
+(global-set-key (kbd "C-x g") 'magit-status)
