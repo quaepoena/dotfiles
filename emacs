@@ -170,3 +170,27 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
 (global-set-key (kbd "C-x g") 'magit-status)
+
+
+;; Helper function for cleaning up Latin conjugation files.
+;; It depends upon the characters already being in the registers.
+(defun declinatio-macrons ()
+  """Replace a/e/i/o/u with their respective variants with macrons."""
+  (interactive)
+
+  (cond ((eq (char-after (point)) 97)
+	 (progn (delete-forward-char 1)
+		(insert-register ?a)))
+	((eq (char-after (point)) 101)
+	 (progn (delete-forward-char 1)
+		(insert-register ?e)))
+	((eq (char-after (point)) 105)
+	 (progn (delete-forward-char 1)
+		(insert-register ?i)))
+	((eq (char-after (point)) 111)
+	 (progn (delete-forward-char 1)
+		(insert-register ?o)))
+	((eq (char-after (point)) 117)
+	 (progn (delete-forward-char 1)
+		(insert-register ?u))))
+  (forward-char))
