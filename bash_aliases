@@ -136,7 +136,8 @@ xmodmap ~/.Xmodmaprc
 # for pinentry-tty
 export GPG_TTY="$(tty)"
 
-alias x='xmodmap ~/.Xmodmaprc'
 alias af="anki-format"
 alias d="declinatio"
+alias emacs='env -u XMODIFIERS emacs'
 alias l="launch"
+alias x='xmodmap ~/.Xmodmaprc'

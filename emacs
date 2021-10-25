@@ -152,10 +152,6 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 (setq default-input-method "japanese-mozc")
 (setq mozc-candidate-style 'overlay)
 
-; https://emacs.stackexchange.com/questions/3650/compose-key-in-emacs-multi-key-is-undefined
-; Unset XMODIFIERS to fix emacs not recognizing Multi_key as Compose
-(setenv "XMODIFIERS" "@im=none")
-
 ;; https://github.com/purcell/disable-mouse
 (global-disable-mouse-mode)
 (global-unset-key (kbd "<C-down-mouse-1>"))
