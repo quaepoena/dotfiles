@@ -138,6 +138,8 @@ export GPG_TTY="$(tty)"
 
 alias af="anki-format"
 alias d="declinatio"
-alias emacs='env -u XMODIFIERS emacs'
+alias em="emacsclient -c &"
+alias emd="env -u XMODIFIERS emacs --daemon"
+alias emt="emacsclient -t"
 alias l="launch"
 alias x='xmodmap ~/.Xmodmaprc'
