@@ -126,7 +126,7 @@ function veke() {
 }
 
 
-if [ -f ~/.bash_aliases_mach_specific ]; then
+if [[ -f ~/.bash_aliases_mach_specific ]]; then
     . ~/.bash_aliases_mach_specific
 fi
 
