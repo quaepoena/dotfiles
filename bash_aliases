@@ -54,12 +54,10 @@ function declinatio::begins_with() {
     return 0
 }
 
+# TODO(2021-11-26): Replace all instances of this function or remove this TODO.
 function declinatio::ends_with() {
-    local -r word="$1"
-    local -r ending="$2"
-    local -r stem="${word%${ending}}"
 
-    if [[ "$(( "${#stem}" + "${#ending}" == "${#word}" ))" -ne 1 ]]; then
+    if ! [[ "$1" =~ $2$ ]]; then
 	return 1
     fi
 
