@@ -123,6 +123,22 @@ function veke() {
     date "+%V"
 }
 
+function backup() {
+    if [[ "$#" -ne 2 ]]; then
+	echo "Usage: backup <new_directory/> <old_directory/>" >&2
+	return 1
+    fi
+
+    if ! [[ "$1" =~ /$ && "$2" =~ /$ ]]; then
+	echo "The directory names must end with slashes." >&2
+	echo "Usage: backup <new_directory/> <old_directory/>" >&2
+	return 1
+    fi
+
+    rsync -az -e ssh --delete "$1" "$2"
+}
+
+
 
 if [[ -f ~/.bash_aliases_mach_specific ]]; then
     . ~/.bash_aliases_mach_specific
