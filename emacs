@@ -61,6 +61,7 @@
 (global-set-key (kbd "M-[") 'insert-brackets)
 
 (setq column-number-mode t)
+(setq find-function-C-source-directory "~/src/emacs25-25.2+1/src/")
 
 ;; https://www.emacswiki.org/emacs/InsertPair
 (defun insert-brackets (&optional arg)
