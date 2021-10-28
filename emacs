@@ -163,3 +163,6 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 
 
 (put 'upcase-region 'disabled nil)
+
+(setq org-capture-templates '(("t" "Create a TODO item." entry
+			       (file "~/org/todo.org"))))
