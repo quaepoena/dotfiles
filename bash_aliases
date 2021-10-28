@@ -1,22 +1,26 @@
 # -*- mode: Shell-script; -*-
 
 
-function launch() {
-    local -r temp="$(mktemp)"
-    echo "'$@' skal til ${temp}."
-    echo "Køyrer '$@' på $(date)" > "${temp}"
-    "$@" &>>"${temp}" &
-}
-
-function pw() {
-
-    if [[ "$#" -ne 1 ]]; then
-	echo "Bruk: pw fil" >&2
+function backup() {
+    if [[ "$#" -ne 2 ]]; then
+	echo "Usage: backup <new_directory/> <old_directory/>" >&2
 	return 1
     fi
 
-    gpg -qd ~/pw/"${1}".gpg;
+    if ! [[ "$1" =~ /$ && "$2" =~ /$ ]]; then
+	echo "The directory names must end with slashes." >&2
+	echo "Usage: backup <new_directory/> <old_directory/>" >&2
+	return 1
+    fi
+
+    rsync -az -e ssh --delete "$1" "$2"
 }
+
+
+function anki-format() {
+    echo -e "$(cat "/dev/stdin" | tr '\n' ';')"
+}
+
 
 function declinatio() {
     if [[ "$#" -lt 1 ]]; then
@@ -42,6 +46,7 @@ function declinatio() {
     run "$@"
 }
 
+
 function declinatio::array_contains() {
     local -r element="$1"
     local -ra array="$2"
@@ -54,6 +59,7 @@ function declinatio::array_contains() {
 
     return 1
 }
+
 
 declinatio::check_mt() {
     if [[ "$#" -ne 1 ]]; then
@@ -68,6 +74,7 @@ declinatio::check_mt() {
 	echo "$1"
     fi
 }
+
 
 function declinatio::print_passive() {
     local string="$1"
@@ -93,29 +100,29 @@ function declinatio::print_passive() {
     return 0
 }
 
-function anki-format() {
-    echo -e "$(cat "/dev/stdin" | tr '\n' ';')"
+
+function launch() {
+    local -r temp="$(mktemp)"
+    echo "'$@' skal til ${temp}."
+    echo "Køyrer '$@' på $(date)" > "${temp}"
+    "$@" &>>"${temp}" &
 }
+
+
+function pw() {
+
+    if [[ "$#" -ne 1 ]]; then
+	echo "Bruk: pw fil" >&2
+	return 1
+    fi
+
+    gpg -qd ~/pw/"${1}".gpg;
+}
+
 
 function veke() {
     date "+%V"
 }
-
-function backup() {
-    if [[ "$#" -ne 2 ]]; then
-	echo "Usage: backup <new_directory/> <old_directory/>" >&2
-	return 1
-    fi
-
-    if ! [[ "$1" =~ /$ && "$2" =~ /$ ]]; then
-	echo "The directory names must end with slashes." >&2
-	echo "Usage: backup <new_directory/> <old_directory/>" >&2
-	return 1
-    fi
-
-    rsync -az -e ssh --delete "$1" "$2"
-}
-
 
 
 if [[ -f ~/.bash_aliases_mach_specific ]]; then
