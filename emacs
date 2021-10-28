@@ -12,6 +12,7 @@
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(custom-enabled-themes (quote (wheatgrass)))
+ '(org-agenda-files (quote ("~/org/skulegreier.org" "~/org/letters.org")))
  '(package-selected-packages
    (quote
     (buffer-move gnu-elpa-keyring-update disable-mouse go-mode))))
@@ -196,5 +197,6 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
+
 
 (put 'upcase-region 'disabled nil)
