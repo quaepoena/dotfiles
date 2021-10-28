@@ -190,3 +190,9 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 	 (progn (delete-forward-char 1)
 		(insert-register ?u))))
   (forward-char))
+
+;; Recommended org key bindings from the info page
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-iswitchb)
