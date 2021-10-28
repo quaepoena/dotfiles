@@ -169,27 +169,27 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 
 
 ;; Helper function for cleaning up Latin conjugation files.
-;; It depends upon the characters already being in the registers.
 (defun declinatio-macrons ()
   """Replace a/e/i/o/u with their respective variants with macrons."""
   (interactive)
 
   (cond ((eq (char-after (point)) 97)
 	 (progn (delete-forward-char 1)
-		(insert-register ?a)))
+		(insert-char ?ā)))
 	((eq (char-after (point)) 101)
 	 (progn (delete-forward-char 1)
-		(insert-register ?e)))
+		(insert-char ?ē)))
 	((eq (char-after (point)) 105)
 	 (progn (delete-forward-char 1)
-		(insert-register ?i)))
+		(insert-char ?ī)))
 	((eq (char-after (point)) 111)
 	 (progn (delete-forward-char 1)
-		(insert-register ?o)))
+		(insert-char ?ō)))
 	((eq (char-after (point)) 117)
 	 (progn (delete-forward-char 1)
-		(insert-register ?u))))
-  (forward-char))
+		(insert-char ?ū)))
+	(t (forward-char))))
+
 
 ;; Recommended org key bindings from the info page
 (global-set-key "\C-cl" 'org-store-link)
