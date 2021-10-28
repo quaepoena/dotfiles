@@ -196,3 +196,5 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
+
+(put 'upcase-region 'disabled nil)
