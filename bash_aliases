@@ -42,28 +42,6 @@ function declinatio() {
     run "$@"
 }
 
-function declinatio::begins_with() {
-    local -r word="$1"
-    local -r beginning="$2"
-    local -r stem="${word#${beginning}}"
-
-    if [[ "$(( "${#stem}" + "${#beginning}" == "${#word}" ))" -ne 1 ]]; then
-	return 1
-    fi
-
-    return 0
-}
-
-# TODO(2021-11-26): Replace all instances of this function or remove this TODO.
-function declinatio::ends_with() {
-
-    if ! [[ "$1" =~ $2$ ]]; then
-	return 1
-    fi
-
-    return 0
-}
-
 function declinatio::array_contains() {
     local -r element="$1"
     local -ra array="$2"
