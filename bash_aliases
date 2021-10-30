@@ -20,24 +20,25 @@ function backup() {
 
     local new="$1"
     local old="$2"
+    local endpoint1="dummy"
+    local endpoint2=""
 
     if [[ "${new}" =~ (.*/)*(.+/)$ ]]; then
+	endpoint1="${BASH_REMATCH[2]}";
+    fi
 
-	local endpoint1="${BASH_REMATCH[2]}";
+    if [[ "${old}" =~ (.*/)*(.+/)$ ]]; then
+	endpoint2="${BASH_REMATCH[2]}"
+    fi
 
-	if [[ "${old}" =~ (.*/)*(.+/)$ ]]; then
-	    local endpoint2="${BASH_REMATCH[2]}"
-	fi
-
-	if [[ "${endpoint1}" != "${endpoint2}" ]]; then
-	    echo "The two endpoints are not the 'same' directory." >&2
-	    echo "Usage: backup <new_directory/> <old_directory/>" >&2
-	    return 1
-	fi
-
+    if [[ "${endpoint1}" != "${endpoint2}" ]]; then
+	echo "The two endpoints are not the 'same' directory." >&2
+	echo "Usage: backup <new_directory/> <old_directory/>" >&2
+	return 1
     fi
 
     rsync -az -e ssh --delete "${new}" "${old}"
+    return "$?"
 }
 
 
