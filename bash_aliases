@@ -120,14 +120,6 @@ function declinatio::print_passive() {
 }
 
 
-function launch() {
-    local -r temp="$(mktemp)"
-    echo "'$@' skal til ${temp}."
-    echo "Køyrer '$@' på $(date)" > "${temp}"
-    "$@" &>>"${temp}" &
-}
-
-
 function pw() {
 
     if [[ "$#" -ne 1 ]]; then
@@ -159,5 +151,5 @@ alias d="declinatio"
 alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
-alias l="launch"
-alias x='xmodmap ~/.Xmodmaprc'
+alias l="$@ &>/dev/null"
+alias x="xmodmap ~/.Xmodmaprc"
