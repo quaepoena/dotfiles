@@ -1,6 +1,11 @@
 # -*- mode: Shell-script; -*-
 
 
+function anki-format() {
+    echo -e "$(cat "/dev/stdin" | tr '\n' ';')"
+}
+
+
 function backup() {
     if [[ "$#" -ne 2 ]]; then
 	echo "Usage: backup <new_directory/> <old_directory/>" >&2
@@ -33,11 +38,6 @@ function backup() {
     fi
 
     rsync -az -e ssh --delete "${new}" "${old}"
-}
-
-
-function anki-format() {
-    echo -e "$(cat "/dev/stdin" | tr '\n' ';')"
 }
 
 
