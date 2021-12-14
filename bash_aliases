@@ -145,7 +145,7 @@ function timer() {
 	return 1
     fi
 
-    sleep "$1" && xeyes
+    sleep $(( 60 * "$1" )) && xeyes
 
 }
 
