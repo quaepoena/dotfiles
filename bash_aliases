@@ -132,6 +132,23 @@ function pw() {
 }
 
 
+function timer() {
+    if [[ "$#" -ne 1 ]]; then
+	echo "Geben Sie eins Zahl als Eingabewert." >&2
+	echo "Benutzung: timer <Zahl>." >&2
+	return 1
+    fi
+
+    if ! [[ "$1" -gt 0 ]]; then
+	echo "Geben Sie eine Zahl dei gröser als null ist." >&2
+	echo "Benutzung: timer <Zahl>." >&2
+	return 1
+    fi
+
+    sleep "$1" && xeyes
+
+}
+
 function veke() {
     date "+%V"
 }
