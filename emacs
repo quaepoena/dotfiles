@@ -168,3 +168,4 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 			       entry
 			       (file "~/org/todo.org")
 			       (file "~/org/todo-template"))))
+(put 'set-goal-column 'disabled nil)
