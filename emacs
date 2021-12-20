@@ -171,5 +171,5 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 (put 'set-goal-column 'disabled nil)
 
 ;; Keyboard macro for quick creation of cloze cards
-(fset 'rpt
+(fset 'ez-cloze
    "\C-e\342{{c\C-xria::\C-e}}\C-a\C-n\C-xr+a")
