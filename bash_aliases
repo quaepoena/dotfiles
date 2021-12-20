@@ -140,7 +140,7 @@ function timer() {
     fi
 
     if ! [[ "$1" -gt 0 ]]; then
-	echo "Geben Sie eine Zahl dei gröser als null ist." >&2
+	echo "Geben Sie eine Zahl die gröser als null ist." >&2
 	echo "Benutzung: timer <Zahl>." >&2
 	return 1
     fi
