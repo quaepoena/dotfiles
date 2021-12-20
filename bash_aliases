@@ -6,6 +6,7 @@ function anki-format() {
 }
 
 
+# simple backup function, not to be trusted
 function backup() {
     if [[ "$#" -ne 2 ]]; then
 	echo "Usage: backup <new_directory/> <old_directory/>" >&2
