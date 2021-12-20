@@ -169,3 +169,7 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 			       (file "~/org/todo.org")
 			       (file "~/org/todo-template"))))
 (put 'set-goal-column 'disabled nil)
+
+;; Keyboard macro for quick creation of cloze cards
+(fset 'rpt
+   "\C-e\342{{c\C-xria::\C-e}}\C-a\C-n\C-xr+a")
