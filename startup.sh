@@ -1,8 +1,15 @@
 #!/bin/bash
 
 # startup script
-# emacs
-# keyboard
+
+# emacs - .emacs, elpa packages, minor modes
+
+# keyboards
+# japanese, russian
+
+# xmonad
+
+# anki
 
 # backup script
 # https://ostechnix.com/backup-entire-linux-system-using-rsync/
