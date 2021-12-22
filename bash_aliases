@@ -80,6 +80,10 @@ if [[ -f ~/.bash_aliases_mach_specific ]]; then
     . ~/.bash_aliases_mach_specific
 fi
 
+if [[ -f ~/declinatio/declinatio.sh ]]; then
+    . ~/declinatio/declinatio.sh
+fi
+
 
 xmodmap ~/.Xmodmaprc
 
