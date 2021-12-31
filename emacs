@@ -257,5 +257,6 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 		(insert-string "я́")))
 	(t (forward-char))))
 
+;; Swap rows such that accusative is under nominative.
 (fset 'n-g
    "\C-n\C-n\C-n\C-u1\C-k\C-p\C-p\C-y\C-p\C-p")
