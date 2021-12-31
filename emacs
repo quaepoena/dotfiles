@@ -260,3 +260,19 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 ;; Swap rows such that accusative is under nominative.
 (fset 'n-g
    "\C-n\C-n\C-n\C-u1\C-k\C-p\C-p\C-y\C-p\C-p")
+
+(defun russian-stress ()
+  """Find the next vowel for optional overwriting."""
+
+  (let ((r nil)
+	(vowels "[АЕИОУЫЭЮЯаеиоуыэюя]"))
+
+    (while (search-forward-regexp vowels)
+      (backward-char)
+      (while (not (member r '("y" "n" "s")))
+	(setq r (read-string "Replace? <y[es]/n[o]/s[kip]>: n" nil nil "n" nil)))
+      (cond ((equal r "y") (куриллическое-ударение)
+	     (forward-word))
+	    ((equal r "s") (forward-word))
+	    ((equal r "n") (forward-char)))
+      (setq r nil))))
