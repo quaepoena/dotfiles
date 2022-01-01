@@ -261,19 +261,30 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 (fset 'n-g
    "\C-n\C-n\C-n\C-u1\C-k\C-p\C-p\C-y\C-p\C-p")
 
-(defun russian-stress ()
+(defun russian-stress (&optional point mark)
   """Find the next vowel for optional overwriting."""
+  (interactive "r")
 
-  (let ((r nil)
-	(vowels "[АЕИОУЫЭЮЯаеиоуыэюя]"))
+  (save-mark-and-excursion
 
-    (while (search-forward-regexp vowels)
-      (backward-char)
-      (while (not (member r '("y" "n" "s")))
-	(setq r (read-string "Replace? <y[es]/n[o]/s[kip]>: n" nil nil "n" nil)))
-      (cond ((equal r "y")
-	     (куриллическое-ударение)
-	     (forward-word))
-	    ((equal r "s") (forward-word))
-	    ((equal r "n") (forward-char)))
-      (setq r nil))))
+   (let ((response nil)
+	 (vowels "[АЕИОУЫЭЮЯаеиоуыэюя]")
+	 (start
+	  (if (region-active-p) (min (point) (mark)) (point)))
+	 (end
+	  (if (region-active-p) (max (point) (mark)) (point-max))))
+
+     (deactivate-mark nil)
+     (goto-char start)
+
+     (while (< (point) end)
+       (search-forward-regexp vowels)
+       (backward-char)
+       (while (not (member response '("y" "n" "s")))
+	 (setq response (read-string "Replace? <y[es]/n[o]/s[kip]>: n" nil nil "n" nil)))
+       (cond ((equal response "y")
+	      (куриллическое-ударение)
+	      (forward-word))
+	     ((equal response "s") (forward-word))
+	     ((equal response "n") (forward-char)))
+       (setq response nil)))))
