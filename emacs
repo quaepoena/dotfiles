@@ -286,7 +286,7 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 	 (setq response (read-string "Replace? <y[es]/n[o]/s[kip]>: n" nil nil "n" nil)))
        (cond ((equal response "y")
 	      (куриллическое-ударение)
-	      (forward-word))
+	      (search-forward " "))
 	     ((equal response "s") (forward-word))
 	     ((equal response "n") (forward-char)))
        (setq response nil)))))
