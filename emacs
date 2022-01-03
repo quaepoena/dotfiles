@@ -262,7 +262,6 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
    "\C-n\C-n\C-n\C-u1\C-k\C-p\C-p\C-y\C-p\C-p")
 
 ;; TODO: Account for line endings.
-;; TODO: Allow one to search backwards.
 (defun russian-stress (&optional point mark)
   """Find the next vowel for optional overwriting."""
   (interactive "r")
@@ -282,11 +281,12 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
      (while (< (point) end)
        (search-forward-regexp vowels)
        (backward-char)
-       (while (not (member response '("y" "n" "s")))
+       (while (not (member response '("y" "n" "s" "b")))
 	 (setq response (read-string "Replace? <y[es]/n[o]/s[kip]>: n" nil nil "n" nil)))
        (cond ((equal response "y")
 	      (куриллическое-ударение)
 	      (search-forward " "))
 	     ((equal response "s") (forward-word))
-	     ((equal response "n") (forward-char)))
+	     ((equal response "n") (forward-char))
+	     ((equal response "b") (search-backward-regexp vowels)))
        (setq response nil)))))
