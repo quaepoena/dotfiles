@@ -261,6 +261,8 @@ Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
 (fset 'n-g
    "\C-n\C-n\C-n\C-u1\C-k\C-p\C-p\C-y\C-p\C-p")
 
+;; TODO: Account for line endings.
+;; TODO: Allow one to search backwards.
 (defun russian-stress (&optional point mark)
   """Find the next vowel for optional overwriting."""
   (interactive "r")
