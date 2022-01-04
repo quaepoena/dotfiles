@@ -85,8 +85,6 @@ if [[ -f ~/declinatio/declinatio.sh ]]; then
 fi
 
 
-xmodmap ~/.Xmodmaprc
-
 # for pinentry-tty
 export GPG_TTY="$(tty)"
 
