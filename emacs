@@ -43,9 +43,6 @@
   (interactive)
   (set-mark-command 1))
 
-;; Originally added for fold-lines.
-(require 'cl)
-
 (setq enable-recursive-minibuffers t)
 (put 'downcase-region 'disabled nil)
 (setq sentence-end-double-space nil)
@@ -88,33 +85,6 @@ Calling the function with \"0\" prints the list."
 	 (list "⓪" "①" "②" "③" "④" "⑤" "⑥" "⑦" "⑧" "⑨")))
     (insert (nth arg predicate-list))))
 (global-set-key (kbd "<f6>") 'insert-predicate-number)
-
-(defun fold-lines (point mark)
-  "Join lines together.
-Let l be the number of lines in a region, such that l % 2 == 0.
-Join line 1 with line l / 2 + 1, line 2 with l / 2 + 2, etc."
-  (interactive "r")
-
-  (assert (= (% (count-lines point mark) 2) 0)
-	  t "fold-lines must be used on an even number of lines.")
-
-  (let* ((lines (count-lines point mark))
-	 (lines-remaining (/ lines 2))
-	 (lines-to-jump
-	  (if (= lines 2)
-	      1 (- (/ lines 2) 1))))
-
-    (while (> lines-remaining 0)
-      (goto-char mark)
-      (move-beginning-of-line nil)
-      (kill-line)
-      (delete-char -1 nil)
-      (forward-line (* lines-to-jump -1))
-      (move-end-of-line nil)
-      (insert " ")
-      (yank)
-      (setq lines-remaining (1- lines-remaining)))
-    ))
 
 ;; https://emacs.stackexchange.com/a/3471
 (global-set-key (kbd "C-x o") nil)
