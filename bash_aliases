@@ -38,7 +38,7 @@ function backup() {
 	return 1
     fi
 
-    rsync -az --partial -e ssh --delete "${new}" "${old}"
+    rsync -vaz --partial -e ssh --delete "${new}" "${old}"
     return "$?"
 }
 
