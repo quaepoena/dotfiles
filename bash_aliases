@@ -56,7 +56,14 @@ function pw() {
 	return 1
     fi
 
-    gpg -qd ~/pw/"${1}".gpg;
+    if [[ "$1" =~ ^.+\.gpg$ ]]; then
+	gpg -qd "${1}";
+    else
+	gpg -qd ~/pw/"${1}".gpg;
+    fi
+}
+
+
 }
 
 
