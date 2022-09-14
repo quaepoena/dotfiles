@@ -64,6 +64,51 @@ function pw() {
 }
 
 
+# Helper function for latex-reset.
+function latex-remove() {
+
+    if [[ "${FUNCNAME[1]}" != "latex-reset" ]]; then
+	error "${FUNCNAME[0]} can only be called from latex-reset."
+	return 1
+    fi
+
+    local -r projekt="$1"
+    find -maxdepth 1 -regex "^\./${projekt}\..*$" | grep -Ev "${projekt}.tex$" | xargs rm
+
+}
+
+# Helper function for latex-reset.
+function latex-recompile() {
+
+    if [[ "${FUNCNAME[1]}" != "latex-reset" ]]; then
+	error "${FUNCNAME[0]} can only be called from latex-reset."
+	return 1
+    fi
+
+    local -r projekt="$1"
+
+    xelatex "${projekt}" &&
+	biber "${projekt}" &&
+	xelatex "${projekt}" &&
+	xelatex "${projekt}"
+}
+
+
+# Delete all files except for <Projekt>.tex and recompile
+# TODO: Add a check to run only if there is a .tex file.
+function latex-reset() {
+
+    if [[ "$#" -ne 1 ]]; then
+	echo "Geben Sie einen Projektnamen." >&2
+	echo "Benutzung: ${FUNCNAME[0]} <Projekt>." >&2
+	return 1
+    fi
+
+    local -r projekt="$1"
+
+    latex-remove "${projekt}" 2>/dev/null
+    latex-recompile "${projekt}"
+
 }
 
 
@@ -108,6 +153,7 @@ alias d="declinatio"
 alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
+alias lr="latex-reset"
 alias x="xmodmap ~/.Xmodmaprc"
 
 # https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
