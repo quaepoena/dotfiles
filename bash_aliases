@@ -43,6 +43,12 @@ function backup() {
 }
 
 
+function error() {
+    echo "$@" >&2
+    return 1
+}
+
+
 function pw() {
 
     if [[ "$#" -ne 1 ]]; then
