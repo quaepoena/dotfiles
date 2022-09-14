@@ -108,3 +108,11 @@ alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
 alias x="xmodmap ~/.Xmodmaprc"
+
+# https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
+export PATH="/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
+
+# TODO: Emacs was unable to find info files when this line was active. Fix?
+#export INFOPATH="${INFOPATH}:/usr/local/texlive/2021/texmf-dist/doc/info"
+#export MANPATH="${MANPATH}:/usr/local/texlive/2021/texmf-dist/doc/man"
+export TEXMFHOME="${HOME}/texmf"
