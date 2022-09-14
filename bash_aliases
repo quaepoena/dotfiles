@@ -70,13 +70,13 @@ function pw() {
 function timer() {
     if [[ "$#" -ne 1 ]]; then
 	echo "Geben Sie eins Zahl als Eingabewert." >&2
-	echo "Benutzung: timer <Zahl>." >&2
+	echo "Benutzung: ${FUNCNAME[0]} <Zahl>." >&2
 	return 1
     fi
 
     if ! [[ "$1" -gt 0 ]]; then
 	echo "Geben Sie eine Zahl die gröser als null ist." >&2
-	echo "Benutzung: timer <Zahl>." >&2
+	echo "Benutzung: ${FUNCNAME[0]} <Zahl>." >&2
 	return 1
     fi
 
