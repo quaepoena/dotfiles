@@ -46,7 +46,6 @@
 (setq enable-recursive-minibuffers t)
 (put 'downcase-region 'disabled nil)
 (setq sentence-end-double-space nil)
-(setq backup-by-copying-when-linked t)
 (setq async-shell-command-buffer 'new-buffer)
 
 (global-set-key (kbd "C-w") 'backward-kill-word)
