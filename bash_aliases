@@ -80,6 +80,7 @@ function timer() {
 	return 1
     fi
 
+    date +%T
     sleep $(( 60 * "$1" )) && xeyes
 
 }
