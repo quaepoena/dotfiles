@@ -139,12 +139,14 @@ Calling the function with \"0\" prints the list."
 			       (file "~/org/todo-template"))))
 (put 'set-goal-column 'disabled nil)
 
+;; TODO: Move this to forgotten code.
 ;; Keyboard macros for quick creation of cloze cards
 (fset 'cloze-multi
    "\C-e\342{{c\C-xria::\C-e}}\C-a\C-n\C-xr+a")
 (fset 'cloze-single
    "{{c\C-xria::\346}}\C-f\C-f\C-f\C-xr+a")
 
+;; TODO: This can be simplified by using a combining macron.
 (defun declinatio-macrons ()
   """Replace a/e/i/o/u with their respective variants with macrons."""
   (interactive)
