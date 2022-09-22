@@ -14,7 +14,8 @@
  '(custom-enabled-themes (quote (wheatgrass)))
  '(package-selected-packages
    (quote
-    (buffer-move gnu-elpa-keyring-update disable-mouse go-mode))))
+    (buffer-move gnu-elpa-keyring-update disable-mouse go-mode)))
+ '(safe-local-variable-values (quote ((org-pretty-entities . t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
