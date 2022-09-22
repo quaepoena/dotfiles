@@ -215,6 +215,7 @@ Calling the function with \"0\" prints the list."
        (setq response nil)))))
 
 ;; Unfinished.
+;; TODO: Finish this function or delete it.
 (defun deutsche-dingwoerter (&optional point mark)
   """Clean up German noun entries from Wiktionary."""
   (interactive "r")
