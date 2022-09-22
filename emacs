@@ -238,3 +238,7 @@ Calling the function with \"0\" prints the list."
 (fset 'anki-cloze-latin
    [?\{ ?\{ ?c ?1 ?: ?: ?\M-f ?: ?: ?: ?: backspace backspace ?\} ?\} ?\C-a ?\C-n ?\C-k ?\C-p ?\C-s ?: ?: ?\C-s return ?\C-y ?\C-a])
 
+;; https://stackoverflow.com/a/47587185
+(add-to-list 'display-buffer-alist
+	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+
