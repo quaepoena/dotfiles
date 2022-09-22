@@ -232,3 +232,7 @@ Calling the function with \"0\" prints the list."
 
     (goto-char start)
     (delete-trailing-whitespace)))
+;; TODO: Macro for creating cloze cards, needs to be improved.
+(fset 'anki-cloze-latin
+   [?\{ ?\{ ?c ?1 ?: ?: ?\M-f ?: ?: ?: ?: backspace backspace ?\} ?\} ?\C-a ?\C-n ?\C-k ?\C-p ?\C-s ?: ?: ?\C-s return ?\C-y ?\C-a])
+
