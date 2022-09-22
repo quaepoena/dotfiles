@@ -123,7 +123,7 @@ Calling the function with \"0\" prints the list."
 (global-set-key (kbd "C-x g") 'magit-status)
 
 
-;; Recommended org key bindings from the info page
+;; Recommended org mode key bindings from the info page
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
