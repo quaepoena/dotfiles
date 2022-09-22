@@ -242,3 +242,18 @@ Calling the function with \"0\" prints the list."
 (add-to-list 'display-buffer-alist
 	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
 
+;; TODO: It would be be better to copy the text from *Org Agenda* into
+;; a temporary buffer, format the text, evaluate the resulting elisp,
+;; then store the return value in the kill-ring.
+(defun count-overdue ()
+     """Format the the overdue values (yanked from Org Agenda) for summing . """
+     (let ((current-point (point)))
+       (while (re-search-forward ".*?\\([[:digit:]]+\\).*" nil t)
+	 (replace-match "\\1"))
+       (goto-char current-point)
+       (subst-char-in-region current-point (point-max) ?\n ?\s)
+       (beginning-of-line)
+       (insert "(+ ")
+       (end-of-line)
+       (kill-backward-chars 1)
+       (insert ")")))
