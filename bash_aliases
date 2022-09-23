@@ -75,6 +75,8 @@ function latex-remove() {
     local -r projekt="$1"
     find -maxdepth 1 -regex "^\./${projekt}\..*$" | grep -Ev "${projekt}.tex$" | xargs rm
 
+    xelatex "${projekt}" && biber "${projekt}"
+
 }
 
 # Helper function for latex-reset.
@@ -87,10 +89,8 @@ function latex-recompile() {
 
     local -r projekt="$1"
 
-    xelatex "${projekt}" &&
-	biber "${projekt}" &&
-	xelatex "${projekt}" &&
-	xelatex "${projekt}"
+    xelatex "${projekt}" && xelatex "${projekt}"
+
 }
 
 
@@ -98,15 +98,20 @@ function latex-recompile() {
 # TODO: Add a check to run only if there is a .tex file.
 function latex-reset() {
 
-    if [[ "$#" -ne 1 ]]; then
+    if [[ "$#" -lt 1 ]]; then
 	echo "Geben Sie einen Projektnamen." >&2
-	echo "Benutzung: ${FUNCNAME[0]} <Projekt>." >&2
+	echo "Benutzung: ${FUNCNAME[0]} <Projekt> [s]." >&2
+	echo "\"s\" to only recompile Projekt.tex." >&2
 	return 1
     fi
 
     local -r projekt="$1"
+    local -r reset="$2"
 
-    latex-remove "${projekt}" 2>/dev/null
+    if [[ "${reset}" != "s" ]]; then
+	latex-remove "${projekt}"
+    fi
+
     latex-recompile "${projekt}"
 
 }
