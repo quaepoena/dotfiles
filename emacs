@@ -243,18 +243,29 @@ Calling the function with \"0\" prints the list."
 (add-to-list 'display-buffer-alist
 	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
 
-;; TODO: It would be be better to copy the text from *Org Agenda* into
-;; a temporary buffer, format the text, evaluate the resulting elisp,
-;; then store the return value in the kill-ring.
-(defun count-overdue ()
-     """Format the the overdue values (yanked from Org Agenda) for summing . """
-     (let ((current-point (point)))
-       (while (re-search-forward ".*?\\([[:digit:]]+\\).*" nil t)
-	 (replace-match "\\1"))
-       (goto-char current-point)
-       (subst-char-in-region current-point (point-max) ?\n ?\s)
-       (beginning-of-line)
-       (insert "(+ ")
-       (end-of-line)
-       (kill-backward-chars 1)
-       (insert ")")))
+(defun count-overdue (start end)
+  """Format the overdue values from Org Agenda for summing and insertion into the kill ring. """
+  (interactive "r")
+
+  (let ((oldbuf (current-buffer)))
+    (with-temp-buffer
+      (insert-buffer-substring oldbuf start end)
+
+      (goto-char (point-min))
+      (while (re-search-forward ".*?\\([[:digit:]]+\\).*" nil t)
+	(replace-match "\\1"))
+
+      (goto-char (point-min))
+      (subst-char-in-region (point-min) (point-max) ?\n ?\s)
+
+      (fixup-whitespace)
+      (insert "(+ ")
+      (delete-trailing-whitespace)
+
+      (goto-char (point-max))
+      (insert ")")
+
+      (kill-new
+       (number-to-string
+	(eval (car (read-from-string
+		    (buffer-substring-no-properties (point-min) (point-max))))))))))
