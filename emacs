@@ -140,12 +140,6 @@ Calling the function with \"0\" prints the list."
 			       (file "~/org/todo-template"))))
 (put 'set-goal-column 'disabled nil)
 
-;; TODO: Move this to forgotten code.
-;; Keyboard macros for quick creation of cloze cards
-(fset 'cloze-multi
-   "\C-e\342{{c\C-xria::\C-e}}\C-a\C-n\C-xr+a")
-(fset 'cloze-single
-   "{{c\C-xria::\346}}\C-f\C-f\C-f\C-xr+a")
 
 ;; TODO: This can be simplified by using a combining macron.
 (defun declinatio-macrons ()
@@ -234,10 +228,6 @@ Calling the function with \"0\" prints the list."
     (goto-char start)
     (delete-trailing-whitespace)))
 
-;; TODO: Is this still relevant?
-;; TODO: Macro for creating cloze cards, needs to be improved.
-(fset 'anki-cloze-latin
-   [?\{ ?\{ ?c ?1 ?: ?: ?\M-f ?: ?: ?: ?: backspace backspace ?\} ?\} ?\C-a ?\C-n ?\C-k ?\C-p ?\C-s ?: ?: ?\C-s return ?\C-y ?\C-a])
 
 ;; https://stackoverflow.com/a/47587185
 (add-to-list 'display-buffer-alist
