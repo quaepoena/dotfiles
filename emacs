@@ -209,25 +209,6 @@ Calling the function with \"0\" prints the list."
 	     ((equal response "b") (search-backward-regexp vowels)))
        (setq response nil)))))
 
-;; Unfinished.
-;; TODO: Finish this function or delete it.
-(defun deutsche-dingwoerter (&optional point mark)
-  """Clean up German noun entries from Wiktionary."""
-  (interactive "r")
-
-  (let ((start (point))
-	(start
-	 (if (region-active-p) (min (point) (mark)) (point)))
-	(end
-	 (if (region-active-p) (max (point) (mark)) (point-max))))
-
-    (while (search-forward-regexp "[[:space:]]+")
-      (replace-match " ")
-      (forward-char))
-
-    (goto-char start)
-    (delete-trailing-whitespace)))
-
 
 ;; https://stackoverflow.com/a/47587185
 (add-to-list 'display-buffer-alist
