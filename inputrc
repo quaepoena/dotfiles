@@ -1,0 +1,2 @@
+# Set M-p, in addition to Ctrl-P, to previous-history
+"\ep": previous-history
