@@ -240,3 +240,5 @@ Calling the function with \"0\" prints the list."
        (number-to-string
 	(eval (car (read-from-string
 		    (buffer-substring-no-properties (point-min) (point-max))))))))))
+
+(setq bibtex-dialect 'biblatex)
