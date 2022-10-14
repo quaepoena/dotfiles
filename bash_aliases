@@ -64,6 +64,16 @@ function pw() {
 }
 
 
+function gs-pages() {
+
+    if [[ "$#" -ne 2 ]]; then
+	echo "Usage: gs-pages <input> <page range>" >&2
+	return 1
+    fi
+
+    ghostscript -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o gs-pages-output.pdf "$1"
+}
+
 # Helper function for latex-reset.
 function latex-remove() {
 
