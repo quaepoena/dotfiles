@@ -175,10 +175,6 @@ Calling the function with \"0\" prints the list."
 	  (insert-string "́"))
       (forward-char))))
 
-;; Swap rows such that accusative is under nominative.
-(fset 'n-g
-   "\C-n\C-n\C-n\C-u1\C-k\C-p\C-p\C-y\C-p\C-p")
-
 ;; TODO: Account for line endings.
 (defun russian-stress (&optional point mark)
   """Find the next vowel for optional overwriting."""
