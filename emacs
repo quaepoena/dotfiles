@@ -238,3 +238,8 @@ Calling the function with \"0\" prints the list."
 		    (buffer-substring-no-properties (point-min) (point-max))))))))))
 
 (setq bibtex-dialect 'biblatex)
+
+(add-hook 'text-mode-hook 'auto-fill-mode)
+
+;;
+;; TODO: Set fill-column to default to 80.
