@@ -1,1 +1,1 @@
-((org-mode . ((backup-inhibited . t))))
+((nil . ((backup-inhibited . t))))
