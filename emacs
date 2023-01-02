@@ -246,3 +246,8 @@ Calling the function with \"0\" prints the list."
 (setq comint-password-prompt-regexp
       (concat comint-password-prompt-regexp
               "\\|^\\[sudo\\] Passwort für .*:\\s *\\'"))
+
+;; Fix error wherein visiting a .gpg file (occasionally) failed while gpg on
+;; the command line worked without problem
+;; https://colinxy.github.io/software-installation/2016/09/24/emacs25-easypg-issue.html
+(setf epa-pinentry-mode 'loopback)
