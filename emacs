@@ -252,3 +252,4 @@ Calling the function with \"0\" prints the list."
 ;; the command line worked without problem
 ;; https://colinxy.github.io/software-installation/2016/09/24/emacs25-easypg-issue.html
 (setf epa-pinentry-mode 'loopback)
+(setq epa-pinentry-mode 'loopback)
