@@ -15,7 +15,7 @@
  '(org-export-backends (quote (ascii html icalendar latex md)))
  '(package-selected-packages
    (quote
-    (buffer-move gnu-elpa-keyring-update disable-mouse go-mode)))
+    (folding buffer-move gnu-elpa-keyring-update disable-mouse go-mode)))
  '(safe-local-variable-values (quote ((backup-inhibited . t) (org-pretty-entities . t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
