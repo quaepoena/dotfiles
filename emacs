@@ -255,4 +255,9 @@ Calling the function with \"0\" prints the list."
 (setq epa-pinentry-mode 'loopback)
 
 (put 'narrow-to-region 'disabled nil)
+
 (setq fill-column 80)
+
+(if (require 'folding nil 'noerror)
+    (folding-mode-add-find-file-hook)
+  (message "Library `folding' not found"))
