@@ -243,6 +243,13 @@ Calling the function with \"0\" prints the list."
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (setq TeX-engine 'luatex)
 
+;; Use okular instead of evince for viewing pdf documents w/ View in AUCTeX.
+;; https://emacs.stackexchange.com/a/3402
+(add-hook 'LaTeX-mode-hook
+	  (lambda ()
+	    (add-to-list 'TeX-view-program-selection '(output-pdf "Okular"))))
+;;}}}
+
 ;; https://emacs.stackexchange.com/a/21119
 (require 'comint)
 (setq comint-password-prompt-regexp
