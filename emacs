@@ -130,6 +130,7 @@ Calling the function with \"0\" prints the list."
 (put 'set-goal-column 'disabled nil)
 ;;}}}
 
+;;{{{ Org
 ;; Recommended org mode key bindings from the info page
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
@@ -142,6 +143,8 @@ Calling the function with \"0\" prints the list."
 			       (file "~/org/todo.org")
 			       (file "~/org/todo-template"))))
 
+(add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
+;;}}}
 
 ;; TODO: This can be simplified by using a combining macron.
 (defun declinatio-macrons ()
