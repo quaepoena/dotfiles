@@ -124,6 +124,11 @@ Calling the function with \"0\" prints the list."
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+;;{{{ Previously disabled commands
+(put 'upcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+(put 'set-goal-column 'disabled nil)
+;;}}}
 
 ;; Recommended org mode key bindings from the info page
 (global-set-key "\C-cl" 'org-store-link)
@@ -132,14 +137,10 @@ Calling the function with \"0\" prints the list."
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-agenda-files '("~/org/"))
 
-
-(put 'upcase-region 'disabled nil)
-
 (setq org-capture-templates '(("t" "Create a TODO item."
 			       entry
 			       (file "~/org/todo.org")
 			       (file "~/org/todo-template"))))
-(put 'set-goal-column 'disabled nil)
 
 
 ;; TODO: This can be simplified by using a combining macron.
@@ -260,8 +261,6 @@ Calling the function with \"0\" prints the list."
 ;; the command line worked without problem
 ;; https://colinxy.github.io/software-installation/2016/09/24/emacs25-easypg-issue.html
 (setq epa-pinentry-mode 'loopback)
-
-(put 'narrow-to-region 'disabled nil)
 
 (setq fill-column 80)
 
