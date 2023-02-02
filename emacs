@@ -132,6 +132,7 @@ Calling the function with \"0\" prints the list."
 
 ;;{{{ Org
 ;; Recommended org mode key bindings from the info page
+(require 'org)
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
