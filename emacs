@@ -257,7 +257,7 @@ Calling the function with \"0\" prints the list."
 ;; https://emacs.stackexchange.com/a/21119
 (require 'comint)
 (setq comint-password-prompt-regexp
-p      (concat comint-password-prompt-regexp
+      (concat comint-password-prompt-regexp
               "\\|^\\[sudo\\] Passwort für .*:\\s *\\'"))
 
 ;; Fix error wherein visiting a .gpg file (occasionally) failed while gpg on
