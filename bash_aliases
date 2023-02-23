@@ -74,59 +74,6 @@ function gs-pages() {
     ghostscript -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o gs-pages-output.pdf "$1"
 }
 
-# Helper function for latex-reset.
-function latex-remove() {
-
-    if [[ "${FUNCNAME[1]}" != "latex-reset" ]]; then
-	error "${FUNCNAME[0]} can only be called from latex-reset."
-	return 1
-    fi
-
-    local -r projekt="$1"
-    find -maxdepth 1 -regex "^\./${projekt}\..*$" | grep -Ev "${projekt}.tex$" | xargs rm
-
-    xelatex "${projekt}" && biber "${projekt}"
-
-}
-
-# Helper function for latex-reset.
-function latex-recompile() {
-
-    if [[ "${FUNCNAME[1]}" != "latex-reset" ]]; then
-	error "${FUNCNAME[0]} can only be called from latex-reset."
-	return 1
-    fi
-
-    local -r projekt="$1"
-
-    xelatex "${projekt}" && xelatex "${projekt}"
-
-}
-
-
-# Delete all files except for <Projekt>.tex and recompile
-# TODO: Add a check to run only if there is a .tex file.
-function latex-reset() {
-
-    if [[ "$#" -lt 1 ]]; then
-	echo "Geben Sie einen Projektnamen." >&2
-	echo "Benutzung: ${FUNCNAME[0]} <Projekt> [s]." >&2
-	echo "\"s\" to only recompile Projekt.tex." >&2
-	return 1
-    fi
-
-    local -r projekt="$1"
-    local -r reset="$2"
-
-    if [[ "${reset}" != "s" ]]; then
-	latex-remove "${projekt}"
-    fi
-
-    latex-recompile "${projekt}"
-
-}
-
-
 function timer() {
     if [[ "$#" -ne 1 ]]; then
 	echo "Geben Sie eins Zahl als Eingabewert." >&2
@@ -168,7 +115,6 @@ alias d="declinatio"
 alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
-alias lr="latex-reset"
 alias x="xmodmap ~/.Xmodmaprc"
 
 # https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
