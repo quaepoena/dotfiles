@@ -255,6 +255,8 @@ Calling the function with \"0\" prints the list."
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
 	    (add-to-list 'TeX-view-program-selection '(output-pdf "Okular"))))
+
+(setenv PATH "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
 ;;}}}
 
 ;; https://emacs.stackexchange.com/a/21119
