@@ -101,12 +101,6 @@ if [[ -f ~/.bash_aliases_mach_specific ]]; then
     . ~/.bash_aliases_mach_specific
 fi
 
-# TODO: Why is this here?
-if [[ -f ~/declinatio/declinatio.sh ]]; then
-    . ~/declinatio/declinatio.sh
-fi
-
-
 # for pinentry-tty
 export GPG_TTY="$(tty)"
 
