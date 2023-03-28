@@ -49,6 +49,12 @@ function error() {
 }
 
 
+function gs-help() {
+    cat<<EOF
+gs -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -o output.pdf -sPageList= <input.pdf>
+EOF
+}
+
 function pw() {
 
     if [[ "$#" -ne 1 ]]; then
