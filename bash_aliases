@@ -42,6 +42,14 @@ function backup() {
     return "$?"
 }
 
+function ins() {
+    if [[ "$#" -ne 2 ]]; then
+	echo "Bruk: ins <str> <fil>" >&2
+	return 1
+    fi
+    sed -i "1i$1" "${2}"
+}
+
 function gs-help() {
     cat<<EOF
 gs -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -o output.pdf -sPageList= <input.pdf>
