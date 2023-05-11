@@ -42,13 +42,6 @@ function backup() {
     return "$?"
 }
 
-
-function error() {
-    echo "$@" >&2
-    return 1
-}
-
-
 function gs-help() {
     cat<<EOF
 gs -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -o output.pdf -sPageList= <input.pdf>
