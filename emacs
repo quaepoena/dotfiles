@@ -276,3 +276,9 @@ Calling the function with \"0\" prints the list."
 (if (require 'folding nil 'noerror)
     (folding-mode-add-find-file-hook)
   (message "Library `folding' not found"))
+
+(defun o-med-kvist ()
+  (interactive)
+     (progn (set-register ?o "ǫ")
+	    (set-register ?O "Ǫ")))
+(put 'LaTeX-narrow-to-environment 'disabled nil)
