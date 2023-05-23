@@ -254,7 +254,7 @@ Calling the function with \"0\" prints the list."
 	  (lambda ()
 	    (add-to-list 'TeX-view-program-selection '(output-pdf "Okular"))))
 
-(setenv PATH "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
+(setenv "PATH" "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
 
 (put 'TeX-narrow-to-group 'disabled nil)
 (put 'LaTeX-narrow-to-environment 'disabled nil)
