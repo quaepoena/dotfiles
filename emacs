@@ -290,3 +290,5 @@ Calling the function with \"0\" prints the list."
   (backward-char))
 
 (global-set-key (kbd "C-'") 'open-text-right)
+
+(setq tramp-default-method "ssh")
