@@ -257,7 +257,6 @@ Calling the function with \"0\" prints the list."
 (setenv "PATH" "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
 
 (put 'TeX-narrow-to-group 'disabled nil)
-(put 'LaTeX-narrow-to-environment 'disabled nil)
 ;;}}}
 
 ;; https://emacs.stackexchange.com/a/21119
