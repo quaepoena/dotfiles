@@ -292,3 +292,6 @@ Calling the function with \"0\" prints the list."
 (global-set-key (kbd "C-'") 'open-text-right)
 
 (setq tramp-default-method "ssh")
+
+;; TODO: fix this
+(setq require-final-newline 'visit-save)
