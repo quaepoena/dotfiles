@@ -280,7 +280,6 @@ Calling the function with \"0\" prints the list."
   (interactive)
      (progn (set-register ?o "ǫ")
 	    (set-register ?O "Ǫ")))
-(put 'LaTeX-narrow-to-environment 'disabled nil)
 
 (defun open-text-right ()
   "Inspired by open-line, the result is an inserted space
@@ -295,3 +294,4 @@ Calling the function with \"0\" prints the list."
 
 ;; TODO: fix this
 (setq require-final-newline 'visit-save)
+(put 'LaTeX-narrow-to-environment 'disabled nil)
