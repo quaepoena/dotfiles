@@ -295,3 +295,25 @@ Calling the function with \"0\" prints the list."
 ;; TODO: fix this
 (setq require-final-newline 'visit-save)
 (put 'LaTeX-narrow-to-environment 'disabled nil)
+
+(defun external-paste ()
+  "Divide the region in two and call `paste (1)` with the two halves.
+If the use of another delimiter or more well-defined behavior
+upon unbalanced input is desired, use `paste (1)` directly."
+  (interactive)
+
+  (kill-region (mark) (point))
+
+  (with-temp-buffer
+    (yank)
+    (delete-trailing-whitespace)
+    (goto-char (point-min))
+
+    (let ((mid (/ (count-lines (point-min) (point-max)) 2)))
+      (forward-line mid)
+      (shell-command-on-region (point-min) (point) "cat > /tmp/a" nil t)
+      (shell-command-on-region (point-min) (point-max) "cat > /tmp/b" nil t)
+      (shell-command "paste /tmp/a /tmp/b" t)
+      (kill-new (buffer-string))))
+
+  (yank))
