@@ -194,9 +194,9 @@ Calling the function with \"0\" prints the list."
    (let ((response nil)
 	 (vowels "[АЕИОУЫЭЮЯаеиоуыэюя]")
 	 (start
-	  (if (region-active-p) (min (point) (mark)) (point)))
+	  (if (region-active-p) (region-beginning) (point)))
 	 (end
-	  (if (region-active-p) (max (point) (mark)) (point-max))))
+	  (if (region-active-p) (region-end) (point-max))))
 
      (deactivate-mark nil)
      (goto-char start)
