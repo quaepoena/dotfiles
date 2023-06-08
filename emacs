@@ -171,6 +171,7 @@ Calling the function with \"0\" prints the list."
 		(insert-char ?ū)))
 	(t (forward-char))))
 
+;; TODO: Combine this with declinatio-macrons?
 (defun куриллическое-ударение ()
   """Replace vowels with their stressed counterpart."""
   (interactive)
