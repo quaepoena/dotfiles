@@ -193,8 +193,10 @@ Calling the function with \"0\" prints the list."
 
    (let ((response nil)
 	 (vowels "[АЕИОУЫЭЮЯаеиоуыэюя]")
-	 (start (region-beginning))
-	 (end (region-end)))
+	 (start
+	  (if (region-active-p) (min (point) (mark)) (point)))
+	 (end
+	  (if (region-active-p) (max (point) (mark)) (point-max))))
 
      (deactivate-mark nil)
      (goto-char start)
