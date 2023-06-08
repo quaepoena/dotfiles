@@ -148,6 +148,8 @@ Calling the function with \"0\" prints the list."
 ;;}}}
 
 ;; TODO: This can be simplified by using a combining macron.
+;; Though if (non-combined) Unicode characters are preferable,
+;; store the values in a list.
 (defun declinatio-macrons ()
   """Replace a/e/i/o/u with their respective variants with macrons."""
   (interactive)
