@@ -216,33 +216,6 @@ Calling the function with \"0\" prints the list."
 (add-to-list 'display-buffer-alist
 	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
 
-(defun count-overdue (start end)
-  """Format the overdue values from Org Agenda for summing and insertion into the kill ring. """
-  (interactive "r")
-
-  (let ((oldbuf (current-buffer)))
-    (with-temp-buffer
-      (insert-buffer-substring oldbuf start end)
-
-      (goto-char (point-min))
-      (while (re-search-forward ".*?\\([[:digit:]]+\\).*" nil t)
-	(replace-match "\\1"))
-
-      (goto-char (point-min))
-      (subst-char-in-region (point-min) (point-max) ?\n ?\s)
-
-      (fixup-whitespace)
-      (insert "(+ ")
-      (delete-trailing-whitespace)
-
-      (goto-char (point-max))
-      (insert ")")
-
-      (kill-new
-       (number-to-string
-	(eval (car (read-from-string
-		    (buffer-substring-no-properties (point-min) (point-max))))))))))
-
 ;;{{{ LaTeX
 (setq bibtex-dialect 'biblatex)
 (add-hook 'text-mode-hook 'auto-fill-mode)
