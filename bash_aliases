@@ -112,6 +112,7 @@ fi
 export GPG_TTY="$(tty)"
 
 alias af="anki-format"
+alias c="setxkbmap -option 'compose:rctrl'"
 alias d="declinatio"
 alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
