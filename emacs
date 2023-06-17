@@ -294,3 +294,22 @@ upon unbalanced input is desired, use `paste (1)` directly."
       (kill-new (buffer-string))))
 
   (yank))
+
+(defun owd ()
+  "From a shell: Get pwd the other window and cd there."
+  (interactive)
+
+  (other-window 1)
+  (let ((other-pwd (pwd)))
+    (with-temp-buffer
+      (insert other-pwd)
+
+      (re-search-backward "^Directory ")
+      (replace-match "")
+      (kill-new (buffer-string))))
+  (other-window 1)
+
+  (insert (concat "cd " (current-kill 0 t)))
+  (comint-send-input))
+
+(global-set-key (kbd "C-c m o") 'owd)
