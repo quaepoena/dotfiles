@@ -296,7 +296,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (yank))
 
 (defun owd ()
-  "From a shell: Get pwd the other window and cd there."
+  "From a shell: Get pwd from the other window and cd there."
   (interactive)
 
   (other-window 1)
