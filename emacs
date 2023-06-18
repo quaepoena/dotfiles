@@ -312,4 +312,4 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (insert (concat "cd " (current-kill 0 t)))
   (comint-send-input))
 
-(global-set-key (kbd "C-c m o") 'owd)
+(global-set-key (kbd "C-c s o") 'owd)
