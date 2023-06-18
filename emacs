@@ -131,7 +131,6 @@ Calling the function with \"0\" prints the list."
 ;;}}}
 
 ;;{{{ Org
-;; Recommended org mode key bindings from the info page
 (require 'org)
 
 (global-set-key (kbd "C-c o l") 'org-store-link)
