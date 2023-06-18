@@ -300,16 +300,12 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (interactive)
 
   (other-window 1)
-  (let ((other-pwd (pwd)))
-    (with-temp-buffer
-      (insert other-pwd)
-
-      (re-search-backward "^Directory ")
-      (replace-match "")
-      (kill-new (buffer-string))))
+  (with-temp-buffer
+    (pwd t)
+    (kill-new (buffer-string))
   (other-window 1)
 
   (insert (concat "cd " (current-kill 0 t)))
-  (comint-send-input))
+  (comint-send-input)))
 
 (global-set-key (kbd "C-c s o") 'owd)
