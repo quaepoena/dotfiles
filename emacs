@@ -147,29 +147,15 @@ Calling the function with \"0\" prints the list."
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
 ;;}}}
 
-;; TODO: This can be simplified by using a combining macron.
-;; Though if (non-combined) Unicode characters are preferable,
-;; store the values in a list.
-(defun declinatio-macrons ()
-  """Replace a/e/i/o/u with their respective variants with macrons."""
+(defun latin-macrons ()
+  "Place macrons over Latin vowels."
   (interactive)
 
-  (cond ((eq (char-after (point)) 97)
-	 (progn (delete-forward-char 1)
-		(insert-char ?ā)))
-	((eq (char-after (point)) 101)
-	 (progn (delete-forward-char 1)
-		(insert-char ?ē)))
-	((eq (char-after (point)) 105)
-	 (progn (delete-forward-char 1)
-		(insert-char ?ī)))
-	((eq (char-after (point)) 111)
-	 (progn (delete-forward-char 1)
-		(insert-char ?ō)))
-	((eq (char-after (point)) 117)
-	 (progn (delete-forward-char 1)
-		(insert-char ?ū)))
-	(t (forward-char))))
+  (let ((current-char (char-after (point)))
+	;; ((a . ā) (e . ē) (i . ī) (o . ō) (u . ū))
+	(v-to-m '((97 . 257) (101 . 275) (105 . 299) (111 . 333) (117 . 363))))
+    (delete-forward-char 1)
+    (insert (alist-get current-char v-to-m current-char))))
 
 ;; TODO: Combine this with declinatio-macrons?
 (defun куриллическое-ударение ()
