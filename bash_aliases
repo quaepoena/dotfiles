@@ -50,12 +50,6 @@ function ins() {
     sed -i "1i$1" "${2}"
 }
 
-function gs-help() {
-    cat<<EOF
-gs -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -o output.pdf -sPageList= <input.pdf>
-EOF
-}
-
 function pw() {
 
     if [[ "$#" -ne 1 ]]; then
