@@ -291,6 +291,8 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (other-window 1)
 
   (insert (concat "cd " (current-kill 0 t)))
-  (comint-send-input)))
+  (if (eq major-mode 'eshell-mode)
+      (eshell-send-input)
+    (comint-send-input))))
 
 (global-set-key (kbd "C-c s o") 'owd)
