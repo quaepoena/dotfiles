@@ -72,7 +72,8 @@ function gs-pages() {
 	return 1
     fi
 
-    ghostscript -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o gs-pages-output.pdf "$1"
+    local time="$(date "+%Y%m%d%H%M")"
+    ghostscript -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o /tmp/gs-output-"${time}".pdf "$1"
 }
 
 function timer() {
