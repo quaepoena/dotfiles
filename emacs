@@ -297,3 +297,13 @@ upon unbalanced input is desired, use `paste (1)` directly."
     (comint-send-input))))
 
 (global-set-key (kbd "C-c s o") 'owd)
+;; https://www.emacswiki.org/emacs/EshellFunctions
+(defun eshell-maybe-bol ()
+  (interactive)
+  (let ((p (point)))
+    (eshell-bol)
+    (if (= p (point))
+        (beginning-of-line))))
+
+(add-hook 'eshell-mode-hook
+          '(lambda () (define-key eshell-mode-map "\C-a" 'eshell-maybe-bol)))
