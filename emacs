@@ -59,6 +59,7 @@
 (global-set-key (kbd "C-`") 'push-mark-no-activate)
 (global-set-key (kbd "M-`") 'jump-to-mark)
 (global-set-key (kbd "M-[") 'insert-brackets)
+(global-set-key (kbd "C-c s o") 'owd)
 
 ;;}}}
 
@@ -299,8 +300,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (if (eq major-mode 'eshell-mode)
       (eshell-send-input)
     (comint-send-input))))
-
-(global-set-key (kbd "C-c s o") 'owd)
 
 ;;{{{ eshell
 
