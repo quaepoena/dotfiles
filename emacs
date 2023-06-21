@@ -318,7 +318,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
     (eshell-send-input)))
 
 ;; https://www.emacswiki.org/emacs/EshellFunctions
-(defun eshell-maybe-bol ()
+(defun eshell/maybe-bol ()
   (interactive)
   (let ((p (point)))
     (eshell-bol)
@@ -326,7 +326,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
         (beginning-of-line))))
 
 (add-hook 'eshell-mode-hook
-          '(lambda () (define-key eshell-mode-map "\C-a" 'eshell-maybe-bol)))
+          '(lambda () (define-key eshell-mode-map (kbd "C-a") 'eshell/maybe-bol)))
 (add-hook 'eshell-mode-hook
 	  '(lambda () (define-key eshell-mode-map (kbd "C-c e l") 'eshell/clear-buffer)))
 ;;}}}
