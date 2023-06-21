@@ -259,8 +259,7 @@ Calling the function with \"0\" prints the list."
 
 (setq tramp-default-method "ssh")
 
-;; TODO: fix this
-(setq require-final-newline 'visit-save)
+(setq require-final-newline t)
 (put 'LaTeX-narrow-to-environment 'disabled nil)
 
 (defun external-paste ()
