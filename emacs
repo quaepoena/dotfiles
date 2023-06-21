@@ -1,5 +1,8 @@
 ; -*- mode: Emacs-lisp; -*-
 
+;; TODO: Add folding sections for everything.
+;; TODO: Make explicit your key binding hierarchy.
+
 (package-initialize)
 
 (custom-set-variables
