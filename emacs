@@ -285,7 +285,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
   (yank))
 
-;; TODO: eshell sends two lines of input.
 (defun owd ()
   "From a shell: Get pwd from the other window and cd there."
   (interactive)
