@@ -339,4 +339,8 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (add-hook 'eshell-mode-hook
 	  '(lambda () (define-key eshell-mode-map (kbd "C-c l")
 			'eshell/clear-buffer)))
+(add-hook 'eshell-mode-hook
+	  '(lambda () (define-key eshell-mode-map (kbd "C-c o")
+			'owd)))
+
 ;;}}}
