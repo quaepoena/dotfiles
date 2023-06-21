@@ -50,6 +50,8 @@
 (setq sentence-end-double-space nil)
 (setq async-shell-command-buffer 'new-buffer)
 
+;;{{{ Global keys
+
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "<C-backspace>") 'kill-region)
 (global-set-key (kbd "<M-backspace>") 'kill-region)
@@ -57,6 +59,8 @@
 (global-set-key (kbd "C-`") 'push-mark-no-activate)
 (global-set-key (kbd "M-`") 'jump-to-mark)
 (global-set-key (kbd "M-[") 'insert-brackets)
+
+;;}}}
 
 (setq column-number-mode t)
 (setq find-function-C-source-directory "~/src/emacs25-25.2+1/src/")
