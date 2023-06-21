@@ -55,15 +55,14 @@
 
 ;;{{{ Global keys
 
-(global-set-key (kbd "C-w") 'backward-kill-word)
-(global-set-key (kbd "<C-backspace>") 'kill-region)
-(global-set-key (kbd "<M-backspace>") 'kill-region)
 (global-set-key (kbd "M-DEL") nil)
-(global-set-key (kbd "C-`") 'push-mark-no-activate)
 (global-set-key (kbd "M-`") 'jump-to-mark)
 (global-set-key (kbd "M-[") 'insert-brackets)
+(global-set-key (kbd "<C-backspace>") 'kill-region)
+(global-set-key (kbd "C-`") 'push-mark-no-activate)
 (global-set-key (kbd "C-c g e") 'open-emacs)
 (global-set-key (kbd "C-c s o") 'owd)
+(global-set-key (kbd "C-w") 'backward-kill-word)
 
 ;;}}}
 
