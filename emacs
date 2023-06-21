@@ -316,6 +316,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
 ;; https://www.emacswiki.org/emacs/EshellFunctions
 (defun eshell/maybe-bol ()
+  "Move to beginning of prompt/line."
   (interactive)
   (let ((p (point)))
     (eshell-bol)
