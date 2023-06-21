@@ -309,6 +309,14 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (defun eshell/pw (path)
   (find-file (concat "~/pw/" path ".gpg")))
 
+;; https://stackoverflow.com/a/27908343
+(defun eshell/clear-buffer ()
+  "Erase buffer contents and load new prompt."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (eshell-send-input)))
+
 ;; https://www.emacswiki.org/emacs/EshellFunctions
 (defun eshell-maybe-bol ()
   (interactive)
@@ -319,4 +327,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
 (add-hook 'eshell-mode-hook
           '(lambda () (define-key eshell-mode-map "\C-a" 'eshell-maybe-bol)))
+(add-hook 'eshell-mode-hook
+	  '(lambda () (define-key eshell-mode-map (kbd "C-c e l") 'eshell/clear-buffer)))
 ;;}}}
