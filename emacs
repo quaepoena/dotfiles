@@ -299,6 +299,16 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (global-set-key (kbd "C-c s o") 'owd)
 
 ;;{{{ eshell
+(defun eshell/mcd (path)
+  (mkdir path t)
+  (cd path))
+
+(defun eshell/ff (path)
+  (find-file path))
+
+(defun eshell/pw (path)
+  (find-file (concat "~/pw/" path ".gpg")))
+
 ;; https://www.emacswiki.org/emacs/EshellFunctions
 (defun eshell-maybe-bol ()
   (interactive)
