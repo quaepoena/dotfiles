@@ -62,7 +62,17 @@
 (global-set-key (kbd "C-`") 'push-mark-no-activate)
 (global-set-key (kbd "M-`") 'jump-to-mark)
 (global-set-key (kbd "M-[") 'insert-brackets)
+(global-set-key (kbd "C-c g e") 'open-emacs)
 (global-set-key (kbd "C-c s o") 'owd)
+
+;;}}}
+
+;;{{{ Trivial convenience functions
+
+(defun open-emacs ()
+  "Open ~/.emacs."
+  (interactive)
+  (find-file "~/.emacs"))
 
 ;;}}}
 
