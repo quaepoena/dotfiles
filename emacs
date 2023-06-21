@@ -299,15 +299,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (global-set-key (kbd "C-c s o") 'owd)
 
 ;;{{{ eshell
-(defun eshell/mcd (path)
-  (mkdir path t)
-  (cd path))
-
-(defun eshell/ff (path)
-  (find-file path))
-
-(defun eshell/pw (path)
-  (find-file (concat "~/pw/" path ".gpg")))
 
 (defun eshell/catpw (path)
   (eshell/cat (concat "~/pw/" path ".gpg")))
@@ -320,6 +311,9 @@ upon unbalanced input is desired, use `paste (1)` directly."
     (erase-buffer)
     (eshell-send-input)))
 
+(defun eshell/ff (path)
+  (find-file path))
+
 ;; https://www.emacswiki.org/emacs/EshellFunctions
 (defun eshell/maybe-bol ()
   (interactive)
@@ -327,6 +321,13 @@ upon unbalanced input is desired, use `paste (1)` directly."
     (eshell-bol)
     (if (= p (point))
         (beginning-of-line))))
+
+(defun eshell/mcd (path)
+  (mkdir path t)
+  (cd path))
+
+(defun eshell/pw (path)
+  (find-file (concat "~/pw/" path ".gpg")))
 
 (add-hook 'eshell-mode-hook
           '(lambda () (define-key eshell-mode-map (kbd "C-a") 'eshell/maybe-bol)))
