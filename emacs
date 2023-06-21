@@ -309,6 +309,9 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (defun eshell/pw (path)
   (find-file (concat "~/pw/" path ".gpg")))
 
+(defun eshell/catpw (path)
+  (eshell/cat (concat "~/pw/" path ".gpg")))
+
 ;; https://stackoverflow.com/a/27908343
 (defun eshell/clear-buffer ()
   "Erase buffer contents and load new prompt."
