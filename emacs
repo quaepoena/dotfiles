@@ -167,7 +167,7 @@ Calling the function with \"0\" prints the list."
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
 ;;}}}
-
+;;{{{ Linguae
 (defun latin-macrons ()
   "Place macrons over Latin vowels."
   (interactive)
@@ -220,7 +220,7 @@ Calling the function with \"0\" prints the list."
 	     ((equal response "n") (forward-char))
 	     ((equal response "b") (search-backward-regexp vowels)))
        (setq response nil)))))
-
+;;}}}
 
 ;; https://stackoverflow.com/a/47587185
 (add-to-list 'display-buffer-alist
