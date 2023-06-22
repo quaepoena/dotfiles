@@ -6,8 +6,11 @@
 ;; TODO: Make explicit your key binding hierarchy.
 
 ;;}}}
+;;{{{ General Emacs tweaks
+
 (package-initialize)
 
+;;}}}
 ;;{{{ Customize
 
 (custom-set-variables
