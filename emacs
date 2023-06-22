@@ -13,9 +13,6 @@
 ;; https://masteringemacs.org/article/disabling-prompts-emacs
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(setq kill-buffer-query-functions
-  (remq 'process-kill-buffer-query-function
-	kill-buffer-query-functions))
 
 ;;}}}
 ;;{{{ Variables
@@ -23,6 +20,9 @@
 (setq enable-recursive-minibuffers t)
 (setq sentence-end-double-space nil)
 (setq async-shell-command-buffer 'new-buffer)
+(setq kill-buffer-query-functions
+  (remq 'process-kill-buffer-query-function
+	kill-buffer-query-functions))
 
 ;;{{{ Previously disabled
 
