@@ -18,6 +18,19 @@
 	kill-buffer-query-functions))
 
 ;;}}}
+;;{{{ Variables
+
+(setq enable-recursive-minibuffers t)
+(setq sentence-end-double-space nil)
+(setq async-shell-command-buffer 'new-buffer)
+
+;;{{{ Previously disabled
+
+(put 'downcase-region 'disabled nil)
+
+;;}}}
+
+
 ;;}}}
 ;;{{{ Customize
 
@@ -60,10 +73,6 @@
   (interactive)
   (set-mark-command 1))
 
-(setq enable-recursive-minibuffers t)
-(put 'downcase-region 'disabled nil)
-(setq sentence-end-double-space nil)
-(setq async-shell-command-buffer 'new-buffer)
 
 ;;{{{ Global keys
 
