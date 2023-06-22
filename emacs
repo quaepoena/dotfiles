@@ -94,6 +94,52 @@
   (find-file "~/.emacs"))
 
 ;;}}}
+;;{{{ Less trivial convenience functions
+
+(defun open-text-right ()
+  "Inspired by open-line, the result is an inserted space
+   with point in the same place."
+  (interactive)
+  (insert " ")
+  (backward-char))
+
+(defun external-paste ()
+  "Divide the region in two and call `paste (1)` with the two halves.
+If the use of another delimiter or more well-defined behavior
+upon unbalanced input is desired, use `paste (1)` directly."
+  (interactive)
+
+  (kill-region (mark) (point))
+
+  (with-temp-buffer
+    (yank)
+    (delete-trailing-whitespace)
+    (goto-char (point-min))
+
+    (let ((mid (/ (count-lines (point-min) (point-max)) 2)))
+      (forward-line mid)
+      (shell-command-on-region (point-min) (point) "cat > /tmp/a" nil t)
+      (shell-command-on-region (point-min) (point-max) "cat > /tmp/b" nil t)
+      (shell-command "paste /tmp/a /tmp/b" t)
+      (kill-new (buffer-string))))
+
+  (yank))
+
+(defun owd ()
+  "From a shell: Get pwd from the other window and cd there."
+  (interactive)
+
+  (other-window 1)
+  (with-temp-buffer
+    (pwd t)
+    (kill-new (buffer-string))
+  (other-window 1)
+
+  (insert (concat "cd " (current-kill 0 t)))
+  (if (eq major-mode 'eshell-mode)
+      (eshell-send-input)
+    (comint-send-input))))
+;;}}}
 
 (setq column-number-mode t)
 (setq find-function-C-source-directory "~/src/emacs25-25.2+1/src/")
@@ -289,52 +335,6 @@ Calling the function with \"0\" prints the list."
 (setq require-final-newline t)
 (put 'LaTeX-narrow-to-environment 'disabled nil)
 
-;;{{{ Less trivial convenience functions
-
-(defun open-text-right ()
-  "Inspired by open-line, the result is an inserted space
-   with point in the same place."
-  (interactive)
-  (insert " ")
-  (backward-char))
-
-(defun external-paste ()
-  "Divide the region in two and call `paste (1)` with the two halves.
-If the use of another delimiter or more well-defined behavior
-upon unbalanced input is desired, use `paste (1)` directly."
-  (interactive)
-
-  (kill-region (mark) (point))
-
-  (with-temp-buffer
-    (yank)
-    (delete-trailing-whitespace)
-    (goto-char (point-min))
-
-    (let ((mid (/ (count-lines (point-min) (point-max)) 2)))
-      (forward-line mid)
-      (shell-command-on-region (point-min) (point) "cat > /tmp/a" nil t)
-      (shell-command-on-region (point-min) (point-max) "cat > /tmp/b" nil t)
-      (shell-command "paste /tmp/a /tmp/b" t)
-      (kill-new (buffer-string))))
-
-  (yank))
-
-(defun owd ()
-  "From a shell: Get pwd from the other window and cd there."
-  (interactive)
-
-  (other-window 1)
-  (with-temp-buffer
-    (pwd t)
-    (kill-new (buffer-string))
-  (other-window 1)
-
-  (insert (concat "cd " (current-kill 0 t)))
-  (if (eq major-mode 'eshell-mode)
-      (eshell-send-input)
-    (comint-send-input))))
-;;}}}
 ;;{{{ eshell
 
 (defun eshell/catpw (path)
