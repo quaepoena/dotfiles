@@ -1,8 +1,11 @@
 ; -*- mode: Emacs-lisp; -*-
 
+;;{{{ TODO
+
 ;; TODO: Add folding sections for everything.
 ;; TODO: Make explicit your key binding hierarchy.
 
+;;}}}
 (package-initialize)
 
 ;;{{{ Customize
