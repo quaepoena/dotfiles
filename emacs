@@ -168,6 +168,12 @@ Calling the function with \"0\" prints the list."
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
 ;;}}}
 ;;{{{ Linguae
+
+(defun o-med-kvist ()
+  (interactive)
+     (progn (set-register ?o "ǫ")
+	    (set-register ?O "Ǫ")))
+
 (defun latin-macrons ()
   "Place macrons over Latin vowels."
   (interactive)
@@ -259,10 +265,6 @@ Calling the function with \"0\" prints the list."
     (folding-mode-add-find-file-hook)
   (message "Library `folding' not found"))
 
-(defun o-med-kvist ()
-  (interactive)
-     (progn (set-register ?o "ǫ")
-	    (set-register ?O "Ǫ")))
 
 (defun open-text-right ()
   "Inspired by open-line, the result is an inserted space
