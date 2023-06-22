@@ -10,6 +10,14 @@
 
 (package-initialize)
 
+;; https://masteringemacs.org/article/disabling-prompts-emacs
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(setq kill-buffer-query-functions
+  (remq 'process-kill-buffer-query-function
+	kill-buffer-query-functions))
+
+;;}}}
 ;;}}}
 ;;{{{ Customize
 
@@ -37,12 +45,6 @@
 
 ;;}}}
 
-;; https://masteringemacs.org/article/disabling-prompts-emacs
-(fset 'yes-or-no-p 'y-or-n-p)
-
-(setq kill-buffer-query-functions
-  (remq 'process-kill-buffer-query-function
-	kill-buffer-query-functions))
 
 ;; https://masteringemacs.org/article/fixing-mark-commands-transient-mark-mode
 (defun push-mark-no-activate ()
