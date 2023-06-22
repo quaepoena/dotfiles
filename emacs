@@ -86,7 +86,6 @@
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
 ;;}}}
-
 ;;{{{ Trivial convenience functions
 
 (defun open-emacs ()
@@ -167,7 +166,6 @@ Calling the function with \"0\" prints the list."
 (put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 ;;}}}
-
 ;;{{{ Org
 (require 'org)
 
@@ -250,6 +248,7 @@ Calling the function with \"0\" prints the list."
 	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
 
 ;;{{{ LaTeX
+
 (setq bibtex-dialect 'biblatex)
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (setq TeX-engine 'luatex)
@@ -263,6 +262,7 @@ Calling the function with \"0\" prints the list."
 (setenv "PATH" "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
 
 (put 'TeX-narrow-to-group 'disabled nil)
+
 ;;}}}
 
 ;; https://emacs.stackexchange.com/a/21119
@@ -282,6 +282,14 @@ Calling the function with \"0\" prints the list."
     (folding-mode-add-find-file-hook)
   (message "Library `folding' not found"))
 
+(global-set-key (kbd "C-'") 'open-text-right)
+
+(setq tramp-default-method "ssh")
+
+(setq require-final-newline t)
+(put 'LaTeX-narrow-to-environment 'disabled nil)
+
+;;{{{ Less trivial convenience functions
 
 (defun open-text-right ()
   "Inspired by open-line, the result is an inserted space
@@ -289,13 +297,6 @@ Calling the function with \"0\" prints the list."
   (interactive)
   (insert " ")
   (backward-char))
-
-(global-set-key (kbd "C-'") 'open-text-right)
-
-(setq tramp-default-method "ssh")
-
-(setq require-final-newline t)
-(put 'LaTeX-narrow-to-environment 'disabled nil)
 
 (defun external-paste ()
   "Divide the region in two and call `paste (1)` with the two halves.
@@ -333,7 +334,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (if (eq major-mode 'eshell-mode)
       (eshell-send-input)
     (comint-send-input))))
-
+;;}}}
 ;;{{{ eshell
 
 (defun eshell/catpw (path)
