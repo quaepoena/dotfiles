@@ -335,6 +335,13 @@ Calling the function with \"0\" prints the list."
 
 ;;{{{ eshell
 
+;; https://emacs.stackexchange.com/a/54769
+(defun eshell/bcat (&rest args)
+  (if (bufferp (car args))
+      (with-current-buffer (car args)
+        (buffer-string))
+    (apply #'eshell/cat args)))
+
 (defun eshell/pwcat (path)
   (eshell/cat (concat "~/pw/" path ".gpg")))
 
