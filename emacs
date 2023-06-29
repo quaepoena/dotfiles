@@ -334,7 +334,7 @@ Calling the function with \"0\" prints the list."
 
 ;;{{{ eshell
 
-(defun eshell/catpw (path)
+(defun eshell/pwcat (path)
   (eshell/cat (concat "~/pw/" path ".gpg")))
 
 ;; https://stackoverflow.com/a/27908343
