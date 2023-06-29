@@ -4,6 +4,7 @@
 
 ;; TODO: Add folding sections for everything.
 ;; TODO: Make explicit your key binding hierarchy.
+;; TODO: Make this work: (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 ;;}}}
 ;;{{{ General Emacs tweaks
