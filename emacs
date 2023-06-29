@@ -28,7 +28,6 @@
   (interactive)
   (set-mark-command 1))
 
-;;}}}
 ;;{{{ Variables
 
 (setq enable-recursive-minibuffers t)
@@ -37,14 +36,15 @@
 (setq kill-buffer-query-functions
   (remq 'process-kill-buffer-query-function
 	kill-buffer-query-functions))
+(setq column-number-mode t)
+(setq find-function-C-source-directory "~/src/emacs25-25.2+1/src/")
 
-;;{{{ Previously disabled
+;;}}}
+;;{{{ Previously disabled commands
 
 (put 'downcase-region 'disabled nil)
 
 ;;}}}
-
-
 ;;}}}
 ;;{{{ Customize
 
@@ -81,6 +81,9 @@
 (global-set-key (kbd "C-c g e") 'open-emacs)
 (global-set-key (kbd "C-c s o") 'owd)
 (global-set-key (kbd "C-w") 'backward-kill-word)
+;; https://emacs.stackexchange.com/a/3471
+(global-set-key (kbd "C-x o") nil)
+(global-set-key (kbd "C-.") #'other-window)
 
 ;;}}}
 ;;{{{ Trivial convenience functions
@@ -137,9 +140,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
       (eshell-send-input)
     (comint-send-input))))
 ;;}}}
-
-(setq column-number-mode t)
-(setq find-function-C-source-directory "~/src/emacs25-25.2+1/src/")
+;;{{{ Logic
 
 ;; https://www.emacswiki.org/emacs/InsertPair
 (defun insert-brackets (&optional arg)
@@ -167,12 +168,9 @@ Calling the function with \"0\" prints the list."
     (insert (nth arg predicate-list))))
 (global-set-key (kbd "<f6>") 'insert-predicate-number)
 
-;; https://emacs.stackexchange.com/a/3471
-(global-set-key (kbd "C-x o") nil)
-(global-set-key (kbd "C-.") #'other-window)
+;;}}}
 
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)
-
 
 ;; http://ergoemacs.org/emacs/emacs_package_system.html
 ;; load emacs 24's package system. Add MELPA repository.
@@ -184,10 +182,6 @@ Calling the function with \"0\" prints the list."
    '("melpa" . "https://melpa.org/packages/")
    t))
 
-;; https://wiki.archlinux.org/title/Mozc#Mozc_for_Emacs
-(require 'mozc)
-(setq default-input-method "japanese-mozc")
-(setq mozc-candidate-style 'overlay)
 
 ;; https://github.com/purcell/disable-mouse
 (global-disable-mouse-mode)
@@ -284,6 +278,12 @@ Calling the function with \"0\" prints the list."
 	     ((equal response "n") (forward-char))
 	     ((equal response "b") (search-backward-regexp vowels)))
        (setq response nil)))))
+
+;; https://wiki.archlinux.org/title/Mozc#Mozc_for_Emacs
+(require 'mozc)
+(setq default-input-method "japanese-mozc")
+(setq mozc-candidate-style 'overlay)
+
 ;;}}}
 
 ;; https://stackoverflow.com/a/47587185
