@@ -30,6 +30,7 @@
 
 ;;{{{ Variables
 
+;; TODO: Document anything non-trivial.
 (setq enable-recursive-minibuffers t)
 (setq sentence-end-double-space nil)
 (setq async-shell-command-buffer 'new-buffer)
