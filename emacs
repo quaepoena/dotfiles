@@ -342,9 +342,6 @@ Calling the function with \"0\" prints the list."
         (buffer-string))
     (apply #'eshell/cat args)))
 
-(defun eshell/pwcat (path)
-  (eshell/cat (concat "~/pw/" path ".gpg")))
-
 ;; https://stackoverflow.com/a/27908343
 (defun eshell/clear-buffer ()
   "Erase buffer contents and load new prompt."
@@ -377,6 +374,9 @@ Calling the function with \"0\" prints the list."
 
 (defun eshell/pw (path)
   (find-file (concat "~/pw/" path ".gpg")))
+
+(defun eshell/pwcat (path)
+  (eshell/cat (concat "~/pw/" path ".gpg")))
 
 (add-hook 'eshell-mode-hook
           '(lambda () (define-key eshell-mode-map (kbd "C-a")
