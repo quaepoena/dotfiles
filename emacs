@@ -356,6 +356,12 @@ Calling the function with \"0\" prints the list."
 (defun eshell/ff (path)
   (find-file path))
 
+(defun eshell/insert-buffer-name-syntax ()
+  "For quicker typing of buffer names in eshell commands."
+  (interactive)
+  (insert "#<>")
+  (backward-char))
+
 ;; https://www.emacswiki.org/emacs/EshellFunctions
 (defun eshell/maybe-bol ()
   "Move to beginning of prompt/line."
@@ -375,6 +381,9 @@ Calling the function with \"0\" prints the list."
 (add-hook 'eshell-mode-hook
           '(lambda () (define-key eshell-mode-map (kbd "C-a")
 			'eshell/maybe-bol)))
+(add-hook 'eshell-mode-hook
+          '(lambda () (define-key eshell-mode-map (kbd "C-c b")
+			'eshell/insert-buffer-name-syntax)))
 (add-hook 'eshell-mode-hook
 	  '(lambda () (define-key eshell-mode-map (kbd "C-c l")
 			'eshell/clear-buffer)))
