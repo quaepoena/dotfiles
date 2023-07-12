@@ -80,6 +80,7 @@
 (global-set-key (kbd "<M-backspace>") 'kill-region)
 (global-set-key (kbd "C-`") 'push-mark-no-activate)
 (global-set-key (kbd "C-c g e") 'open-emacs)
+(global-set-key (kbd "C-c g s") 'eshell)
 (global-set-key (kbd "C-c s o") 'owd)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 ;; https://emacs.stackexchange.com/a/3471
