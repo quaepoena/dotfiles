@@ -106,7 +106,7 @@
   (backward-char))
 
 (defun external-paste ()
-  "Divide the region in two and call `paste (1)` with the two halves.
+  "Divide the region in two and call `paste (1)` on the two halves.
 If the use of another delimiter or more well-defined behavior
 upon unbalanced input is desired, use `paste (1)` directly."
   (interactive)
