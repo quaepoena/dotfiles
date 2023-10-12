@@ -393,34 +393,4 @@ Calling the function with \"0\" prints the list."
 			'owd)))
 
 ;;}}}
-(defun format-json-from-sqlite ()
-  "Convenience function to format JSON from a Sqlite query.
-Ideally used in javascript mode for quick indentation with TAB."
-  (interactive)
 
-  (kill-region (mark) (point))
-
-  (with-temp-buffer
-    (yank)
-
-    ;; TODO: Can this be more elegant?
-    (goto-char (point-min))
-    (while (re-search-forward "{" nil t)
-      (replace-match "{\n"))
-
-    (goto-char (point-min))
-    (while (re-search-forward "," nil t)
-      (replace-match ",\n"))
-
-    (goto-char (point-min))
-    (while (re-search-forward "}" nil t)
-      (replace-match "\n}"))
-
-    ;; TODO: This doesn't distinguish from array elements. Fix?
-    (goto-char (point-min))
-    (while (re-search-forward ":" nil t)
-      (replace-match " : "))
-
-    (kill-new (buffer-string)))
-
-  (yank))
