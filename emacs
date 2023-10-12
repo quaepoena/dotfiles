@@ -295,7 +295,7 @@ Calling the function with \"0\" prints the list."
 ;;{{{ LaTeX
 
 (setq bibtex-dialect 'biblatex)
-(add-hook 'text-mode-hook 'auto-fill-mode)
+;; (add-hook 'text-mode-hook 'auto-fill-mode)
 (setq TeX-engine 'luatex)
 
 ;; Use okular instead of evince for viewing pdf documents w/ View in AUCTeX.
