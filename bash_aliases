@@ -1,6 +1,7 @@
 # -*- mode: Shell-script; -*-
 
 
+# TODO: Is this still useful?
 function anki-format() {
     echo -e "$(cat "/dev/stdin" | tr '\n' ';')"
 }
