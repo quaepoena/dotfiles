@@ -9,7 +9,7 @@ function anki-format() {
 
 # simple backup function, not to be trusted
 function backup() {
-    if [[ "$#" -ne 2 ]]; then
+    if [[ $# -ne 2 ]]; then
 	echo "Usage: backup <new_directory/> <old_directory/>" >&2
 	return 1
     fi
@@ -49,7 +49,7 @@ function error() {
 }
 
 function ins() {
-    if [[ "$#" -ne 2 ]]; then
+    if [[ $# -ne 2 ]]; then
 	echo "Bruk: ins <str> <fil>" >&2
 	return 1
     fi
@@ -72,7 +72,7 @@ function line() {
 
 function pw() {
 
-    if [[ "$#" -ne 1 ]]; then
+    if [[ $# -ne 1 ]]; then
 	echo "Bruk: pw fil" >&2
 	return 1
     fi
@@ -87,7 +87,7 @@ function pw() {
 
 function gs-pages() {
 
-    if [[ "$#" -ne 2 ]]; then
+    if [[ $# -ne 2 ]]; then
 	echo "Usage: gs-pages <input> <page range>" >&2
 	return 1
     fi
@@ -97,7 +97,7 @@ function gs-pages() {
 }
 
 function timer() {
-    if [[ "$#" -ne 1 ]]; then
+    if [[ $# -ne 1 ]]; then
 	echo "Geben Sie eins Zahl als Eingabewert." >&2
 	echo "Benutzung: ${FUNCNAME[0]} <Zahl>." >&2
 	return 1
