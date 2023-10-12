@@ -58,14 +58,20 @@ function ins() {
 
 # TODO: Expand this to behave more like head(1) and tail(1), including
 # reading from STDIN and looping through "$@".
+# TODO: This is too hacky. Write it in C.
 function line() {
-    if [[ "$#" -ne 2 ]]; then
+    if [[ $# -ne 2 ]]; then
 	echo "Bruk: line <linje> <fil> …" >&2
 	return 1
     fi
 
     local num="$1"
     local fil="$2"
+    local lines="$(wc -l "${fil}" | cut -d ' ' -f 1)"
+
+    if [[ "${num}" -gt "${lines}" || "${num}" -lt 1 ]]; then
+	return 1
+    fi
 
     head -n "${num}" "${fil}" | tail -n 1
 }
