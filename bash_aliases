@@ -43,6 +43,11 @@ function backup() {
     return "$?"
 }
 
+function error() {
+    echo "error: $1" >&2
+    exit 1
+}
+
 function ins() {
     if [[ "$#" -ne 2 ]]; then
 	echo "Bruk: ins <str> <fil>" >&2
@@ -136,3 +141,5 @@ export PATH="/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
 #export INFOPATH="${INFOPATH}:/usr/local/texlive/2021/texmf-dist/doc/info"
 #export MANPATH="${MANPATH}:/usr/local/texlive/2021/texmf-dist/doc/man"
 export TEXMFHOME="${HOME}/texmf"
+
+export -f error
