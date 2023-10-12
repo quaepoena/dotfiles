@@ -76,6 +76,24 @@ function line() {
     head -n "${num}" "${fil}" | tail -n 1
 }
 
+function member() {
+    if [[ $# -lt 2 ]]; then
+	error "Bruk: ${FUNCNAME[0]} <item> <list>"
+    fi
+
+    local item="$1"
+    shift
+    local -a list="$@"
+
+    for i in ${list[@]}; do
+	if [[ "${item}" == "${i}" ]]; then
+	    return 0
+	fi
+    done
+
+    return 1
+}
+
 function pw() {
 
     if [[ $# -ne 1 ]]; then
@@ -150,3 +168,4 @@ export TEXMFHOME="${HOME}/texmf"
 
 export -f error
 export -f line
+export -f member
