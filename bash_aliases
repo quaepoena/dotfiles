@@ -143,3 +143,4 @@ export PATH="/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
 export TEXMFHOME="${HOME}/texmf"
 
 export -f error
+export -f line
