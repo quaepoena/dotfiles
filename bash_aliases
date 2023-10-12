@@ -50,6 +50,20 @@ function ins() {
     sed -i "1i$1" "${2}"
 }
 
+# TODO: Expand this to behave more like head(1) and tail(1), including
+# reading from STDIN and looping through "$@".
+function line() {
+    if [[ "$#" -ne 2 ]]; then
+	echo "Bruk: line <linje> <fil> …" >&2
+	return 1
+    fi
+
+    local num="$1"
+    local fil="$2"
+
+    head -n "${num}" "${fil}" | tail -n 1
+}
+
 function pw() {
 
     if [[ "$#" -ne 1 ]]; then
