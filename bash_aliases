@@ -120,6 +120,22 @@ function gs-pages() {
     ghostscript -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o /tmp/gs-output-"${time}".pdf "$1"
 }
 
+# Prepend the first file to the second.
+# TODO: Write this in C.
+function prepend() {
+    if [[ $# -ne 2 ]]; then
+	error "Bruk: ${FUNCNAME[0]} <file> <file>"
+    fi
+
+    local tmp="$(mktemp)"
+
+    cp "$2" "${tmp}"
+    cp "$1" "$2"
+    cat "${tmp}" >> "$2"
+
+    rm "${tmp}"
+}
+
 function timer() {
     if [[ $# -ne 1 ]]; then
 	echo "Geben Sie eins Zahl als Eingabewert." >&2
