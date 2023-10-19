@@ -105,8 +105,9 @@
   "Inspired by open-line, the result is an inserted space
    with point in the same place."
   (interactive)
-  (insert " ")
-  (backward-char))
+
+  (save-excursion
+    (insert " ")))
 
 (defun external-paste ()
   "Divide the region in two and call `paste (1)` on the two halves.
