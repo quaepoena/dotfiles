@@ -231,8 +231,9 @@ Calling the function with \"0\" prints the list."
 
 (defun o-med-kvist ()
   (interactive)
-     (progn (set-register ?o "ǫ")
-	    (set-register ?O "Ǫ")))
+
+  (set-register ?, "ǫ")
+  (set-register ?< "Ǫ"))
 
 (defun latin-macrons ()
   "Place macrons over Latin vowels."
