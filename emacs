@@ -86,6 +86,8 @@
 ;; https://emacs.stackexchange.com/a/3471
 (global-set-key (kbd "C-x o") nil)
 (global-set-key (kbd "C-.") #'other-window)
+(global-set-key (kbd "C-'") 'open-text-right)
+
 
 ;;}}}
 ;;{{{ Trivial convenience functions
@@ -326,8 +328,6 @@ Calling the function with \"0\" prints the list."
 (if (require 'folding nil 'noerror)
     (folding-mode-add-find-file-hook)
   (message "Library `folding' not found"))
-
-(global-set-key (kbd "C-'") 'open-text-right)
 
 (setq tramp-default-method "ssh")
 
