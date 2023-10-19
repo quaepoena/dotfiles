@@ -225,6 +225,10 @@ Calling the function with \"0\" prints the list."
 ;;}}}
 ;;{{{ Linguae
 
+(defun lang-oe ()
+  (interactive)
+  (insert "ǿ"))
+
 (defun o-med-kvist ()
   (interactive)
      (progn (set-register ?o "ǫ")
