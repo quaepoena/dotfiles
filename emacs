@@ -375,6 +375,7 @@ Calling the function with \"0\" prints the list."
         (beginning-of-line))))
 
 (defun eshell/mcd (path)
+  "mkdir PATH && cd PATH"
   (mkdir path t)
   (cd path))
 
