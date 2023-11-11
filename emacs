@@ -102,8 +102,8 @@
 ;;{{{ Less trivial convenience functions
 
 (defun open-text-right ()
-  "Inspired by open-line, the result is an inserted space
-   with point in the same place."
+  "Inspired by open-line. Insert a space to the right of point while keeping
+point in the same place."
   (interactive)
 
   (save-excursion
