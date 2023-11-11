@@ -386,16 +386,16 @@ Calling the function with \"0\" prints the list."
   (eshell/cat (concat "~/pw/" path ".gpg")))
 
 (add-hook 'eshell-mode-hook
-          '(lambda () (define-key eshell-mode-map (kbd "C-a")
+          (lambda () (define-key eshell-mode-map (kbd "C-a")
 			'eshell/maybe-bol)))
 (add-hook 'eshell-mode-hook
-          '(lambda () (define-key eshell-mode-map (kbd "C-c b")
+          (lambda () (define-key eshell-mode-map (kbd "C-c b")
 			'eshell/insert-buffer-name-syntax)))
 (add-hook 'eshell-mode-hook
-	  '(lambda () (define-key eshell-mode-map (kbd "C-c l")
+	  (lambda () (define-key eshell-mode-map (kbd "C-c l")
 			'eshell/clear-buffer)))
 (add-hook 'eshell-mode-hook
-	  '(lambda () (define-key eshell-mode-map (kbd "C-c s o")
+	  (lambda () (define-key eshell-mode-map (kbd "C-c s o")
 			'owd)))
 
 ;;}}}
