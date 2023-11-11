@@ -415,3 +415,30 @@ Goes backward if ARG is negative; error if CHAR not found."
 			 (search-forward (char-to-string char) nil nil arg)
 			 (backward-char)
 			 (point))))
+(defun dagens-ord ()
+  "Få dagens ord frå Aasen."
+  (interactive)
+
+  (let* ((side (1+ (random 965)))
+	(spalte (1+ (random 2)))
+	(mod-time (file-attribute-modification-time (file-attributes "~/tmp/dagens-ord")))
+	(mod-time-day (decoded-time-day (decode-time mod-time)))
+	(mod-time-month (decoded-time-month (decode-time mod-time)))
+	(mod-time-year (decoded-time-year (decode-time mod-time)))
+	(cur-time (decode-time))
+	(cur-time-day (decoded-time-day cur-time))
+	(cur-time-month (decoded-time-month cur-time))
+	(cur-time-year (decoded-time-year cur-time))
+	(update (or (not mod-time)
+		    (< mod-time-year cur-time-year)
+		    (< mod-time-month cur-time-month)
+		    (< mod-time-day cur-time-day))))
+
+    (with-temp-buffer
+      (if update
+	  (progn
+	    (insert (format "Side %d, spalte %d" side spalte))
+	    (write-region nil nil "~/tmp/dagens-ord"))
+	(insert-file-contents "~/tmp/dagens-ord"))
+
+      (buffer-string))))
