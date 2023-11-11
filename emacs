@@ -38,7 +38,7 @@
   (remq 'process-kill-buffer-query-function
 	kill-buffer-query-functions))
 (setq column-number-mode t)
-(setq find-function-C-source-directory "~/src/emacs25-25.2+1/src/")
+(setq find-function-C-source-directory "~/src/emacs29/emacs-29.1/src/")
 (setq confirm-nonexistent-file-or-buffer nil)
 
 ;;}}}
