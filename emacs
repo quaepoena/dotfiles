@@ -227,7 +227,9 @@ Calling the function with \"0\" prints the list."
 
 (defun lang-oe ()
   (interactive)
-  (insert "ǿ"))
+
+  (set-register ?ø "ǿ")
+  (set-register ?Ø "Ǿ"))
 
 (defun o-med-kvist ()
   (interactive)
