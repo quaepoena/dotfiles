@@ -43,9 +43,10 @@ function backup() {
     return "$?"
 }
 
+# TODO: Is this behavior correct in other programs?
 function error() {
-    echo "error: $1" >&2
-    exit 1
+    echo "error: $@" >&2
+    kill -INT $$
 }
 
 function ins() {
