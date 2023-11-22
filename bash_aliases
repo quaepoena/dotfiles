@@ -58,7 +58,7 @@ function ins() {
 
 # TODO: Expand this to behave more like head(1) and tail(1), including
 # reading from STDIN and looping through "$@".
-# TODO: This is too hacky. Write it in C.
+# TODO: This is too hacky. Write it in another language.
 function line() {
     if [[ $# -ne 2 ]]; then
 	echo "Bruk: line <linje> <fil> …" >&2
