@@ -290,11 +290,6 @@ Calling the function with \"0\" prints the list."
 	     ((equal response "b") (search-backward-regexp vowels)))
        (setq response nil)))))
 
-;; https://wiki.archlinux.org/title/Mozc#Mozc_for_Emacs
-(require 'mozc)
-(setq default-input-method "japanese-mozc")
-(setq mozc-candidate-style 'overlay)
-
 ;;}}}
 
 ;; https://stackoverflow.com/a/47587185
