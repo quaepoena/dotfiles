@@ -96,7 +96,6 @@ function member() {
 }
 
 function pw() {
-
     if [[ $# -ne 1 ]]; then
 	echo "Bruk: pw fil" >&2
 	return 1
@@ -111,7 +110,6 @@ function pw() {
 
 
 function gs-pages() {
-
     if [[ $# -ne 2 ]]; then
 	echo "Usage: gs-pages <input> <page range>" >&2
 	return 1
@@ -169,7 +167,6 @@ export GPG_TTY="$(tty)"
 
 alias af="anki-format"
 alias c="setxkbmap -option 'compose:rctrl'"
-alias d="declinatio"
 alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
