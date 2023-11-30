@@ -82,6 +82,7 @@
 (global-set-key (kbd "C-`") 'push-mark-no-activate)
 (global-set-key (kbd "C-c g e") 'open-emacs)
 (global-set-key (kbd "C-c g s") 'eshell)
+(global-set-key (kbd "C-c g v") 'vocabularium)
 (global-set-key (kbd "C-c s o") 'owd)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 ;; https://emacs.stackexchange.com/a/3471
@@ -439,3 +440,55 @@ Goes backward if ARG is negative; error if CHAR not found."
 	(insert-file-contents "~/tmp/dagens-ord"))
 
       (buffer-string))))
+
+(defun vocabularium ()
+  "Fasciculos vocabularii agere."
+  (interactive)
+
+  (let* ((index "~/Dokumente/språk/vocabularium/")
+	 (fasciculi (directory-files index
+				     nil
+				     directory-files-no-dot-files-regexp))
+	 (index-exitus "/tmp/"))
+
+    (dolist (d fasciculi)
+      (vocabularium-par-creare (concat index d)
+			       (concat index-exitus "anki-vocabularium-" d)))))
+
+(defun vocabularium-par-creare (fasciculus exitus)
+  "Fasciculum visere et par verbiorum creare."
+  (interactive "fFasciculus: \nFExitus: ")
+
+  (write-region 1 1 exitus)
+
+  (with-temp-buffer
+    (insert-file-contents fasciculus)
+
+    (while (save-excursion
+	     (forward-line)
+	     (< (point) (point-max)))
+
+      (let* ((lineae (vocabularium-lineas-copiare))
+	     (line1 (vocabularium-lineam-convertere (car lineae)))
+	     (line2 (vocabularium-lineam-convertere (cadr lineae)))
+	     (fasc (file-name-nondirectory fasciculus))
+	     (series-exitus (concat line1 line2 "vocabularium::" fasc "\n")))
+
+	(write-region series-exitus 0 exitus t)))))
+
+(defun vocabularium-lineam-copiare ()
+  "Lineam praesentem ut series reddere."
+  (let ((finis (save-excursion
+		 (end-of-line)
+		 (point))))
+    (buffer-substring (point) finis)))
+
+(defun vocabularium-lineas-copiare ()
+  "Duas lineas proximas fasciculi copiare et quas ut index reddere."
+  (list (vocabularium-lineam-copiare) (progn (forward-line)
+					     (vocabularium-lineam-copiare))))
+
+(defun vocabularium-lineam-convertere (series)
+  "Lineam divisam a virgula, SERIES, partire et ad `verbum|lingua|` convertere."
+  (let ((split-s (split-string series "|")))
+    (concat (cadr split-s) "|" (car split-s) "|")))
