@@ -377,8 +377,14 @@ Calling the function with \"0\" prints the list."
   (mkdir path t)
   (cd path))
 
-(defun eshell/pw (path)
-  (find-file (concat "~/pw/" path ".gpg")))
+(defun signum (fasciculus)
+  "Fasciculum de gpg in ~/pw/ aperīre."
+  (interactive "sFasciculus: ")
+
+  (find-file (concat "~/pw/" fasciculus ".gpg")))
+
+(defun eshell/pw (fasciculus)
+  (signum fasciculus))
 
 (defun eshell/pwcat (path)
   (eshell/cat (concat "~/pw/" path ".gpg")))
