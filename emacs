@@ -62,9 +62,15 @@
  '(custom-enabled-themes (quote (wheatgrass)))
  '(org-export-backends (quote (ascii html icalendar latex md)))
  '(package-selected-packages
-   (quote
-    (folding buffer-move gnu-elpa-keyring-update disable-mouse go-mode)))
- '(safe-local-variable-values (quote ((backup-inhibited . t) (org-pretty-entities . t)))))
+   (quote (folding
+	   buffer-move
+	   gnu-elpa-keyring-update
+	   disable-mouse
+	   go-mode)))
+ '(safe-local-variable-values
+   (quote ((indent-tabs-mode nil)
+	   (backup-inhibited . t)
+	   (org-pretty-entities . t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
