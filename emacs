@@ -82,7 +82,7 @@
 (global-set-key (kbd "C-`") 'push-mark-no-activate)
 (global-set-key (kbd "C-c g e") 'open-emacs)
 (global-set-key (kbd "C-c g s") 'eshell)
-(global-set-key (kbd "C-c g v") 'vocabularium)
+(global-set-key (kbd "C-c g v") 'vocabularium-fasciculos-agere)
 (global-set-key (kbd "C-c s o") 'owd)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 ;; https://emacs.stackexchange.com/a/3471
@@ -447,7 +447,7 @@ Goes backward if ARG is negative; error if CHAR not found."
 
       (buffer-string))))
 
-(defun vocabularium ()
+(defun vocabularium-fasciculos-agere ()
   "Fasciculos vocabularii agere."
   (interactive)
 
