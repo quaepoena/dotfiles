@@ -234,7 +234,7 @@ Calling the function with \"0\" prints the list."
 ;;{{{ Linguae
 
 (defun lang-oe ()
-  "Lagra \='ǿ\=' og \='Ǿ\=' i registerar, høvesvis ?ø og ?Ø."
+  "\'ǿ\' et \'Ǿ\' in registra ?ø et ?Ø servare."
   (interactive)
 
   (set-register ?ø "ǿ")
@@ -497,7 +497,7 @@ Goes backward if ARG is negative; error if CHAR not found."
   (let ((split-s (split-string series "|")))
     (concat (cadr split-s) "|" (car split-s) "|")))
 (defun macron-addere ()
-  "Vōcālem cum variante longō substituere."
+  "Vōcālem longam pro longā substituere."
   (interactive)
   (let* ((tempus-praesens (float-time))
 	 (fasciculus-temporis "/tmp/macron-addere-ft")
