@@ -497,7 +497,7 @@ Goes backward if ARG is negative; error if CHAR not found."
   (let ((split-s (split-string series "|")))
     (concat (cadr split-s) "|" (car split-s) "|")))
 (defun macron-addere ()
-  "Vōcālem longam pro longā substituere."
+  "Vōcālem longam pro brevī substituere."
   (interactive)
   (let* ((tempus-praesens (float-time))
 	 (fasciculus-temporis "/tmp/macron-addere-ft")
