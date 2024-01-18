@@ -81,6 +81,7 @@
 ;;}}}
 ;;{{{ Global keys
 
+(global-set-key (kbd "-") #'macron-addere)
 (global-set-key (kbd "M-DEL") nil)
 (global-set-key (kbd "M-`") 'jump-to-mark)
 (global-set-key (kbd "M-[") 'insert-brackets)
@@ -244,16 +245,6 @@ Calling the function with \"0\" prints the list."
 
   (set-register ?, "ǫ")
   (set-register ?< "Ǫ"))
-
-(defun latin-macrons ()
-  "Place macrons over Latin vowels."
-  (interactive)
-
-  (let ((current-char (char-after (point)))
-	;; ((a . ā) (e . ē) (i . ī) (o . ō) (u . ū))
-	(v-to-m '((97 . 257) (101 . 275) (105 . 299) (111 . 333) (117 . 363))))
-    (delete-char 1)
-    (insert (alist-get current-char v-to-m current-char))))
 
 ;; TODO: Combine this with declinatio-macrons?
 (defun куриллическое-ударение ()
@@ -505,3 +496,35 @@ Goes backward if ARG is negative; error if CHAR not found."
   "Lineam divisam a virgula, SERIES, partire et ad `verbum|lingua|` convertere."
   (let ((split-s (split-string series "|")))
     (concat (cadr split-s) "|" (car split-s) "|")))
+(defun macron-addere ()
+  "Vōcālem cum variante longō substituere."
+  (interactive)
+  (let* ((tempus-praesens (float-time))
+	 (fasciculus-temporis "/tmp/macron-addere-ft")
+
+	 ;; `float-time' "nil" ad tempus praesēns facit, quid nōn
+	 ;; dēsīderātum est.
+	 (tempus-aditus (float-time
+			 (or (file-attribute-access-time
+			      (file-attributes fasciculus-temporis))
+			     0)))
+
+	 (littera (char-before (1- (point))))
+	 (littera-ad-macron '((97 . 257)  ; a . ā
+			      (101 . 275) ; e . ē
+			      (105 . 299) ; i . ī
+			      (111 . 333) ; o . ō
+			      (117 . 363) ; u . ū
+			      (65 . 256)  ; A . Ā
+			      (69 . 274)  ; E . Ē
+			      (73 . 298)  ; I . Ī
+			      (79 . 332)  ; O . Ō
+			      (85 . 362))) ; U . Ū
+	 (programma-contactus "touch"))
+
+    (if (< (- tempus-praesens tempus-aditus) 0.2)
+	(progn
+	  (delete-char -2)
+	  (insert (alist-get littera littera-ad-macron littera)))
+      (insert "-")
+      (call-process programma-contactus nil 0 nil fasciculus-temporis))))
