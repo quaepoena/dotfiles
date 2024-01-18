@@ -234,7 +234,7 @@ Calling the function with \"0\" prints the list."
 ;;{{{ Linguae
 
 (defun lang-oe ()
-  "\'ǿ\' et \'Ǿ\' in registra ?ø et ?Ø servare."
+  "\'ǿ\' et \'Ǿ\' in registra ?ø et ?Ø servāre."
   (interactive)
 
   (set-register ?ø "ǿ")
