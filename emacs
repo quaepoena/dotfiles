@@ -184,7 +184,7 @@ Calling the function with \"0\" prints the list."
 
 ;;}}}
 
-(add-hook 'write-file-hooks 'delete-trailing-whitespace)
+(add-hook 'write-file-functions 'delete-trailing-whitespace)
 
 ;; http://ergoemacs.org/emacs/emacs_package_system.html
 ;; load emacs 24's package system. Add MELPA repository.
