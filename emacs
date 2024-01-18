@@ -252,12 +252,12 @@ Calling the function with \"0\" prints the list."
   (let ((current-char (char-after (point)))
 	;; ((a . ā) (e . ē) (i . ī) (o . ō) (u . ū))
 	(v-to-m '((97 . 257) (101 . 275) (105 . 299) (111 . 333) (117 . 363))))
-    (delete-forward-char 1)
+    (delete-char 1)
     (insert (alist-get current-char v-to-m current-char))))
 
 ;; TODO: Combine this with declinatio-macrons?
 (defun куриллическое-ударение ()
-  """Replace vowels with their stressed counterpart."""
+  "Replace vowels with their stressed counterpart."
   (interactive)
 
   (let
@@ -265,12 +265,12 @@ Calling the function with \"0\" prints the list."
     (if (member (char-after (point)) vowels)
 	(progn
 	  (forward-char)
-	  (insert-string "́"))
+	  (insert "́"))
       (forward-char))))
 
 ;; TODO: Account for line endings.
 (defun russian-stress (&optional point mark)
-  """Find the next vowel for optional overwriting."""
+  "Find the next vowel for optional overwriting."
   (interactive "r")
 
   (save-mark-and-excursion
