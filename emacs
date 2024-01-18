@@ -233,6 +233,7 @@ Calling the function with \"0\" prints the list."
 ;;{{{ Linguae
 
 (defun lang-oe ()
+  "Lagra \='ǿ\=' og \='Ǿ\=' i registerar, høvesvis ?ø og ?Ø."
   (interactive)
 
   (set-register ?ø "ǿ")
