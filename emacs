@@ -496,6 +496,17 @@ Goes backward if ARG is negative; error if CHAR not found."
   "Lineam divisam a virgula, SERIES, partire et ad `verbum|lingua|` convertere."
   (let ((split-s (split-string series "|")))
     (concat (cadr split-s) "|" (car split-s) "|")))
+
+(defun kill-restart-emacs (arg)
+  "With ARG set, kill and restart emacs, otherwise just kill."
+  (interactive "P")
+
+  (if arg
+      (kill-emacs nil t)
+    (kill-emacs)))
+
+(global-set-key (kbd "C-c g k") 'kill-restart-emacs)
+
 (defun macron-addere ()
   "Vōcālem longam pro brevī substituere."
   (interactive)
