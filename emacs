@@ -156,13 +156,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;;}}}
 ;;{{{ Logic
 
-;; https://www.emacswiki.org/emacs/InsertPair
-(defun insert-brackets (&optional arg)
-  "Enclose following ARG sexps in brackets.
-Leave point after open-paren."
-  (interactive "*P")
-  (insert-pair nil ?\[ ?\]) [])
-
 (defun insert-logical-operator (arg)
   "Insert the ARGth logical operator from a predefined list.
 Calling the function with \"0\" prints the list."
@@ -539,3 +532,11 @@ Goes backward if ARG is negative; error if CHAR not found."
 	  (insert (alist-get littera littera-ad-macron littera)))
       (insert "-")
       (call-process programma-contactus nil 0 nil fasciculus-temporis))))
+
+;; Skeletons
+(setq skeleton-pair t)
+(global-set-key (kbd "'") #'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\"") #'skeleton-pair-insert-maybe)
+(global-set-key (kbd "(") #'skeleton-pair-insert-maybe)
+(global-set-key (kbd "[") #'skeleton-pair-insert-maybe)
+(global-set-key (kbd "{") #'skeleton-pair-insert-maybe)
