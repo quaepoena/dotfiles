@@ -410,9 +410,9 @@ Goes backward if ARG is negative; error if CHAR not found."
     (if (char-table-p translation-table-for-input)
 	(setq char (or (aref translation-table-for-input char) char))))
   (kill-region (point) (progn
-			 (search-forward (char-to-string char) nil nil arg)
-			 (backward-char)
-			 (point))))
+			 (save-excursion
+			   (search-forward (char-to-string char) nil nil arg)
+			   (- (point) 1)))))
 (defun dagens-ord ()
   "Få dagens ord frå Aasen."
   (interactive)
