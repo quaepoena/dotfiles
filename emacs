@@ -516,7 +516,7 @@ Goes backward if ARG is negative; error if CHAR not found."
 			      (69 . 274)  ; E . Ē
 			      (73 . 298)  ; I . Ī
 			      (79 . 332)  ; O . Ō
-			      (85 . 362))) ; U . Ū
+			      (85 . 362))); U . Ū
 	 (programma-contactus "touch"))
 
     (if (< (- tempus-praesens tempus-aditus) 0.2)
