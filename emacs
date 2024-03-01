@@ -87,6 +87,7 @@
 (global-set-key (kbd "<M-backspace>") 'kill-region)
 (global-set-key (kbd "C-`") 'push-mark-no-activate)
 (global-set-key (kbd "C-c g e") 'open-emacs)
+(global-set-key (kbd "C-c g k") 'kill-restart-emacs)
 (global-set-key (kbd "C-c g s") 'eshell)
 (global-set-key (kbd "C-c g v") 'vocabularium-fasciculos-agere)
 (global-set-key (kbd "C-c s o") 'owd)
@@ -99,6 +100,14 @@
 
 ;;}}}
 ;;{{{ Trivial convenience functions
+
+(defun kill-restart-emacs (arg)
+  "With ARG set, kill and restart emacs, otherwise just kill."
+  (interactive "P")
+
+  (if arg
+      (kill-emacs nil t)
+    (kill-emacs)))
 
 (defun open-emacs ()
   "Open ~/.emacs."
