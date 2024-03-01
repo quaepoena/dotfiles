@@ -399,6 +399,20 @@ Calling the function with \"0\" prints the list."
 ;;}}}
 
 
+;; Hat tip to Xah Lee: http://xahlee.info/emacs/emacs/elisp_count-region.html
+(defun count-occurrences (start end sep)
+  "Count occurrences of sep in region."
+  (interactive "r\nsSep: ")
+
+  (save-excursion
+    (let ((count 0))
+      (goto-char start)
+      (while (and (< (point) end)
+		  (re-search-forward sep end t))
+	(setq count (+ count 1)))
+
+      count)))
+
 (defun zap-to-char-before (arg char)
   "Kill up to but not including the ARGth occurrence of CHAR.
 Case is ignored if `case-fold-search' is non-nil in the current buffer.
