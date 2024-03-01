@@ -70,11 +70,7 @@
  '(custom-enabled-themes (quote (wheatgrass)))
  '(org-export-backends (quote (ascii html icalendar latex md)))
  '(package-selected-packages
-   (quote (folding
-	   buffer-move
-	   gnu-elpa-keyring-update
-	   disable-mouse
-	   go-mode)))
+   '(magit auctex haskell-mode folding buffer-move gnu-elpa-keyring-update disable-mouse go-mode))
  '(safe-local-variable-values
    (quote ((indent-tabs-mode nil)
 	   (backup-inhibited . t)
