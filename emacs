@@ -294,20 +294,22 @@ Calling the function with \"0\" prints the list."
 	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
 
 ;;{{{ LaTeX
+(setq bibtex-dialect 'biblatex
+      TeX-engine 'luatex
+      LaTeX-electric-left-right-brace t
+      LaTeX-csquotes-close-quote "}"
+      LaTeX-csquotes-open-quote "\\enquote{"
+      TeX-auto-save t
+      TeX-parse-self t)
 
-(setq bibtex-dialect 'biblatex)
-;; (add-hook 'text-mode-hook 'auto-fill-mode)
-(setq TeX-engine 'luatex)
+(put 'TeX-narrow-to-group 'disabled nil)
+(setenv "PATH" "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
 
 ;; Use okular instead of evince for viewing pdf documents w/ View in AUCTeX.
 ;; https://emacs.stackexchange.com/a/3402
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
 	    (add-to-list 'TeX-view-program-selection '(output-pdf "Okular"))))
-
-(setenv "PATH" "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
-
-(put 'TeX-narrow-to-group 'disabled nil)
 
 ;;}}}
 
