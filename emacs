@@ -205,11 +205,14 @@ Calling the function with \"0\" prints the list."
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;;{{{ Previously disabled commands
+
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
+
 ;;}}}
 ;;{{{ Org
+
 (require 'org)
 
 (global-set-key (kbd "C-c o l") 'org-store-link)
@@ -224,6 +227,7 @@ Calling the function with \"0\" prints the list."
 			       (file "~/org/todo-template"))))
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
+
 ;;}}}
 ;;{{{ Linguae
 
