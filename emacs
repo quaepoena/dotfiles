@@ -527,9 +527,13 @@ Goes backward if ARG is negative; error if CHAR not found."
       (call-process programma-contactus nil 0 nil fasciculus-temporis))))
 
 ;; Skeletons
-(setq skeleton-pair t)
+(setq skeleton-pair t
+      skeleton-pair-alist (list (quote (?„ _ ?“))))
+
 (global-set-key (kbd "'") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\"") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "(") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "[") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "{") #'skeleton-pair-insert-maybe)
+(global-set-key (kbd "„") #'skeleton-pair-insert-maybe)
+(global-set-key (kbd "«") #'skeleton-pair-insert-maybe)
