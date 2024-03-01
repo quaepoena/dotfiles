@@ -537,3 +537,13 @@ Goes backward if ARG is negative; error if CHAR not found."
 (global-set-key (kbd "{") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "„") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "«") #'skeleton-pair-insert-maybe)
+
+;; Dired
+(defun dired-set-shell-alist ()
+  "Set preferred programs for shell commands in dired."
+  (add-to-list 'dired-guess-shell-alist-user
+	       (quote ("\\.pdf\\'" "okular")))
+  (add-to-list 'dired-guess-shell-alist-user
+	       (quote ("\\.doc\\(x\\)?\\'" "soffice"))))
+
+(add-hook 'dired-mode-hook #'dired-set-shell-alist)
