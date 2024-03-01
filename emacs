@@ -9,6 +9,14 @@
 ;;}}}
 ;;{{{ General Emacs tweaks
 
+;; https://www.emacswiki.org/emacs/MELPA
+(require 'package)
+
+(add-to-list
+ 'package-archives
+ (quote ("melpa-stable" . "https://stable.melpa.org/packages/"))
+ t)
+
 (package-initialize)
 
 ;; https://masteringemacs.org/article/disabling-prompts-emacs
@@ -180,15 +188,6 @@ Calling the function with \"0\" prints the list."
 ;;}}}
 
 (add-hook 'write-file-functions 'delete-trailing-whitespace)
-
-;; http://ergoemacs.org/emacs/emacs_package_system.html
-;; load emacs 24's package system. Add MELPA repository.
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa" . "https://melpa.org/packages/")
-   t))
 
 ;; https://github.com/purcell/disable-mouse
 (global-disable-mouse-mode)
