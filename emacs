@@ -130,7 +130,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (with-temp-buffer
     (yank)
     (delete-trailing-whitespace)
-    (goto-char (point-min))
+    (beginning-of-buffer)
 
     (let ((mid (/ (count-lines (point-min) (point-max)) 2)))
       (forward-line mid)
