@@ -226,6 +226,7 @@ Calling the function with \"0\" prints the list."
 			       (file "~/org/todo-template"))))
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
+(add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
 
 ;;}}}
 ;;{{{ Linguae
