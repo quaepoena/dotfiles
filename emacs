@@ -529,3 +529,8 @@ Goes backward if ARG is negative; error if CHAR not found."
   (interactive)
   (setq kill-ring nil))
 
+(defun line-empty-p ()
+  "Return t if the line at point is empty."
+  (save-excursion
+    (forward-line 0)
+    (looking-at (rx line-start (zero-or-more space) line-end))))
