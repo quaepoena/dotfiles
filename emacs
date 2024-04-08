@@ -467,6 +467,7 @@ Goes backward if ARG is negative; error if CHAR not found."
 (defun macron-addere ()
   "Vōcālem longam pro brevī substituere."
   (interactive)
+
   (let* ((tempus-praesens (float-time))
 	 (fasciculus-temporis "/tmp/macron-addere-ft")
 
