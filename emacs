@@ -259,14 +259,53 @@ Calling the function with \"0\" prints the list."
       TeX-auto-save t
       TeX-parse-self t)
 
-(put 'TeX-narrow-to-group 'disabled nil)
 (setenv "PATH" "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
 
 ;; Use okular instead of evince for viewing pdf documents w/ View in AUCTeX.
 ;; https://emacs.stackexchange.com/a/3402
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
-	    (add-to-list 'TeX-view-program-selection '(output-pdf "Okular"))))
+	    (add-to-list 'TeX-view-program-selection '(output-pdf "Okular"))
+	    (add-to-list 'LaTeX-item-list '("outline" .
+					    LaTeX-insert-outline-level))
+	    (keymap-set LaTeX-mode-map "M-RET" #'LaTeX-insert-item-line-empty-p)))
+
+
+(defun LaTeX-insert-item-line-empty-p ()
+  "Insert a new item in an environment.
+You may use `LaTeX-item-list' to change the routines used to insert the item.
+
+Changed from the original, `LaTeX-insert-item' defined in latex.el, to indent
+only if the current line isn't empty."
+  (interactive "*")
+
+  (let ((environment (LaTeX-current-environment)))
+    (when (and (TeX-active-mark)
+               (> (point) (mark)))
+      (exchange-point-and-mark))
+    (unless (line-empty-p) (LaTeX-newline))
+    (if (assoc environment LaTeX-item-list)
+        (funcall (cdr (assoc environment LaTeX-item-list)))
+      (TeX-insert-macro "item"))
+    (indent-according-to-mode)))
+
+(defun LaTeX-find-outline-level ()
+  "Find the current level in an outline environment or \"1\" as a default."
+  (if (looking-at (rx line-start
+		      (zero-or-more space)
+		      "\\"
+		      (group (= 1 digit))))
+      (substring-no-properties (match-string 1))
+    nil))
+
+(defun LaTeX-insert-outline-level ()
+  "Insert the current outline level. Stored in `LaTeX-item-list' and called by
+`LaTeX-insert-item'."
+  (let ((level (save-excursion
+		 (forward-line -1)
+		 (or (LaTeX-find-outline-level)
+		     "1"))))
+    (TeX-insert-macro (concat level " "))))
 
 ;;}}}
 
@@ -290,7 +329,6 @@ Calling the function with \"0\" prints the list."
 (setq tramp-default-method "ssh")
 
 (setq require-final-newline t)
-(put 'LaTeX-narrow-to-environment 'disabled nil)
 
 ;;{{{ eshell
 
