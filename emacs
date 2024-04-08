@@ -206,6 +206,8 @@ Calling the function with \"0\" prints the list."
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
+(put 'TeX-narrow-to-group 'disabled nil)
+(put 'LaTeX-narrow-to-environment 'disabled nil)
 
 ;;}}}
 ;;{{{ Org
