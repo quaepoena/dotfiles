@@ -523,3 +523,9 @@ Goes backward if ARG is negative; error if CHAR not found."
 	       (quote ("\\.doc\\(x\\)?\\'" "soffice"))))
 
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
+
+(defun erase-kill-ring ()
+  "Set the kill ring to nil."
+  (interactive)
+  (setq kill-ring nil))
+
