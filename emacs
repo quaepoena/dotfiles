@@ -240,49 +240,6 @@ Calling the function with \"0\" prints the list."
   (set-register ?, "ǫ")
   (set-register ?< "Ǫ"))
 
-;; TODO: Combine this with declinatio-macrons?
-(defun куриллическое-ударение ()
-  "Replace vowels with their stressed counterpart."
-  (interactive)
-
-  (let
-      ((vowels (list 1040 1045 1048 1054 1059 1067 1069 1070 1071 1072 1077 1080 1086 1091 1099 1101 1102 1103)))
-    (if (member (char-after (point)) vowels)
-	(progn
-	  (forward-char)
-	  (insert "́"))
-      (forward-char))))
-
-;; TODO: Account for line endings.
-(defun russian-stress (&optional point mark)
-  "Find the next vowel for optional overwriting."
-  (interactive "r")
-
-  (save-mark-and-excursion
-
-   (let ((response nil)
-	 (vowels "[АЕИОУЫЭЮЯаеиоуыэюя]")
-	 (start
-	  (if (region-active-p) (region-beginning) (point)))
-	 (end
-	  (if (region-active-p) (region-end) (point-max))))
-
-     (deactivate-mark nil)
-     (goto-char start)
-
-     (while (< (point) end)
-       (search-forward-regexp vowels)
-       (backward-char)
-       (while (not (member response '("y" "n" "s" "b")))
-	 (setq response (read-string "Replace? <y[es]/n[o]/s[kip]>: n" nil nil "n" nil)))
-       (cond ((equal response "y")
-	      (куриллическое-ударение)
-	      (search-forward " "))
-	     ((equal response "s") (forward-word))
-	     ((equal response "n") (forward-char))
-	     ((equal response "b") (search-backward-regexp vowels)))
-       (setq response nil)))))
-
 ;;}}}
 
 ;; https://stackoverflow.com/a/47587185
