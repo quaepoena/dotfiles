@@ -88,6 +88,7 @@
 (global-set-key (kbd "C-c g k") 'kill-restart-emacs)
 (global-set-key (kbd "C-c g s") 'eshell)
 (global-set-key (kbd "C-c g v") 'vocabularium-fasciculos-agere)
+(global-set-key (kbd "C-c g w") 'erase-kill-ring)
 (global-set-key (kbd "C-c s o") 'owd)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 ;; https://emacs.stackexchange.com/a/3471
