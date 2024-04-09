@@ -397,19 +397,22 @@ called by `LaTeX-insert-item-line-empty-p'."
 ;;}}}
 
 
-;; Hat tip to Xah Lee: http://xahlee.info/emacs/emacs/elisp_count-region.html
-(defun count-occurrences (start end sep)
-  "Count occurrences of sep in region."
-  (interactive "r\nsSep: ")
+(defun count-occurrences (p1 p2 s)
+  "Count occurrences of S in region."
+  (interactive "r\nsString: ")
+
+  (let ((count (count-occurrences-rec p1 p2 s)))
+    (message "%s occurrence(s) of %s in the region." count s)))
+
+(defun count-occurrences-rec (start end s)
+  "Count occurrences of S between START and END."
 
   (save-excursion
-    (let ((count 0))
-      (goto-char start)
-      (while (and (< (point) end)
-		  (re-search-forward sep end t))
-	(setq count (+ count 1)))
-
-      count)))
+    (goto-char start)
+    (if (or (= (point) (point-max))
+	    (not (re-search-forward s end t)))
+        0
+      (+ 1 (count-occurrences-rec (point) end s)))))
 
 (defun zap-to-char-before (arg char)
   "Kill up to but not including the ARGth occurrence of CHAR.
