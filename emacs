@@ -261,13 +261,14 @@ Calling the function with \"0\" prints the list."
 
 (setenv "PATH" "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
 
-(add-hook 'LaTeX-mode-hook
-	  (lambda ()
-	    (add-to-list 'TeX-view-program-selection '(output-pdf "Okular"))
-	    (add-to-list 'LaTeX-item-list '("outline" .
-					    LaTeX-insert-outline-level))
-	    (keymap-set LaTeX-mode-map "M-RET" #'LaTeX-insert-item-line-empty-p)))
+(defun LaTeX-mode-hook-customizations ()
+  (add-to-list 'TeX-view-program-selection '(output-pdf "Okular"))
+  (add-to-list 'LaTeX-item-list '("outline" .
+				  LaTeX-insert-outline-level))
+  (keymap-set LaTeX-mode-map "M-RET"
+	      #'LaTeX-insert-item-line-empty-p))
 
+(add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
 
 (defun LaTeX-insert-item-line-empty-p ()
   "Insert a new item in an environment.
