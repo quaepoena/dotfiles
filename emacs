@@ -261,8 +261,6 @@ Calling the function with \"0\" prints the list."
 
 (setenv "PATH" "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
 
-;; Use okular instead of evince for viewing pdf documents w/ View in AUCTeX.
-;; https://emacs.stackexchange.com/a/3402
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
 	    (add-to-list 'TeX-view-program-selection '(output-pdf "Okular"))
