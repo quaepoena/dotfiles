@@ -298,8 +298,8 @@ the current line isn't empty."
     nil))
 
 (defun LaTeX-insert-outline-level ()
-  "Insert the current outline level. Stored in `LaTeX-item-list' and called by
-`LaTeX-insert-item'."
+  "Insert the current outline level. Stored in `LaTeX-item-list' so at to be
+called by `LaTeX-insert-item-line-empty-p'."
   (let ((level (save-excursion
 		 (forward-line -1)
 		 (or (LaTeX-find-outline-level)
