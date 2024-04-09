@@ -95,7 +95,7 @@
 (global-set-key (kbd "C-x o") nil)
 (global-set-key (kbd "C-.") #'other-window)
 (global-set-key (kbd "C-'") 'open-text-right)
-(global-set-key (kbd "M-z") 'zap-to-char-before)
+(global-set-key (kbd "M-z") 'zap-up-to-char)
 
 ;;}}}
 ;;{{{ Trivial convenience functions
@@ -414,20 +414,6 @@ called by `LaTeX-insert-item-line-empty-p'."
         0
       (+ 1 (count-occurrences-rec (point) end s)))))
 
-(defun zap-to-char-before (arg char)
-  "Kill up to but not including the ARGth occurrence of CHAR.
-Case is ignored if `case-fold-search' is non-nil in the current buffer.
-Goes backward if ARG is negative; error if CHAR not found."
-  (interactive (list (prefix-numeric-value current-prefix-arg)
-		     (read-char "Zap to char: " t)))
-  ;; Avoid "obsolete" warnings for translation-table-for-input.
-  (with-no-warnings
-    (if (char-table-p translation-table-for-input)
-	(setq char (or (aref translation-table-for-input char) char))))
-  (kill-region (point) (progn
-			 (save-excursion
-			   (search-forward (char-to-string char) nil nil arg)
-			   (- (point) 1)))))
 (defun dagens-ord ()
   "Få dagens ord frå Aasen."
   (interactive)
