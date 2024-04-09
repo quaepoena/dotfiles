@@ -398,7 +398,7 @@ called by `LaTeX-insert-item-line-empty-p'."
 
 
 (defun count-occurrences (p1 p2 s)
-  "Count occurrences of S in region."
+  "Count occurrences of S in the region."
   (interactive "r\nsString: ")
 
   (let ((count (count-occurrences-rec p1 p2 s)))
