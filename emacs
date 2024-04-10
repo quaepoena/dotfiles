@@ -266,7 +266,8 @@ Calling the function with \"0\" prints the list."
   (add-to-list 'LaTeX-item-list '("outline" .
 				  LaTeX-insert-outline-level))
   (keymap-set LaTeX-mode-map "M-RET"
-	      #'LaTeX-insert-item-line-empty-p))
+	      #'LaTeX-insert-item-line-empty-p)
+  (keymap-set LaTeX-mode-map "C-c l" #'outline-change-level))
 
 (add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
 
@@ -304,6 +305,27 @@ called by `LaTeX-insert-item-line-empty-p'."
 		     "1"))))
     (TeX-insert-macro (concat level " "))))
 
+(defun outline-change-level (&optional decrease)
+  "Increase the level in an outline environment by default, increase with the
+prefix arg set."
+  (interactive "P")
+
+  (let ((cur-level-int (string-to-number (LaTeX-find-outline-level)))
+	(step)
+	(new-level-str))
+
+    (if decrease
+	(setq step -1)
+      (setq step 1))
+
+    (setq new-level-str (int-to-string (+ cur-level-int step)))
+
+    (save-excursion
+      (beginning-of-line)
+      (when (looking-at (rx (group bol (zero-or-more space) "\\")
+			    (= 1 digit)
+			    (group (zero-or-more print) eol)))
+	(replace-match (concat "\\1" new-level-str "\\2"))))))
 ;;}}}
 
 ;; https://emacs.stackexchange.com/a/21119
