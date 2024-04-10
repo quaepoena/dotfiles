@@ -348,6 +348,7 @@ prefix arg set."
 	(message "No outline item to in-/decrease.")))))
 ;;}}}
 
+;; TODO: Document this beyond a link to SE.
 ;; https://emacs.stackexchange.com/a/21119
 (require 'comint)
 (setq comint-password-prompt-regexp
