@@ -290,19 +290,25 @@ current line isn't empty."
     (indent-according-to-mode)))
 
 (defun LaTeX-find-outline-level ()
-  "Find the current level in an outline environment or \"1\" as a default."
+  "Find the current level in an outline environment.
+
+Since this is ultimately called from `LaTeX-insert-item-line-empty-p', which
+knows the current environment, we don't need to initially check that we're in an
+outline environment."
+
   (save-excursion
     (forward-line 0)
-    (when (looking-at (rx line-start (zero-or-more space) "\\" (group (= 1 digit))))
-      (substring-no-properties (match-string 1)))))
+    (cond ((looking-at (rx (? bol) (* space) "\\begin{outline}")) "1")
+	  ((looking-at (rx bol (zero-or-more space) "\\"
+			   (group (= 1 digit))))
+	   (substring-no-properties (match-string 1)))
+	  (t (forward-line -1)
+	     (LaTeX-find-outline-level)))))
 
 (defun LaTeX-insert-outline-level ()
   "Insert the current outline level. Stored in `LaTeX-item-list' so as to be
 called by `LaTeX-insert-item-line-empty-p'."
-  (let ((level (save-excursion
-		 (forward-line -1)
-		 (or (LaTeX-find-outline-level)
-		     "1"))))
+  (let ((level (LaTeX-find-outline-level)))
     (TeX-insert-macro (concat level " "))))
 
 (defun LaTeX-outline-change-level (&optional decrease)
