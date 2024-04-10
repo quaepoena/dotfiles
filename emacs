@@ -290,12 +290,10 @@ the current line isn't empty."
 
 (defun LaTeX-find-outline-level ()
   "Find the current level in an outline environment or \"1\" as a default."
-  (if (looking-at (rx line-start
-		      (zero-or-more space)
-		      "\\"
-		      (group (= 1 digit))))
-      (substring-no-properties (match-string 1))
-    nil))
+  (save-excursion
+    (forward-line 0)
+    (when (looking-at (rx line-start (zero-or-more space) "\\" (group (= 1 digit))))
+      (substring-no-properties (match-string 1)))))
 
 (defun LaTeX-insert-outline-level ()
   "Insert the current outline level. Stored in `LaTeX-item-list' so at to be
