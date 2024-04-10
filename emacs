@@ -275,8 +275,8 @@ Calling the function with \"0\" prints the list."
   "Insert a new item in an environment.
 You may use `LaTeX-item-list' to change the routines used to insert the item.
 
-Changed from the original, `LaTeX-insert-item', to indent only if
-the current line isn't empty."
+Changed from the original, `LaTeX-insert-item', to add a newline only if the
+current line isn't empty."
   (interactive "*")
 
   (let ((environment (LaTeX-current-environment)))
