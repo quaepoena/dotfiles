@@ -295,7 +295,6 @@ current line isn't empty."
 Since this is ultimately called from `LaTeX-insert-item-line-empty-p', which
 knows the current environment, we don't need to initially check that we're in an
 outline environment."
-
   (save-excursion
     (forward-line 0)
     (cond ((looking-at (rx (? bol) (* space) "\\begin{outline}")) "1")
@@ -311,6 +310,7 @@ called by `LaTeX-insert-item-line-empty-p'."
   (let ((level (LaTeX-find-outline-level)))
     (TeX-insert-macro (concat level " "))))
 
+;; TODO: This doesn't account for line breaks in an item.
 (defun LaTeX-outline-change-level (&optional decrease)
   "Increase the level in an outline environment by default, increase with the
 prefix arg set."
