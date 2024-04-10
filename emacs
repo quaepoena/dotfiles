@@ -330,7 +330,7 @@ prefix arg set."
     (setq new-level-str (int-to-string (+ cur-level-int step)))
 
     (save-excursion
-      (beginning-of-line)
+      (forward-line 0)
       (when (looking-at (rx (group bol (zero-or-more space) "\\")
 			    (= 1 digit)
 			    (group (zero-or-more print) eol)))
