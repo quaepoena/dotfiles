@@ -316,6 +316,9 @@ called by `LaTeX-insert-item-line-empty-p'."
 prefix arg set."
   (interactive "P")
 
+  (unless (string-equal (LaTeX-current-environment) "outline")
+    (error "Not in an outline environment."))
+
   (let ((cur-level-int (string-to-number (LaTeX-find-outline-level)))
 	(step)
 	(new-level-str))
