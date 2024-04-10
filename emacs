@@ -267,7 +267,7 @@ Calling the function with \"0\" prints the list."
 				  LaTeX-insert-outline-level))
   (keymap-set LaTeX-mode-map "M-RET"
 	      #'LaTeX-insert-item-line-empty-p)
-  (keymap-set LaTeX-mode-map "C-c l" #'outline-change-level))
+  (keymap-set LaTeX-mode-map "C-c l" #'LaTeX-outline-change-level))
 
 (add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
 
@@ -305,7 +305,7 @@ called by `LaTeX-insert-item-line-empty-p'."
 		     "1"))))
     (TeX-insert-macro (concat level " "))))
 
-(defun outline-change-level (&optional decrease)
+(defun LaTeX-outline-change-level (&optional decrease)
   "Increase the level in an outline environment by default, increase with the
 prefix arg set."
   (interactive "P")
