@@ -289,6 +289,12 @@ current line isn't empty."
       (TeX-insert-macro "item"))
     (indent-according-to-mode)))
 
+(defun LaTeX-beginning-of-outline-p ()
+  "Return t if point is on the line that begins an outline environment."
+  (save-excursion
+    (forward-line 0)
+    (looking-at-p (rx bol (zero-or-more space) "\\begin{outline}"))))
+
 (defun LaTeX-find-outline-level ()
   "Find the current level in an outline environment.
 
@@ -297,7 +303,7 @@ knows the current environment, we don't need to initially check that we're in an
 outline environment."
   (save-excursion
     (forward-line 0)
-    (cond ((looking-at (rx (? bol) (* space) "\\begin{outline}")) "1")
+    (cond ((LaTeX-beginning-of-outline-p) "1")
 	  ((looking-at (rx bol (zero-or-more space) "\\"
 			   (group (= 1 digit))))
 	   (substring-no-properties (match-string 1)))
