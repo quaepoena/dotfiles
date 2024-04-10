@@ -316,7 +316,6 @@ called by `LaTeX-insert-item-line-empty-p'."
   (let ((level (LaTeX-find-outline-level)))
     (TeX-insert-macro (concat level " "))))
 
-;; TODO: This doesn't account for line breaks in an item.
 (defun LaTeX-outline-change-level (&optional decrease)
   "Increase the level in an outline environment by default, increase with the
 prefix arg set."
@@ -327,7 +326,14 @@ prefix arg set."
 
   (let ((cur-level-int (string-to-number (LaTeX-find-outline-level)))
 	(step)
-	(new-level-str))
+	(new-level-str)
+	(outline-item-rx (rx (group bol (zero-or-more space) "\\")
+			     (= 1 digit)
+			     (group (zero-or-more print) eol)))
+	(current-outline-pos (save-excursion
+			       (re-search-backward
+				(rx bol (zero-or-more space)
+				    "\\begin{outline}")))))
 
     (if decrease
 	(setq step -1)
@@ -336,11 +342,10 @@ prefix arg set."
     (setq new-level-str (int-to-string (+ cur-level-int step)))
 
     (save-excursion
-      (forward-line 0)
-      (when (looking-at (rx (group bol (zero-or-more space) "\\")
-			    (= 1 digit)
-			    (group (zero-or-more print) eol)))
-	(replace-match (concat "\\1" new-level-str "\\2"))))))
+      (end-of-line)
+      (if (re-search-backward outline-item-rx current-outline-pos t)
+	  (replace-match (concat "\\1" new-level-str "\\2"))
+	(message "No outline item to in-/decrease.")))))
 ;;}}}
 
 ;; https://emacs.stackexchange.com/a/21119
