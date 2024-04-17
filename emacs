@@ -254,10 +254,11 @@ Calling the function with \"0\" prints the list."
 
 ;;{{{ LaTeX
 (setq bibtex-dialect 'biblatex
-      TeX-engine 'luatex
       LaTeX-electric-left-right-brace t
-      LaTeX-csquotes-close-quote "}"
       LaTeX-csquotes-open-quote "\\enquote{"
+      LaTeX-csquotes-close-quote "}"
+      LaTeX-indent-level 4
+      TeX-engine 'luatex
       TeX-auto-save t
       TeX-parse-self t)
 
