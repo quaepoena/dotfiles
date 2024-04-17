@@ -349,6 +349,24 @@ prefix arg set."
       (if (re-search-backward outline-item-rx current-outline-pos t)
 	  (replace-match (concat "\\1" new-level-str "\\2"))
 	(message "No outline item to in-/decrease.")))))
+
+(defun LaTeX-copy-ling-template-and-visit ()
+  "Copy your linguistics template to the current directory and visit the new file."
+  (interactive)
+
+  (let* ((basename (read-from-minibuffer "Basename: "))
+	 (full-name (concat basename ".tex")))
+    (copy-file "~/Dokumente/latex/linguistics-template/linguistics-template.tex" full-name)
+    (find-file full-name)))
+
+(defun LaTeX-copy-mwe-and-visit ()
+  "Copy your MWE to the current directory and visit the new file."
+  (interactive)
+
+  (let* ((basename (read-from-minibuffer "Basename: "))
+	 (full-name (concat basename ".tex")))
+    (copy-file "~/Dokumente/latex/mwe/mwe.tex" full-name)
+    (find-file full-name)))
 ;;}}}
 
 ;; TODO: Document this beyond a link to SE.
