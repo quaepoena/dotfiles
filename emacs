@@ -385,7 +385,7 @@ prefix arg set."
 
 (if (require 'folding nil 'noerror)
     (folding-mode-add-find-file-hook)
-  (message "Library `folding' not found"))
+  (message "Library `folding' not found."))
 
 (setq tramp-default-method "ssh")
 
