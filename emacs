@@ -383,6 +383,7 @@ prefix arg set."
 
 (setq fill-column 80)
 
+;; TODO: Wrap all such calls to packages.
 (if (require 'folding nil 'noerror)
     (folding-mode-add-find-file-hook)
   (message "Library `folding' not found."))
