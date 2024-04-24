@@ -557,6 +557,8 @@ prefix arg set."
   (let ((split-s (split-string series "|")))
     (concat (cadr split-s) "|" (car split-s) "|")))
 
+;; TODO: Delete this functionality in favor of defining and using an input
+;; method.
 (defun macron-addere ()
   "Vōcālem longam pro brevī substituere."
   (interactive)
