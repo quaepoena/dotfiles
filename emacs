@@ -649,3 +649,22 @@ prefix arg set."
   (save-excursion
     (forward-line 0)
     (looking-at (rx line-start (zero-or-more space) line-end))))
+
+;; Scheme
+
+(defun scheme-send-buffer ()
+  "Send the current buffer to the inferior Scheme process."
+  (interactive)
+  (scheme-send-region (point-min) (point-max)))
+
+(defun scheme-send-buffer-and-go ()
+  "Send the current buffer to the inferior Scheme process.
+Then switch to the process buffer. "
+  (interactive)
+  (scheme-send-region-and-go (point-min) (point-max)))
+
+(defun scheme-mode-hook-customizations ()
+  (keymap-set scheme-mode-map "C-c C-b" #'scheme-send-buffer)
+  (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
+
+(add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
