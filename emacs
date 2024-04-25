@@ -270,7 +270,8 @@ Calling the function with \"0\" prints the list."
 				  LaTeX-insert-outline-level))
   (keymap-set LaTeX-mode-map "M-RET"
 	      #'LaTeX-insert-item-line-empty-p)
-  (keymap-set LaTeX-mode-map "C-c l" #'LaTeX-outline-change-level))
+  (keymap-set LaTeX-mode-map "C-c l" #'LaTeX-outline-change-level)
+  (keymap-set LaTeX-mode-map "C-c r" #'LaTeX-compile-from-scratch))
 
 (add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
 
@@ -367,6 +368,27 @@ prefix arg set."
 	 (full-name (concat basename ".tex")))
     (copy-file "~/Dokumente/latex/mwe/mwe.tex" full-name)
     (find-file full-name)))
+
+(defun LaTeX-not-tex-sty-p (x)
+  "Return t if the file is regular and not a .tex or .sty file."
+  (and (file-regular-p x)
+       (not (string-match-p (rx line-start
+				(one-or-more anychar)
+				?.
+				(or "tex" "sty")
+				line-end)
+			    x))))
+
+(defun LaTeX-compile-from-scratch ()
+  "Delete all regular, non-tex/sty files and recompile."
+  (interactive)
+  (let* ((files (seq-filter #'LaTeX-not-tex-sty-p (directory-files "." t))))
+
+    (dolist (file files)
+      (delete-file file))
+
+    (TeX-command-run-all nil)))
+
 ;;}}}
 
 ;; TODO: Document this beyond a link to SE.
