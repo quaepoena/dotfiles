@@ -481,23 +481,6 @@ prefix arg set."
 ;;}}}
 
 
-(defun count-occurrences (p1 p2 s)
-  "Count occurrences of S in the region."
-  (interactive "r\nsString: ")
-
-  (let ((count (count-occurrences-rec p1 p2 s)))
-    (message "%s occurrence(s) of %s in the region." count s)))
-
-(defun count-occurrences-rec (start end s)
-  "Count occurrences of S between START and END."
-
-  (save-excursion
-    (goto-char start)
-    (if (or (= (point) (point-max))
-	    (not (re-search-forward s end t)))
-        0
-      (+ 1 (count-occurrences-rec (point) end s)))))
-
 (defun dagens-ord ()
   "Få dagens ord frå Aasen."
   (interactive)
@@ -631,6 +614,18 @@ Then switch to the process buffer. "
   (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
 
 (add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
+(defun count-occurrences (p1 p2 regexp)
+  "Count occurrences of REGEXP in the region."
+  (interactive "r\nsString: ")
+
+  (let ((count (count-occurrences-regexp p1 p2 regexp)))
+    (message "%s occurrence(s) of %s in the region." count regexp)))
+
+(defun count-occurrences-regexp (start end regexp)
+  "Count occurrences of REGEXP between START and END."
+
+  (length (matching-strings-regexp start end regexp)))
+
 (defun matching-strings (start end regexp)
   "Return a list of the strings matching REGEXP in the region."
   (interactive "r\nsString (regexp): ")
