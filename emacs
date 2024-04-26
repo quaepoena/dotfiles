@@ -79,7 +79,6 @@
 ;;}}}
 ;;{{{ Global keys
 
-(global-set-key (kbd "-") #'macron-addere)
 (global-set-key (kbd "M-DEL") nil)
 (global-set-key (kbd "M-`") #'jump-to-mark)
 (global-set-key (kbd "<M-backspace>") #'kill-region)
@@ -578,42 +577,6 @@ prefix arg set."
   "Lineam divisam a virgula, SERIES, partire et ad `verbum|lingua|` convertere."
   (let ((split-s (split-string series "|")))
     (concat (cadr split-s) "|" (car split-s) "|")))
-
-;; TODO: Delete this functionality in favor of defining and using an input
-;; method.
-(defun macron-addere ()
-  "Vōcālem longam pro brevī substituere."
-  (interactive)
-
-  (let* ((tempus-praesens (float-time))
-	 (fasciculus-temporis "/tmp/macron-addere-ft")
-
-	 ;; `float-time' "nil" ad tempus praesēns facit, quid nōn
-	 ;; dēsīderātum est.
-	 (tempus-aditus (float-time
-			 (or (file-attribute-access-time
-			      (file-attributes fasciculus-temporis))
-			     0)))
-
-	 (littera (char-before (1- (point))))
-	 (littera-ad-macron '((97 . 257)  ; a . ā
-			      (101 . 275) ; e . ē
-			      (105 . 299) ; i . ī
-			      (111 . 333) ; o . ō
-			      (117 . 363) ; u . ū
-			      (65 . 256)  ; A . Ā
-			      (69 . 274)  ; E . Ē
-			      (73 . 298)  ; I . Ī
-			      (79 . 332)  ; O . Ō
-			      (85 . 362))); U . Ū
-	 (programma-contactus "touch"))
-
-    (if (< (- tempus-praesens tempus-aditus) 0.2)
-	(progn
-	  (delete-char -2)
-	  (insert (alist-get littera littera-ad-macron littera)))
-      (insert "-")
-      (call-process programma-contactus nil 0 nil fasciculus-temporis))))
 
 ;; Skeletons
 (setq skeleton-pair t
