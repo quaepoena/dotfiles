@@ -631,3 +631,19 @@ Then switch to the process buffer. "
   (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
 
 (add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
+(defun matching-strings (start end regexp)
+  "Return a list of the strings matching REGEXP in the region."
+  (interactive "r\nsString (regexp): ")
+
+  (let ((strings (matching-strings-regexp start end regexp)))
+    (message "Found %s in region." strings)))
+
+(defun matching-strings-regexp (start end regexp)
+  "Return a list of the strings matching REGEXP between START and END."
+
+  (save-excursion
+    (goto-char start)
+
+    (cl-loop while (and (< (point) end)
+			(re-search-forward regexp end t))
+	     collect (substring-no-properties (match-string 0)))))
