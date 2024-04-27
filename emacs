@@ -614,12 +614,16 @@ Then switch to the process buffer. "
   (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
 
 (add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
-;; TODO: Add this to a hook since it gives an error upon loading.
-(let ((quail-current-package (assoc "latin-postfix" quail-package-alist)))
-  (quail-define-rules ((append . t))
-                      ("&" ?⁊)
-		      ("y-" ?ȳ)
-		      ("Y-" ?Ȳ)))
+
+(defun text-mode-hook-customization ()
+  "Customizations for text mode."
+  (let ((quail-current-package (assoc "latin-postfix" quail-package-alist)))
+    (quail-define-rules ((append . t))
+			("&" ?⁊)
+			("y-" ?ȳ)
+			("Y-" ?Ȳ))))
+
+(add-hook 'text-mode-hook #'text-mode-hook-customization)
 
 (defun count-occurrences (p1 p2 regexp)
   "Count occurrences of REGEXP in the region."
