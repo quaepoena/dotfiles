@@ -581,7 +581,9 @@ prefix arg set."
   (add-to-list 'dired-guess-shell-alist-user
 	       (quote ("\\.doc\\(x\\)?\\'" "soffice")))
   (add-to-list 'dired-guess-shell-alist-user
-	       (quote ("\\.epub\\'" "calibre"))))
+	       (quote ("\\.epub\\'" "calibre")))
+(add-to-list 'dired-guess-shell-alist-user
+	       (quote ("\\.djvu\\'" "xreader"))))
 
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
