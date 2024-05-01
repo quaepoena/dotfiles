@@ -619,6 +619,8 @@ Then switch to the process buffer. "
 
 (defun text-mode-hook-customization ()
   "Customizations for text mode."
+  (set-input-method "latin-postfix")
+  (deactivate-input-method)
   (let ((quail-current-package (assoc "latin-postfix" quail-package-alist)))
     (quail-define-rules ((append . t))
 			("&" ?⁊)
