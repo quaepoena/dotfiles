@@ -103,6 +103,17 @@ function pw() {
 }
 
 
+function gs-pdf-concat() {
+    if [[ $# -lt 2 ]]; then
+	echo "Usage: gs-concat <fil01.pdf> <fil02.pdf> […]" >&2
+	return 1
+    fi
+
+    local time="$(date "+%Y%m%d%H%M")"
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -o /tmp/gs-pdf-concat-output-"${time}".pdf "$@"
+}
+
+
 function gs-pages() {
     if [[ $# -ne 2 ]]; then
 	echo "Usage: gs-pages <input> <page range>" >&2
