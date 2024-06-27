@@ -1,12 +1,6 @@
 # -*- mode: Shell-script; -*-
 
 
-# TODO: Is this still useful?
-function anki-format() {
-    echo -e "$(cat "/dev/stdin" | tr '\n' ';')"
-}
-
-
 # simple backup function, not to be trusted
 function backup() {
     if [[ $# -ne 2 ]]; then
@@ -165,7 +159,6 @@ fi
 # for pinentry-tty
 export GPG_TTY="$(tty)"
 
-alias af="anki-format"
 alias c="setxkbmap -option 'compose:rctrl'"
 alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
