@@ -224,7 +224,7 @@ Calling the function with \"0\" prints the list."
 (setq org-capture-templates '(("t" "Create a TODO item."
 			       entry
 			       (file "~/org/todo.org")
-			       (file "~/org/todo-template"))))
+			       (function (lambda () "* TODO %?")))))
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
 (add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
