@@ -619,15 +619,28 @@ Then switch to the process buffer. "
 
 (add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
 
-(defun text-mode-hook-customization ()
-  "Customizations for text mode."
+(defun latin-postfix-customizations ()
+  (interactive)
   (set-input-method "latin-postfix")
   (deactivate-input-method)
+
   (let ((quail-current-package (assoc "latin-postfix" quail-package-alist)))
     (quail-define-rules ((append . t))
-			("&" ?⁊)
+			("a," ?ą)
+			("&-" ["&" "⁊"])
 			("y-" ?ȳ)
-			("Y-" ?Ȳ))))
+			("Y-" ?Ȳ)
+			("ø'" ?ǿ)
+			("Ø'" ?Ǿ))))
+
+(defun norrønt-input ()
+  (interactive)
+  (load-file "~/links/norrønt.el")
+  (set-input-method "norrønt"))
+
+(defun text-mode-hook-customization ()
+  "Customizations for text mode."
+  (latin-postfix-customizations))
 
 (add-hook 'text-mode-hook #'text-mode-hook-customization)
 
