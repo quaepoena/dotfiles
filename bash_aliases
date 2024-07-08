@@ -3,8 +3,8 @@
 
 # simple backup function, not to be trusted
 function backup() {
-    if [[ $# -ne 2 ]]; then
-	echo "Usage: backup <new_directory/> <old_directory/>" >&2
+    if [[ $# -lt 2 ]]; then
+	echo "Usage: backup <new_directory/> <old_directory/> [--fat]" >&2
 	return 1
     fi
 
@@ -16,6 +16,7 @@ function backup() {
 
     local new="$1"
     local old="$2"
+    local fat="$3"
     local endpoint1="dummy"
     local endpoint2=""
 
@@ -33,7 +34,11 @@ function backup() {
 	return 1
     fi
 
-    rsync -vaz --partial -e ssh --delete "${new}" "${old}"
+    if [[ "$3" == "--fat" ]]; then
+	rsync -va --modify-window=1 --partial --delete "${new}" "${old}"
+    else
+	rsync -vaz --partial -e ssh --delete "${new}" "${old}"
+    fi
     return "$?"
 }
 
