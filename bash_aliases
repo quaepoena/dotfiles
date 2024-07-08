@@ -174,6 +174,7 @@ alias c="setxkbmap -option 'compose:rctrl'"
 alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
+alias fu='sudo $(history -p !!)'
 alias x="xmodmap ~/.Xmodmaprc"
 
 # https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
