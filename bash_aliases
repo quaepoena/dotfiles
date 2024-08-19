@@ -39,6 +39,7 @@ function backup() {
     else
 	rsync -vaz --partial -e ssh --delete "${new}" "${old}"
     fi
+
     return "$?"
 }
 
