@@ -480,6 +480,8 @@ prefix arg set."
 
 ;;}}}
 
+;; TODO: Can this be removed?
+(require 'dash)
 
 (defun dagens-ord ()
   "Få dagens ord frå Aasen."
