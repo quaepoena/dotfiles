@@ -83,7 +83,7 @@
 (global-set-key (kbd "M-`") #'jump-to-mark)
 (global-set-key (kbd "<M-backspace>") #'kill-region)
 (global-set-key (kbd "C-`") #'push-mark-no-activate)
-(global-set-key (kbd "C-c g e") #'open-emacs)
+(global-set-key (kbd "C-c g e") #'open-dot-emacs)
 (global-set-key (kbd "C-c g k") #'kill-restart-emacs)
 (global-set-key (kbd "C-c g l") #'LaTeX-copy-ling-template-and-visit)
 (global-set-key (kbd "C-c g m") #'LaTeX-copy-mwe-and-visit)
@@ -109,7 +109,7 @@
       (kill-emacs nil t)
     (kill-emacs)))
 
-(defun open-emacs ()
+(defun open-dot-emacs ()
   "Open ~/.emacs."
   (interactive)
   (find-file "~/.emacs"))
