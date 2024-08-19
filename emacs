@@ -587,7 +587,11 @@ prefix arg set."
   (add-to-list 'dired-guess-shell-alist-user
 	       (quote ("\\.djvu\\'" "xreader")))
   (add-to-list 'dired-guess-shell-alist-user
-	       (quote ("\\.png\\'" "xviewer"))))
+	       (quote ("\\.png\\'" "xviewer")))
+  (add-to-list 'dired-guess-shell-alist-user
+	       (quote ("\\.mkv\\'" "vlc")))
+  (add-to-list 'dired-guess-shell-alist-user
+	       (quote ("\\.jpg\\'" "xviewer"))))
 
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
