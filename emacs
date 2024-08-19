@@ -678,3 +678,8 @@ Then switch to the process buffer. "
     (cl-loop while (and (< (point) end)
 			(re-search-forward regexp end t))
 	     collect (substring-no-properties (match-string 0)))))
+(defun disable-y-or-n-p (orig-fun &rest args)
+  (cl-letf (((symbol-function 'y-or-n-p) (lambda (prompt) t)))
+    (apply orig-fun args)))
+
+(advice-add 'ediff-quit :around #'disable-y-or-n-p)
