@@ -168,12 +168,16 @@ function veke() {
     date "+%V"
 }
 
-if [[ -z "$SSH_LOGIN" ]]; then
+function ssh-key-setup() {
     ssh-add -L &>/dev/null
     if [[ "$?" -ne 0 ]]; then
         eval "$(ssh-agent -s)"
         ssh-add
     fi
+}
+
+if [[ -z "$SSH_LOGIN" ]]; then
+    ssh-key-setup
 fi
 
 if [[ -f ~/.bash_aliases_mach_specific ]]; then
