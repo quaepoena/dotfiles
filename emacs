@@ -689,5 +689,50 @@ Then switch to the process buffer. "
     (apply orig-fun args)))
 
 (advice-add 'ediff-quit :around #'disable-y-or-n-p)
+
+;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
+
+(require 'mu4e)
+
+(add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+
+(setq mu4e-headers-fields '((:human-date . 12)
+			    (:flags . 6)
+			    (:mailing-list . 10)
+			    (:from-or-to . 22)
+			    ;; (:from . 22)
+			    (:thread-subject)))
+
+(setq mail-user-agent 'mu4e-user-agent)
+(set-variable 'read-mail-command 'mu4e)
+
+(setq mu4e-maildir-shortcuts
+      '((:maildir "/inbox"   :key ?i)))
+
+(defun my-mu4e-set-account ()
+  "Set the account for composing a message.
+   This function is taken from:
+     https://www.djcbsoftware.nl/code/mu/mu4e/Multiple-accounts.html"
+  (let* ((account
+	  (if mu4e-compose-parent-message
+              (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
+		(string-match "/\\(.*?\\)/" maildir)
+		(match-string 1 maildir))
+	    (completing-read (format "Compose with account: (%s) "
+				     (mapconcat #'(lambda (var) (car var))
+						my-mu4e-account-alist "/"))
+			     (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
+			     nil t nil nil (caar my-mu4e-account-alist))))
+	 (account-vars (cdr (assoc account my-mu4e-account-alist))))
+
+    (if account-vars
+	(mapc #'(lambda (var)
+		  (set (car var) (cadr var)))
+              account-vars)
+      (error "No email account found"))))
+
+(add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+
 (when (file-exists-p "../local/privatus.el")
   (load-file "../local/privatus.el"))
