@@ -20,6 +20,10 @@
 (package-initialize)
 
 (setq-default backup-by-copying-when-linked t)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
 ;; https://masteringemacs.org/article/disabling-prompts-emacs
 (fset 'yes-or-no-p 'y-or-n-p)
 
