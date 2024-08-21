@@ -698,11 +698,14 @@ Then switch to the process buffer. "
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
 (setq mu4e-headers-fields '((:human-date . 12)
-			    (:flags . 6)
-			    (:mailing-list . 10)
-			    (:from-or-to . 22)
-			    ;; (:from . 22)
-			    (:thread-subject)))
+			                (:flags . 6)
+			                (:mailing-list . 10)
+			                (:from-or-to . 22)
+			                ;; (:from . 22)
+			                (:thread-subject))
+      mu4e-get-mail-command "offlineimap"
+      message-send-mail-function 'message-send-mail-with-sendmail
+      sendmail-program "/usr/bin/msmtp")
 
 (setq mail-user-agent 'mu4e-user-agent)
 (set-variable 'read-mail-command 'mu4e)
