@@ -19,6 +19,7 @@
 
 (package-initialize)
 
+(setq-default backup-by-copying-when-linked t)
 ;; https://masteringemacs.org/article/disabling-prompts-emacs
 (fset 'yes-or-no-p 'y-or-n-p)
 
