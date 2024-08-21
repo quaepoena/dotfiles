@@ -83,7 +83,7 @@
 (global-set-key (kbd "M-`") #'jump-to-mark)
 (global-set-key (kbd "<M-backspace>") #'kill-region)
 (global-set-key (kbd "C-`") #'push-mark-no-activate)
-(global-set-key (kbd "C-c g e") #'open-emacs)
+(global-set-key (kbd "C-c g e") #'open-dot-emacs)
 (global-set-key (kbd "C-c g k") #'kill-restart-emacs)
 (global-set-key (kbd "C-c g l") #'LaTeX-copy-ling-template-and-visit)
 (global-set-key (kbd "C-c g m") #'LaTeX-copy-mwe-and-visit)
@@ -109,7 +109,7 @@
       (kill-emacs nil t)
     (kill-emacs)))
 
-(defun open-emacs ()
+(defun open-dot-emacs ()
   "Open ~/.emacs."
   (interactive)
   (find-file "~/.emacs"))
@@ -480,6 +480,8 @@ prefix arg set."
 
 ;;}}}
 
+;; TODO: Can this be removed?
+(require 'dash)
 
 (defun dagens-ord ()
   "Få dagens ord frå Aasen."
@@ -585,7 +587,11 @@ prefix arg set."
   (add-to-list 'dired-guess-shell-alist-user
 	       (quote ("\\.djvu\\'" "xreader")))
   (add-to-list 'dired-guess-shell-alist-user
-	       (quote ("\\.png\\'" "xviewer"))))
+	       (quote ("\\.png\\'" "xviewer")))
+  (add-to-list 'dired-guess-shell-alist-user
+	       (quote ("\\.mkv\\'" "vlc")))
+  (add-to-list 'dired-guess-shell-alist-user
+	       (quote ("\\.jpg\\'" "xviewer"))))
 
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
@@ -672,3 +678,8 @@ Then switch to the process buffer. "
     (cl-loop while (and (< (point) end)
 			(re-search-forward regexp end t))
 	     collect (substring-no-properties (match-string 0)))))
+(defun disable-y-or-n-p (orig-fun &rest args)
+  (cl-letf (((symbol-function 'y-or-n-p) (lambda (prompt) t)))
+    (apply orig-fun args)))
+
+(advice-add 'ediff-quit :around #'disable-y-or-n-p)

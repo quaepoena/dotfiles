@@ -39,6 +39,7 @@ function backup() {
     else
 	rsync -vaz --partial -e ssh --delete "${new}" "${old}"
     fi
+
     return "$?"
 }
 
@@ -125,7 +126,7 @@ function gs-pages() {
 	return 1
     fi
 
-    local time="$(date "+%Y%m%d%H%M")"
+    local time="$(date "+%Y%m%d%H%M%S")"
     ghostscript -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o /tmp/gs-output-"${time}".pdf "$1"
 }
 
