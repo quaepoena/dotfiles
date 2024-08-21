@@ -168,6 +168,10 @@ function veke() {
     date "+%V"
 }
 
+ssh-add -L &>/dev/null
+if [[ "$?" -ne 0 ]]; then
+    ssh-add
+fi
 
 if [[ -f ~/.bash_aliases_mach_specific ]]; then
     . ~/.bash_aliases_mach_specific
