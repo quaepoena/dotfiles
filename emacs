@@ -48,8 +48,8 @@
 (setq sentence-end-double-space nil)
 (setq async-shell-command-buffer 'new-buffer)
 (setq kill-buffer-query-functions
-  (remq 'process-kill-buffer-query-function
-	kill-buffer-query-functions))
+      (remq 'process-kill-buffer-query-function
+	    kill-buffer-query-functions))
 (setq column-number-mode t)
 (setq find-function-C-source-directory "~/src/emacs29/emacs-29.1/src/")
 (setq confirm-nonexistent-file-or-buffer nil)
@@ -160,12 +160,12 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (with-temp-buffer
     (pwd t)
     (kill-new (buffer-string))
-  (other-window 1)
+    (other-window 1)
 
-  (insert (concat "cd " (current-kill 0 t)))
-  (if (eq major-mode 'eshell-mode)
-      (eshell-send-input)
-    (comint-send-input))))
+    (insert (concat "cd " (current-kill 0 t)))
+    (if (eq major-mode 'eshell-mode)
+	(eshell-send-input)
+      (comint-send-input))))
 ;;}}}
 ;;{{{ Logic
 
@@ -472,16 +472,16 @@ prefix arg set."
 
 (add-hook 'eshell-mode-hook
           (lambda () (define-key eshell-mode-map (kbd "C-a")
-			'eshell/maybe-bol)))
+				 'eshell/maybe-bol)))
 (add-hook 'eshell-mode-hook
           (lambda () (define-key eshell-mode-map (kbd "C-c b")
-			'eshell/insert-buffer-name-syntax)))
+				 'eshell/insert-buffer-name-syntax)))
 (add-hook 'eshell-mode-hook
 	  (lambda () (define-key eshell-mode-map (kbd "C-c l")
-			'eshell/clear-buffer)))
+				 'eshell/clear-buffer)))
 (add-hook 'eshell-mode-hook
 	  (lambda () (define-key eshell-mode-map (kbd "C-c s o")
-			'owd)))
+				 'owd)))
 
 ;;}}}
 
@@ -493,19 +493,19 @@ prefix arg set."
   (interactive)
 
   (let* ((side (1+ (random 965)))
-	(spalte (1+ (random 2)))
-	(mod-time (file-attribute-modification-time (file-attributes "~/tmp/dagens-ord")))
-	(mod-time-day (decoded-time-day (decode-time mod-time)))
-	(mod-time-month (decoded-time-month (decode-time mod-time)))
-	(mod-time-year (decoded-time-year (decode-time mod-time)))
-	(cur-time (decode-time))
-	(cur-time-day (decoded-time-day cur-time))
-	(cur-time-month (decoded-time-month cur-time))
-	(cur-time-year (decoded-time-year cur-time))
-	(update (or (not mod-time)
-		    (< mod-time-year cur-time-year)
-		    (< mod-time-month cur-time-month)
-		    (< mod-time-day cur-time-day))))
+	 (spalte (1+ (random 2)))
+	 (mod-time (file-attribute-modification-time (file-attributes "~/tmp/dagens-ord")))
+	 (mod-time-day (decoded-time-day (decode-time mod-time)))
+	 (mod-time-month (decoded-time-month (decode-time mod-time)))
+	 (mod-time-year (decoded-time-year (decode-time mod-time)))
+	 (cur-time (decode-time))
+	 (cur-time-day (decoded-time-day cur-time))
+	 (cur-time-month (decoded-time-month cur-time))
+	 (cur-time-year (decoded-time-year cur-time))
+	 (update (or (not mod-time)
+		     (< mod-time-year cur-time-year)
+		     (< mod-time-month cur-time-month)
+		     (< mod-time-day cur-time-day))))
 
     (with-temp-buffer
       (if update
@@ -584,19 +584,19 @@ prefix arg set."
 (defun dired-set-shell-alist ()
   "Set preferred programs for shell commands in dired."
   (add-to-list 'dired-guess-shell-alist-user
-	       (quote ("\\.pdf\\'" "okular")))
+               (quote ("\\.pdf\\'" "okular")))
   (add-to-list 'dired-guess-shell-alist-user
-	       (quote ("\\.doc\\(x\\)?\\'" "soffice")))
+               (quote ("\\.doc\\(x\\)?\\'" "soffice")))
   (add-to-list 'dired-guess-shell-alist-user
-	       (quote ("\\.epub\\'" "calibre")))
+               (quote ("\\.epub\\'" "calibre")))
   (add-to-list 'dired-guess-shell-alist-user
-	       (quote ("\\.djvu\\'" "xreader")))
+               (quote ("\\.djvu\\'" "xreader")))
   (add-to-list 'dired-guess-shell-alist-user
-	       (quote ("\\.png\\'" "xviewer")))
+               (quote ("\\.png\\'" "xviewer")))
   (add-to-list 'dired-guess-shell-alist-user
-	       (quote ("\\.mkv\\'" "vlc")))
+               (quote ("\\.mkv\\'" "vlc")))
   (add-to-list 'dired-guess-shell-alist-user
-	       (quote ("\\.jpg\\'" "xviewer"))))
+               (quote ("\\.jpg\\'" "xviewer"))))
 
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
