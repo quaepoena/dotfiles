@@ -683,3 +683,5 @@ Then switch to the process buffer. "
     (apply orig-fun args)))
 
 (advice-add 'ediff-quit :around #'disable-y-or-n-p)
+(when (file-exists-p "../local/privatus.el")
+  (load-file "../local/privatus.el"))
