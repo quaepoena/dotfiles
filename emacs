@@ -167,28 +167,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
 	(eshell-send-input)
       (comint-send-input))))
 ;;}}}
-;;{{{ Logic
-
-(defun insert-logical-operator (arg)
-  "Insert the ARGth logical operator from a predefined list.
-Calling the function with \"0\" prints the list."
-  (interactive "*N")
-  (let ((operator-list (list "∧" "∨" "¬" "⊃" "≡" "∃" "∀" "∅" "〈〉" "′")))
-    (if (= 0 arg)
-	(message "%s" operator-list)
-      (insert (nth (- arg 1) operator-list)))))
-(global-set-key (kbd "<f5>") 'insert-logical-operator)
-
-;; http://xahlee.info/comp/unicode_circled_numbers.html
-(defun insert-predicate-number (arg)
-  "Insert the ARGth predicate number."
-  (interactive "*N")
-  (let ((predicate-list
-	 (list "⓪" "①" "②" "③" "④" "⑤" "⑥" "⑦" "⑧" "⑨")))
-    (insert (nth arg predicate-list))))
-(global-set-key (kbd "<f6>") 'insert-predicate-number)
-
-;;}}}
 
 (add-hook 'write-file-functions 'delete-trailing-whitespace)
 
