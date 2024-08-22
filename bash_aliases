@@ -1,48 +1,6 @@
 # -*- mode: Shell-script; -*-
 
 
-# simple backup function, not to be trusted
-function backup() {
-    if [[ $# -lt 2 ]]; then
-	echo "Usage: backup <new_directory/> <old_directory/> [--fat]" >&2
-	return 1
-    fi
-
-    if ! [[ "$1" =~ /$ && "$2" =~ /$ ]]; then
-	echo "The directory names must end with slashes." >&2
-	echo "Usage: backup <new_directory/> <old_directory/>" >&2
-	return 1
-    fi
-
-    local new="$1"
-    local old="$2"
-    local fat="$3"
-    local endpoint1="dummy"
-    local endpoint2=""
-
-    if [[ "${new}" =~ (.*/)*(.+/)$ ]]; then
-	endpoint1="${BASH_REMATCH[2]}";
-    fi
-
-    if [[ "${old}" =~ (.*/)*(.+/)$ ]]; then
-	endpoint2="${BASH_REMATCH[2]}"
-    fi
-
-    if [[ "${endpoint1}" != "${endpoint2}" ]]; then
-	echo "The two endpoints are not the 'same' directory." >&2
-	echo "Usage: backup <new_directory/> <old_directory/>" >&2
-	return 1
-    fi
-
-    if [[ "$3" == "--fat" ]]; then
-	rsync -va --modify-window=1 --partial --delete "${new}" "${old}"
-    else
-	rsync -vaz --partial -e ssh --delete "${new}" "${old}"
-    fi
-
-    return "$?"
-}
-
 # TODO: Is this behavior correct in other programs?
 function error() {
     echo "error: $@" >&2
