@@ -62,8 +62,8 @@ function ins() {
 # TODO: This is too hacky. Write it in another language.
 function line() {
     if [[ $# -ne 2 ]]; then
-	echo "Bruk: line <linje> <fil> …" >&2
-	return 1
+	    echo "Bruk: line <linje> <fil> …" >&2
+	    return 1
     fi
 
     local num="$1"
@@ -71,7 +71,7 @@ function line() {
     local lines="$(wc -l "${fil}" | cut -d ' ' -f 1)"
 
     if [[ "${num}" -gt "${lines}" || "${num}" -lt 1 ]]; then
-	return 1
+	    return 1
     fi
 
     head -n "${num}" "${fil}" | tail -n 1
@@ -97,14 +97,14 @@ function member() {
 
 function pw() {
     if [[ $# -ne 1 ]]; then
-	echo "Bruk: pw fil" >&2
-	return 1
+	    echo "Bruk: pw fil" >&2
+	    return 1
     fi
 
     if [[ "$1" =~ ^.+\.gpg$ ]]; then
-	gpg -qd "${1}";
+	    gpg -qd "${1}";
     else
-	gpg -qd ~/pw/"${1}".gpg;
+	    gpg -qd ~/pw/"${1}".gpg;
     fi
 }
 
