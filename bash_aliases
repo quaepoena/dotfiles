@@ -145,7 +145,6 @@ fi
 # for pinentry-tty
 export GPG_TTY="$(tty)"
 
-alias c="setxkbmap -option 'compose:rctrl'"
 alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
