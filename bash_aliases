@@ -109,6 +109,14 @@ function prepend() {
     rm "${tmp}"
 }
 
+function ssh-add-init() {
+    ssh-add -l &>/dev/null
+    if [[ "$?" -eq 1 ]]; then
+        ssh-add
+    fi
+}
+
+
 function timer() {
     if [[ $# -ne 1 ]]; then
 	echo "Geben Sie eins Zahl als Eingabewert." >&2
@@ -132,21 +140,12 @@ function veke() {
     date "+%V"
 }
 
-function ssh-key-setup() {
-    ssh-add -L &>/dev/null
-    if [[ "$?" -ne 0 ]]; then
-        eval "$(ssh-agent -s)"
-        ssh-add
-    fi
-}
-
-if [[ -z "$SSH_LOGIN" ]]; then
-    ssh-key-setup
-fi
 
 if [[ -f ~/.bash_aliases_mach_specific ]]; then
     . ~/.bash_aliases_mach_specific
 fi
+
+ssh-add-init
 
 # for pinentry-tty
 export GPG_TTY="$(tty)"
