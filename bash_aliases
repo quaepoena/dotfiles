@@ -7,6 +7,7 @@ function error() {
     kill -INT $$
 }
 
+
 function ins() {
     if [[ $# -ne 2 ]]; then
 	echo "Bruk: ins <str> <fil>" >&2
@@ -14,6 +15,7 @@ function ins() {
     fi
     sed -i "1i$1" "${2}"
 }
+
 
 # TODO: Expand this to behave more like head(1) and tail(1), including
 # reading from STDIN and looping through "$@".
@@ -35,6 +37,7 @@ function line() {
     head -n "${num}" "${fil}" | tail -n 1
 }
 
+
 function member() {
     if [[ $# -lt 2 ]]; then
 	error "Bruk: ${FUNCNAME[0]} <item> <list>"
@@ -53,6 +56,7 @@ function member() {
     return 1
 }
 
+
 function pw() {
     if [[ $# -ne 1 ]]; then
 	    echo "Bruk: pw fil" >&2
@@ -69,8 +73,8 @@ function pw() {
 
 function gs-pdf-concat() {
     if [[ $# -lt 2 ]]; then
-	echo "Usage: gs-concat <fil01.pdf> <fil02.pdf> […]" >&2
-	return 1
+	    echo "Usage: gs-concat <fil01.pdf> <fil02.pdf> […]" >&2
+	    return 1
     fi
 
     local time="$(date "+%Y%m%d%H%M")"
@@ -80,13 +84,14 @@ function gs-pdf-concat() {
 
 function gs-pages() {
     if [[ $# -ne 2 ]]; then
-	echo "Usage: gs-pages <input> <page range>" >&2
-	return 1
+	    echo "Usage: gs-pages <input> <page range>" >&2
+	    return 1
     fi
 
     local time="$(date "+%Y%m%d%H%M%S")"
     ghostscript -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o /tmp/gs-output-"${time}".pdf "$1"
 }
+
 
 # Prepend the first file to the second.
 # TODO: Write this in C.
@@ -121,6 +126,7 @@ function timer() {
     sleep $(( 60 * "$1" )) && xeyes
 
 }
+
 
 function veke() {
     date "+%V"
