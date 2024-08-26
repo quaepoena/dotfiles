@@ -157,6 +157,7 @@ alias emt="emacsclient -t"
 alias fu='sudo $(history -p !!)'
 alias x="xmodmap ~/.Xmodmaprc"
 
+# TODO: Is this still relevant?
 # https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
 export PATH="/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
 
