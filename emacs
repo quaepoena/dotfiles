@@ -170,7 +170,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
 (add-hook 'write-file-functions 'delete-trailing-whitespace)
 
-;; https://github.com/purcell/disable-mouse
+;; https://melpa.org/#/disable-mouse
 (global-disable-mouse-mode)
 (global-unset-key (kbd "<C-down-mouse-1>"))
 
