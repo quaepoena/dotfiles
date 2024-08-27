@@ -109,6 +109,7 @@ function prepend() {
     rm "${tmp}"
 }
 
+
 function ssh-add-init() {
     ssh-add -l &>/dev/null
     if [[ "$?" -eq 1 ]]; then
