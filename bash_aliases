@@ -10,8 +10,8 @@ function error() {
 
 function ins() {
     if [[ $# -ne 2 ]]; then
-	echo "Bruk: ins <str> <fil>" >&2
-	return 1
+	    echo "Bruk: ins <str> <fil>" >&2
+	    return 1
     fi
     sed -i "1i$1" "${2}"
 }
