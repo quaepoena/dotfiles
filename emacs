@@ -388,6 +388,7 @@ prefix arg set."
 (setq fill-column 80)
 
 ;; TODO: Wrap all such calls to packages.
+;; https://raw.githubusercontent.com/jaalto/project-emacs--folding-mode/master/folding.el
 (if (require 'folding nil 'noerror)
     (folding-mode-add-find-file-hook)
   (message "Library `folding' not found."))
