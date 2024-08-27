@@ -717,7 +717,7 @@ Then switch to the process buffer. "
 	    (mapc #'(lambda (var)
 		          (set (car var) (cadr var)))
               account-vars)
-      (error "No email account found"))))
+      (error "No email account found."))))
 
 (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
 
