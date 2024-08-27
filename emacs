@@ -553,6 +553,7 @@ prefix arg set."
 ;; FIXME: Make this a usable solution.
 ;; (global-set-key (kbd "'") #'self-insert-command)
 ;; (global-set-key (kbd "[") #'self-insert-command)
+;; (global-set-key (kbd "\"") #'self-insert-command)
 
 (global-set-key (kbd "'") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\"") #'skeleton-pair-insert-maybe)
