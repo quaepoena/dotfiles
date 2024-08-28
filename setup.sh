@@ -1,15 +1,15 @@
 #!/bin/bash
 
-ln bash_aliases ~/.bash_aliases
-ln dir-locals.el ~/.dir-locals.el
-ln emacs ~/.emacs
-ln okular ~/bin/okular
-ln profile ~/.profile
-ln ssh_environment ~/.ssh/environment
-ln inputrc ~/.inputrc
-ln xinitrc ~/.xinitrc
+ln -f bash_aliases ~/.bash_aliases
+ln -f dir-locals.el ~/.dir-locals.el
+ln -f emacs ~/.emacs
+ln -f okular ~/bin/okular
+ln -f profile ~/.profile
+ln -f ssh_environment ~/.ssh/environment
+ln -f inputrc ~/.inputrc
+ln -f xinitrc ~/.xinitrc
 
 # currently not in use
-# ln startup.sh ~/.startup.sh
-# ln xmodmaprc ~/.xmodmaprc
-# ln xmonad.hs ~/.xmonad.hs
+# ln -f startup.sh ~/.startup.sh
+# ln -f xmodmaprc ~/.xmodmaprc
+# ln -f xmonad.hs ~/.xmonad.hs
