@@ -179,9 +179,6 @@ alias x="xmodmap ~/.Xmodmaprc"
 # https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
 append-to-path "/usr/local/texlive/2022/bin/x86_64-linux"
 
-mkdir -p "${HOME}/bin" 2>/dev/null
-append-to-path "${HOME}/bin"
-
 # TODO: Emacs was unable to find info files when this line was active. Fix?
 #export INFOPATH="${INFOPATH}:/usr/local/texlive/2021/texmf-dist/doc/info"
 #export MANPATH="${MANPATH}:/usr/local/texlive/2021/texmf-dist/doc/man"
