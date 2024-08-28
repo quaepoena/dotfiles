@@ -184,7 +184,6 @@ append-to-path "/usr/local/texlive/2022/bin/x86_64-linux"
 #export MANPATH="${MANPATH}:/usr/local/texlive/2021/texmf-dist/doc/man"
 export TEXMFHOME="${HOME}/texmf"
 
-export -f append-to-path
 export -f error
 export -f line
 export -f member
