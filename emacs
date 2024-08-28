@@ -679,6 +679,7 @@ Then switch to the process buffer. "
 
 (require 'mu4e)
 
+;; TODO: Do you want this everywhere in dired-mode?
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
 (setq mu4e-headers-fields '((:human-date . 12)
