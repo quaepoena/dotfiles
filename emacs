@@ -721,5 +721,5 @@ Then switch to the process buffer. "
 
 (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
 
-(when (file-exists-p "~/src/dotfiles/local/privatus.el")
-  (load-file "~/src/dotfiles/local/privatus.el"))
+(when (file-exists-p "~/.emacs-local.el")
+  (load-file "~/.emacs-local.el"))
