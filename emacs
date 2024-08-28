@@ -697,7 +697,6 @@ Then switch to the process buffer. "
 (setq mu4e-maildir-shortcuts
       '((:maildir "/inbox"   :key ?i)))
 
-;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
 (defun my-mu4e-set-account ()
   "Set the account for composing a message.
    This function is taken from:
