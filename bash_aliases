@@ -1,6 +1,14 @@
 # -*- mode: Shell-script; -*-
 
 
+# Append a(n existing) directory to PATH without duplication.
+# Adapted slightly from https://superuser.com/a/39995.
+function append-to-path() {
+    if [[ -d "$1" ]] && [[ ":${PATH}:" != *":$1:"* ]]; then
+        PATH="${PATH:+"${PATH}:"}$1"
+    fi
+}
+
 # TODO: Is this behavior correct in other programs?
 function error() {
     echo "error: $@" >&2
@@ -169,7 +177,7 @@ alias x="xmodmap ~/.Xmodmaprc"
 
 # TODO: Is this still relevant?
 # https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
-export PATH="/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
+append-to-path "/usr/local/texlive/2022/bin/x86_64-linux"
 
 # TODO: Emacs was unable to find info files when this line was active. Fix?
 #export INFOPATH="${INFOPATH}:/usr/local/texlive/2021/texmf-dist/doc/info"
