@@ -688,7 +688,6 @@ Then switch to the process buffer. "
 			                (:from-or-to . 22)
 			                ;; (:from . 22)
 			                (:thread-subject))
-      mu4e-get-mail-command "offlineimap"
       message-send-mail-function 'message-send-mail-with-sendmail
       sendmail-program "/usr/bin/msmtp")
 
