@@ -698,7 +698,7 @@ Then switch to the process buffer. "
       message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p)
 
 (setq mu4e-maildir-shortcuts
-      '((:maildir "/inbox"   :key ?i)))
+      '((:maildir "/inbox" :key ?i)))
 
 (defun my-mu4e-set-account ()
   "Set the account for composing a message.
