@@ -693,7 +693,7 @@ Then switch to the process buffer. "
       sendmail-program "/usr/bin/msmtp")
 
 (setq mail-user-agent 'mu4e-user-agent
-      'read-mail-command 'mu4e
+      read-mail-command 'mu4e
       message-kill-buffer-on-exit t
       message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p)
 
