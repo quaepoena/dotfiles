@@ -692,8 +692,10 @@ Then switch to the process buffer. "
       message-send-mail-function 'message-send-mail-with-sendmail
       sendmail-program "/usr/bin/msmtp")
 
-(setq mail-user-agent 'mu4e-user-agent)
-(set-variable 'read-mail-command 'mu4e)
+(setq mail-user-agent 'mu4e-user-agent
+      'read-mail-command 'mu4e
+      message-kill-buffer-on-exit t
+      message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p)
 
 (setq mu4e-maildir-shortcuts
       '((:maildir "/inbox"   :key ?i)))
