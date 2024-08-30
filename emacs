@@ -720,7 +720,18 @@ Then switch to the process buffer. "
               account-vars)
       (error "No email account found."))))
 
-;; (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+;; Hat tip to Dalker, adapted from https://emacs.stackexchange.com/a/58461.
+(defun my-mu4e-switch-mail-account ()
+  "Quit and reload mu4e to properly change context."
+  (interactive)
+  (mu4e-context-switch)
+  (mu4e-quit)
+  (sit-for .5)
+  (mu4e))
+
+;; rebinding of context switch key:
+(define-key mu4e-main-mode-map (kbd ";") #'my-mu4e-switch-mail-account)
+(define-key mu4e-headers-mode-map (kbd ";") #'my-mu4e-switch-mail-account)
 
 (when (file-exists-p "~/.emacs-local.el")
   (load-file "~/.emacs-local.el"))
