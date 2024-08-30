@@ -687,10 +687,9 @@ Then switch to the process buffer. "
 			                (:from-or-to . 22)
 			                ;; (:from . 22)
 			                (:thread-subject))
-      message-send-mail-function 'message-send-mail-with-sendmail
-      sendmail-program "/usr/bin/msmtp")
-
-(setq mail-user-agent 'mu4e-user-agent
+      message-send-mail-function 'smtpmail-send-it
+      sendmail-program "/usr/bin/msmtp"
+      mail-user-agent 'mu4e-user-agent
       read-mail-command 'mu4e
       message-kill-buffer-on-exit t
       message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p)
