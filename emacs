@@ -720,7 +720,7 @@ Then switch to the process buffer. "
               account-vars)
       (error "No email account found."))))
 
-(add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+;; (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
 
 (when (file-exists-p "~/.emacs-local.el")
   (load-file "~/.emacs-local.el"))
