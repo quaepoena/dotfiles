@@ -173,6 +173,7 @@ alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
 alias fu='sudo $(history -p !!)'
+alias telegram="telegram-desktop"
 alias x="xmodmap ~/.Xmodmaprc"
 
 # TODO: Is this still relevant?
