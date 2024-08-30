@@ -685,7 +685,6 @@ Then switch to the process buffer. "
 			                (:flags . 6)
 			                (:mailing-list . 10)
 			                (:from-or-to . 22)
-			                ;; (:from . 22)
 			                (:thread-subject))
       message-send-mail-function 'smtpmail-send-it
       sendmail-program "/usr/bin/msmtp"
