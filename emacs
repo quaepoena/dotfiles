@@ -677,6 +677,7 @@ Then switch to the process buffer. "
 (when (file-exists-p "~/.emacs-local.el")
   (load-file "~/.emacs-local.el"))
 
+;; TODO: Move all mu4e code to another file.
 ;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
 (require 'mu4e)
