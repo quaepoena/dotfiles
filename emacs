@@ -676,7 +676,6 @@ Then switch to the process buffer. "
 
 ;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
-
 (require 'mu4e)
 
 ;; TODO: Do you want this everywhere in dired-mode?
