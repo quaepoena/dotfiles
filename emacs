@@ -674,6 +674,9 @@ Then switch to the process buffer. "
 
 (advice-add 'ediff-quit :around #'disable-y-or-n-p)
 
+(when (file-exists-p "~/.emacs-local.el")
+  (load-file "~/.emacs-local.el"))
+
 ;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
 (require 'mu4e)
@@ -719,6 +722,3 @@ Then switch to the process buffer. "
       (error "No email account found."))))
 
 ;; (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
-
-(when (file-exists-p "~/.emacs-local.el")
-  (load-file "~/.emacs-local.el"))
