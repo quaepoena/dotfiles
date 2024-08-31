@@ -699,7 +699,7 @@ Then switch to the process buffer. "
 (setq mu4e-maildir-shortcuts
       '((:maildir "/inbox" :key ?i)))
 
-(defun my-mu4e-set-account ()
+(defun qp-mu4e-set-account ()
   "Set the account for composing a message.
    This function is taken from:
      https://www.djcbsoftware.nl/code/mu/mu4e/Multiple-accounts.html"
@@ -710,10 +710,10 @@ Then switch to the process buffer. "
 		        (match-string 1 maildir))
 	        (completing-read (format "Compose with account: (%s) "
 				                     (mapconcat #'(lambda (var) (car var))
-						                        my-mu4e-account-alist "/"))
-			                 (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
-			                 nil t nil nil (caar my-mu4e-account-alist))))
-	     (account-vars (cdr (assoc account my-mu4e-account-alist))))
+						                        qp-mu4e-account-alist "/"))
+			                 (mapcar #'(lambda (var) (car var)) qp-mu4e-account-alist)
+			                 nil t nil nil (caar qp-mu4e-account-alist))))
+	     (account-vars (cdr (assoc account qp-mu4e-account-alist))))
 
     (if account-vars
 	    (mapc #'(lambda (var)
@@ -722,7 +722,7 @@ Then switch to the process buffer. "
       (error "No email account found."))))
 
 ;; Hat tip to Dalker, adapted from https://emacs.stackexchange.com/a/58461.
-(defun my-mu4e-switch-mail-account ()
+(defun qp-mu4e-switch-mail-account ()
   "Quit and reload mu4e to properly change context."
   (interactive)
   (mu4e-context-switch)
@@ -731,8 +731,8 @@ Then switch to the process buffer. "
   (mu4e))
 
 ;; rebinding of context switch key:
-(define-key mu4e-main-mode-map (kbd ";") #'my-mu4e-switch-mail-account)
-(define-key mu4e-headers-mode-map (kbd ";") #'my-mu4e-switch-mail-account)
+(define-key mu4e-main-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
+(define-key mu4e-headers-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
 
 (when (file-exists-p "~/.emacs-local.el")
   (load-file "~/.emacs-local.el"))
