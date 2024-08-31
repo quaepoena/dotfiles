@@ -578,6 +578,8 @@ prefix arg set."
   (add-to-list 'dired-guess-shell-alist-user
                (quote ("\\.png\\'" "xviewer")))
   (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.mp4\\'" "vlc")))
+  (add-to-list 'dired-guess-shell-alist-user
                (quote ("\\.mkv\\'" "vlc")))
   (add-to-list 'dired-guess-shell-alist-user
                (quote ("\\.jpg\\'" "xviewer"))))
