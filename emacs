@@ -687,7 +687,7 @@ Then switch to the process buffer. "
 			                (:mailing-list . 10)
 			                (:from-or-to . 22)
 			                (:thread-subject))
-      message-send-mail-function 'smtpmail-send-it
+      message-send-mail-function #'message-send-mail-with-sendmail
       sendmail-program "/usr/bin/msmtp"
       mail-user-agent 'mu4e-user-agent
       read-mail-command 'mu4e
