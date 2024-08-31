@@ -693,7 +693,8 @@ Then switch to the process buffer. "
       read-mail-command 'mu4e
       message-kill-buffer-on-exit t
       message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p
-      mu4e-mu-home (concat (getenv "HOME") "/.mu/gmail"))
+      mu4e-mu-home (concat (getenv "HOME") "/.mu/gmail")
+      mu4e-compose-context-policy 'ask-if-none)
 
 (setq mu4e-maildir-shortcuts
       '((:maildir "/inbox" :key ?i)))
