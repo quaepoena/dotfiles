@@ -710,7 +710,7 @@ Then switch to the process buffer. "
   (sit-for .5)
   (mu4e))
 
-;; rebinding of context switch key:
+;; Redefine context switching in a few places.
 (define-key mu4e-main-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
 (define-key mu4e-headers-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
 
