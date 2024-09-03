@@ -399,6 +399,46 @@ prefix arg set."
     (TeX-command-run-all nil)))
 
 ;;}}}
+;;{{{ Dired
+(defun dired-set-shell-alist ()
+  "Set preferred programs for shell commands in dired."
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.pdf\\'" "okular")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.doc\\(x\\)?\\'" "soffice")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.epub\\'" "calibre")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.djvu\\'" "xreader")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.png\\'" "xviewer")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.mp4\\'" "vlc")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.mkv\\'" "vlc")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.jpg\\'" "xviewer"))))
+;;}}}
+;;{{{ Scheme
+
+(defun scheme-send-buffer ()
+  "Send the current buffer to the inferior Scheme process."
+  (interactive)
+  (scheme-send-region (point-min) (point-max)))
+
+(defun scheme-send-buffer-and-go ()
+  "Send the current buffer to the inferior Scheme process.
+Then switch to the process buffer. "
+  (interactive)
+  (scheme-send-region-and-go (point-min) (point-max)))
+
+(defun scheme-mode-hook-customizations ()
+  (keymap-set scheme-mode-map "C-c C-b" #'scheme-send-buffer)
+  (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
+
+(add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
+
+;;}}}
 
 (add-hook 'write-file-functions 'delete-trailing-whitespace)
 
@@ -613,27 +653,6 @@ prefix arg set."
 (global-set-key (kbd "„") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "«") #'skeleton-pair-insert-maybe)
 
-;;{{{ Dired
-(defun dired-set-shell-alist ()
-  "Set preferred programs for shell commands in dired."
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.pdf\\'" "okular")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.doc\\(x\\)?\\'" "soffice")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.epub\\'" "calibre")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.djvu\\'" "xreader")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.png\\'" "xviewer")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.mp4\\'" "vlc")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.mkv\\'" "vlc")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.jpg\\'" "xviewer"))))
-;;}}}
-
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
 (defun erase-kill-ring ()
@@ -646,27 +665,6 @@ prefix arg set."
   (save-excursion
     (forward-line 0)
     (looking-at (rx line-start (zero-or-more space) line-end))))
-
-;;{{{ Scheme
-
-(defun scheme-send-buffer ()
-  "Send the current buffer to the inferior Scheme process."
-  (interactive)
-  (scheme-send-region (point-min) (point-max)))
-
-(defun scheme-send-buffer-and-go ()
-  "Send the current buffer to the inferior Scheme process.
-Then switch to the process buffer. "
-  (interactive)
-  (scheme-send-region-and-go (point-min) (point-max)))
-
-(defun scheme-mode-hook-customizations ()
-  (keymap-set scheme-mode-map "C-c C-b" #'scheme-send-buffer)
-  (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
-
-(add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
-
-;;}}}
 
 (defun latin-postfix-customizations ()
   (interactive)
