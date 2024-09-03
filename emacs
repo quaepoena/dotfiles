@@ -393,7 +393,7 @@ prefix arg set."
 (defun LaTeX-compile-from-scratch ()
   "Delete all regular, non-tex/sty files and recompile."
   (interactive)
-  (let* ((files (seq-filter #'LaTeX-not-tex-sty-p (directory-files "." t))))
+  (let ((files (seq-filter #'LaTeX-not-tex-sty-p (directory-files "." t))))
 
     (dolist (file files)
       (delete-file file))
