@@ -689,7 +689,6 @@ Then switch to the process buffer. "
 
 (advice-add 'ediff-quit :around #'disable-y-or-n-p)
 
-;; TODO: Move all mu4e code to another file.
 ;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
 
