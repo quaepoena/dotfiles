@@ -104,7 +104,9 @@
 (global-set-key (kbd "M-z") #'zap-up-to-char)
 
 ;;}}}
-;;{{{ Trivial convenience functions
+;;{{{ Convenience functions
+
+;;{{{ Trivial
 
 (defun kill-restart-emacs (arg)
   "With ARG set, kill and restart emacs, otherwise just kill."
@@ -120,7 +122,7 @@
   (find-file "~/.emacs"))
 
 ;;}}}
-;;{{{ Less trivial convenience functions
+;;{{{ Not-so trivial
 
 (defun open-text-right ()
   "Inspired by open-line. Insert a space to the right of point while keeping
@@ -166,25 +168,10 @@ upon unbalanced input is desired, use `paste (1)` directly."
     (if (eq major-mode 'eshell-mode)
 	(eshell-send-input)
       (comint-send-input))))
+
 ;;}}}
 
-(add-hook 'write-file-functions 'delete-trailing-whitespace)
-
-;; https://melpa.org/#/disable-mouse
-(global-disable-mouse-mode)
-(global-unset-key (kbd "<C-down-mouse-1>"))
-
-(setq backup-by-copying t)
-
-;; https://melpa.org/#/buffer-move
-(require 'buffer-move)
-(global-set-key (kbd "<C-S-up>")     'buf-move-up)
-(global-set-key (kbd "<C-S-down>")   'buf-move-down)
-(global-set-key (kbd "<C-S-left>")   'buf-move-left)
-(global-set-key (kbd "<C-S-right>")  'buf-move-right)
-
-(global-set-key (kbd "C-x g") 'magit-status)
-
+;;}}}
 ;;{{{ Previously disabled commands
 
 (put 'upcase-region 'disabled nil)
@@ -211,7 +198,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
 (add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
-
 ;;}}}
 ;;{{{ Linguae
 
@@ -229,6 +215,22 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (set-register ?< "Ǫ"))
 
 ;;}}}
+(add-hook 'write-file-functions 'delete-trailing-whitespace)
+
+;; https://melpa.org/#/disable-mouse
+(global-disable-mouse-mode)
+(global-unset-key (kbd "<C-down-mouse-1>"))
+
+(setq backup-by-copying t)
+
+;; https://melpa.org/#/buffer-move
+(require 'buffer-move)
+(global-set-key (kbd "<C-S-up>")     'buf-move-up)
+(global-set-key (kbd "<C-S-down>")   'buf-move-down)
+(global-set-key (kbd "<C-S-left>")   'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; https://stackoverflow.com/a/47587185
 (add-to-list 'display-buffer-alist
