@@ -1,4 +1,4 @@
-; -*- mode: Emacs-lisp; -*-
+; -*- mode: Emacs-lisp; folded-file: t -*-
 
 ;;{{{ TODO
 
