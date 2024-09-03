@@ -222,28 +222,45 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (electric-indent-mode -1)
 
 ;;}}}
+;;{{{ mu4e
+;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
 
-(add-hook 'write-file-functions 'delete-trailing-whitespace)
+(require 'mu4e)
 
-;; https://melpa.org/#/disable-mouse
-(global-disable-mouse-mode)
-(global-unset-key (kbd "<C-down-mouse-1>"))
+;; TODO: Do you want this everywhere in dired-mode?
+(add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
-(setq backup-by-copying t)
+(setq mu4e-headers-fields '((:human-date . 12)
+			                (:flags . 6)
+			                (:mailing-list . 10)
+			                (:from-or-to . 22)
+			                (:thread-subject))
+      message-send-mail-function #'message-send-mail-with-sendmail
+      sendmail-program "/usr/bin/msmtp"
+      mail-user-agent 'mu4e-user-agent
+      read-mail-command 'mu4e
+      message-kill-buffer-on-exit t
+      message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p
+      mu4e-mu-home (concat (getenv "HOME") "/.mu/gmail")
+      mu4e-compose-context-policy 'ask-if-none)
 
-;; https://melpa.org/#/buffer-move
-(require 'buffer-move)
-(global-set-key (kbd "<C-S-up>")     'buf-move-up)
-(global-set-key (kbd "<C-S-down>")   'buf-move-down)
-(global-set-key (kbd "<C-S-left>")   'buf-move-left)
-(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+(setq mu4e-maildir-shortcuts
+      '((:maildir "/inbox" :key ?i)))
 
-(global-set-key (kbd "C-x g") 'magit-status)
+;; Hat tip to Dalker, adapted from https://emacs.stackexchange.com/a/58461.
+(defun qp-mu4e-switch-mail-account ()
+  "Quit and reload mu4e to properly change context."
+  (interactive)
+  (mu4e-context-switch)
+  (mu4e-quit)
+  (sit-for .5)
+  (mu4e))
 
-;; https://stackoverflow.com/a/47587185
-(add-to-list 'display-buffer-alist
-	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
-
+;; Redefine context switching in a few places.
+(define-key mu4e-main-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
+(define-key mu4e-headers-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
+;;}}}
 ;;{{{ LaTeX
 (setq bibtex-dialect 'biblatex
       LaTeX-electric-left-right-brace t
@@ -382,6 +399,28 @@ prefix arg set."
     (TeX-command-run-all nil)))
 
 ;;}}}
+
+(add-hook 'write-file-functions 'delete-trailing-whitespace)
+
+;; https://melpa.org/#/disable-mouse
+(global-disable-mouse-mode)
+(global-unset-key (kbd "<C-down-mouse-1>"))
+
+(setq backup-by-copying t)
+
+;; https://melpa.org/#/buffer-move
+(require 'buffer-move)
+(global-set-key (kbd "<C-S-up>")     'buf-move-up)
+(global-set-key (kbd "<C-S-down>")   'buf-move-down)
+(global-set-key (kbd "<C-S-left>")   'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+
+(global-set-key (kbd "C-x g") 'magit-status)
+
+;; https://stackoverflow.com/a/47587185
+(add-to-list 'display-buffer-alist
+	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+
 
 ;; TODO: Document this beyond a link to SE.
 ;; https://emacs.stackexchange.com/a/21119
@@ -688,44 +727,6 @@ Then switch to the process buffer. "
     (apply orig-fun args)))
 
 (advice-add 'ediff-quit :around #'disable-y-or-n-p)
-
-;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
-
-(require 'mu4e)
-
-;; TODO: Do you want this everywhere in dired-mode?
-(add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
-
-(setq mu4e-headers-fields '((:human-date . 12)
-			                (:flags . 6)
-			                (:mailing-list . 10)
-			                (:from-or-to . 22)
-			                (:thread-subject))
-      message-send-mail-function #'message-send-mail-with-sendmail
-      sendmail-program "/usr/bin/msmtp"
-      mail-user-agent 'mu4e-user-agent
-      read-mail-command 'mu4e
-      message-kill-buffer-on-exit t
-      message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p
-      mu4e-mu-home (concat (getenv "HOME") "/.mu/gmail")
-      mu4e-compose-context-policy 'ask-if-none)
-
-(setq mu4e-maildir-shortcuts
-      '((:maildir "/inbox" :key ?i)))
-
-;; Hat tip to Dalker, adapted from https://emacs.stackexchange.com/a/58461.
-(defun qp-mu4e-switch-mail-account ()
-  "Quit and reload mu4e to properly change context."
-  (interactive)
-  (mu4e-context-switch)
-  (mu4e-quit)
-  (sit-for .5)
-  (mu4e))
-
-;; Redefine context switching in a few places.
-(define-key mu4e-main-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
-(define-key mu4e-headers-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
 
 (when (file-exists-p "~/.emacs-local.el")
   (load-file "~/.emacs-local.el"))
