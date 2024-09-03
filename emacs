@@ -221,6 +221,8 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;; (which has no hooks).
 (electric-indent-mode -1)
 
+(add-hook 'prog-mode-hook #'electric-indent-mode)
+
 ;;}}}
 ;;{{{ mu4e
 ;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
