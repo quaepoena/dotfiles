@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Create wrapper scripts for all the programs running under flatpak.
 # Hat tip to ssokolow. Adapted from https://unix.stackexchange.com/a/672466.
 function flatpack_create_wrappers::main() {
