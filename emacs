@@ -215,6 +215,14 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (set-register ?< "Ǫ"))
 
 ;;}}}
+;;{{{ Mode hooks
+
+;; Not technically a mode hook, but I want it to apply for Fundamental Mode
+;; (which has no hooks).
+(electric-indent-mode -1)
+
+;;}}}
+
 (add-hook 'write-file-functions 'delete-trailing-whitespace)
 
 ;; https://melpa.org/#/disable-mouse
