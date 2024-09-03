@@ -574,7 +574,7 @@ prefix arg set."
 (global-set-key (kbd "„") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "«") #'skeleton-pair-insert-maybe)
 
-;; Dired
+;;{{{ Dired
 (defun dired-set-shell-alist ()
   "Set preferred programs for shell commands in dired."
   (add-to-list 'dired-guess-shell-alist-user
@@ -593,6 +593,7 @@ prefix arg set."
                (quote ("\\.mkv\\'" "vlc")))
   (add-to-list 'dired-guess-shell-alist-user
                (quote ("\\.jpg\\'" "xviewer"))))
+;;}}}
 
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
@@ -607,7 +608,7 @@ prefix arg set."
     (forward-line 0)
     (looking-at (rx line-start (zero-or-more space) line-end))))
 
-;; Scheme
+;;{{{ Scheme
 
 (defun scheme-send-buffer ()
   "Send the current buffer to the inferior Scheme process."
@@ -625,6 +626,8 @@ Then switch to the process buffer. "
   (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
 
 (add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
+
+;;}}}
 
 (defun latin-postfix-customizations ()
   (interactive)
