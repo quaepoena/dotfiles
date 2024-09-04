@@ -65,6 +65,11 @@
 
 (setq custom-file "~/.emacs.d/custom.el")
 
+(setq safe-local-variable-values
+      '((folded-file . t)
+        (indent-tabs-mode nil)
+        (backup-inhibited . t)
+        (org-pretty-entities . t)))
 
 ;;}}}
 ;;{{{ Global keys
