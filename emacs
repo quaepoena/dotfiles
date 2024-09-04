@@ -71,6 +71,8 @@
         (backup-inhibited . t)
         (org-pretty-entities . t)))
 
+(load-theme 'wheatgrass)
+
 ;;}}}
 ;;{{{ Global keys
 
