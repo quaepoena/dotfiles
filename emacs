@@ -182,12 +182,11 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (global-set-key (kbd "C-c o c") 'org-capture)
 
 (setq org-agenda-files '("~/org/")
-      org-export-backends '(ascii html icalendar latex md man))
-
-(setq org-capture-templates '(("t" "Create a TODO item."
-			       entry
-			       (file "~/org/todo.org")
-			       (function (lambda () "* TODO %?")))))
+      org-export-backends '(ascii html icalendar latex md man)
+      org-capture-templates '(("t" "Create a TODO item."
+			                   entry
+			                   (file "~/org/todo.org")
+			                   (function (lambda () "* TODO %?")))))
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
 (add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
