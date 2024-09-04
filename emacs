@@ -181,7 +181,8 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o c") 'org-capture)
 
-(setq org-agenda-files '("~/org/"))
+(setq org-agenda-files '("~/org/")
+      org-export-backends '(ascii html icalendar latex md man))
 
 (setq org-capture-templates '(("t" "Create a TODO item."
 			       entry
