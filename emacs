@@ -225,22 +225,20 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;; TODO: Do you want this everywhere in dired-mode?
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
-(setq mu4e-headers-fields '((:human-date . 12)
+(setq mail-user-agent 'mu4e-user-agent
+      message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p
+      message-kill-buffer-on-exit t
+      message-send-mail-function #'message-send-mail-with-sendmail
+      mu4e-compose-context-policy 'ask-if-none
+      mu4e-headers-fields '((:human-date . 12)
 			                (:flags . 6)
 			                (:mailing-list . 10)
 			                (:from-or-to . 22)
 			                (:thread-subject))
-      message-send-mail-function #'message-send-mail-with-sendmail
-      sendmail-program "/usr/bin/msmtp"
-      mail-user-agent 'mu4e-user-agent
-      read-mail-command 'mu4e
-      message-kill-buffer-on-exit t
-      message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p
+      mu4e-maildir-shortcuts '((:maildir "/inbox" :key ?i))
       mu4e-mu-home (concat (getenv "HOME") "/.mu/gmail")
-      mu4e-compose-context-policy 'ask-if-none)
-
-(setq mu4e-maildir-shortcuts
-      '((:maildir "/inbox" :key ?i)))
+      read-mail-command 'mu4e
+      sendmail-program "/usr/bin/msmtp")
 
 ;; Hat tip to Dalker, adapted from https://emacs.stackexchange.com/a/58461.
 (defun qp-mu4e-switch-mail-account ()
