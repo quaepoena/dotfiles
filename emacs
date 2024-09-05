@@ -236,7 +236,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
 			                (:mailing-list . 10)
 			                (:from-or-to . 22)
 			                (:thread-subject))
-      mu4e-maildir-shortcuts '((:maildir "/inbox" :key ?i))
       mu4e-mu-home (concat (getenv "HOME") "/.mu/gmail")
       read-mail-command 'mu4e
       sendmail-program "/usr/bin/msmtp")
