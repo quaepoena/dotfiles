@@ -434,6 +434,16 @@ Then switch to the process buffer. "
 (add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
 
 ;;}}}
+;;{{{ Shells
+
+;; Extend the password prompt regex to include German.
+;; https://emacs.stackexchange.com/a/21119
+(require 'comint)
+(setq comint-password-prompt-regexp
+      (concat comint-password-prompt-regexp
+              "\\|^\\[sudo\\] Passwort für .*:\\s *\\'"))
+
+;;}}}
 
 (add-hook 'write-file-functions 'delete-trailing-whitespace)
 
@@ -456,13 +466,6 @@ Then switch to the process buffer. "
 (add-to-list 'display-buffer-alist
 	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
 
-
-;; TODO: Document this beyond a link to SE.
-;; https://emacs.stackexchange.com/a/21119
-(require 'comint)
-(setq comint-password-prompt-regexp
-      (concat comint-password-prompt-regexp
-              "\\|^\\[sudo\\] Passwort für .*:\\s *\\'"))
 
 ;; Fix error wherein visiting a .gpg file (occasionally) failed while gpg on
 ;; the command line worked without problem.
