@@ -11,8 +11,8 @@ ln -f profile ~/.profile
 ln -f ssh_environment ~/.ssh/environment
 ln -f inputrc ~/.inputrc
 ln -f xinitrc ~/.xinitrc
+ln -f xmodmaprc ~/.Xmodmaprc
 
 # currently not in use
 # ln -f startup.sh ~/.startup.sh
-# ln -f xmodmaprc ~/.xmodmaprc
 # ln -f xmonad.hs ~/.xmonad.hs
