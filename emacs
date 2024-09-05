@@ -213,10 +213,11 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;; (which has no hooks).
 (electric-indent-mode -1)
 
-(add-hook 'prog-mode-hook #'electric-indent-mode)
+(add-hook 'prog-mode-hook (lambda () (electric-indent-local-mode -1)))
 
 ;;}}}
 ;;{{{ mu4e
+
 ;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
 
@@ -252,8 +253,10 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;; Redefine context switching in a few places.
 (define-key mu4e-main-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
 (define-key mu4e-headers-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
+
 ;;}}}
 ;;{{{ LaTeX
+
 (setq bibtex-dialect 'biblatex
       LaTeX-electric-left-right-brace t
       LaTeX-csquotes-open-quote "\\enquote{"
