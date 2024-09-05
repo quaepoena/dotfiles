@@ -22,7 +22,10 @@
 (setq-default backup-by-copying-when-linked t)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-(setq indent-line-function 'insert-tab)
+
+(setq indent-line-function 'insert-tab
+      require-final-newline t
+      tramp-default-method "ssh")
 
 ;; https://masteringemacs.org/article/disabling-prompts-emacs
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -466,7 +469,6 @@ Then switch to the process buffer. "
 (add-to-list 'display-buffer-alist
 	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
 
-
 ;; Fix error wherein visiting a .gpg file (occasionally) failed while gpg on
 ;; the command line worked without problem.
 ;; https://colinxy.github.io/software-installation/2016/09/24/emacs25-easypg-issue.html
@@ -479,10 +481,6 @@ Then switch to the process buffer. "
 (if (require 'folding nil 'noerror)
     (folding-mode-add-find-file-hook)
   (message "Library `folding' not found."))
-
-(setq tramp-default-method "ssh")
-
-(setq require-final-newline t)
 
 ;;{{{ eshell
 
