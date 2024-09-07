@@ -3,10 +3,6 @@
 ln -f bash_aliases ~/.bash_aliases
 ln -f dir-locals.el ~/.dir-locals.el
 ln -f emacs ~/.emacs
-
-mkdir ~/bin 2>/dev/null
-ln -f okular ~/bin/okular
-
 ln -f profile ~/.profile
 ln -f ssh_environment ~/.ssh/environment
 ln -f inputrc ~/.inputrc

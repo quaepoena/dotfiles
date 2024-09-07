@@ -1,9 +1,0 @@
-#!/bin/bash
-# -*- mode: shell-script; -*-
-
-# https://unix.stackexchange.com/a/672466
-function okular::run() {
-    flatpak run --file-forwarding org.kde.okular @@ "$@" @@
-}
-
-okular::run "$@"
