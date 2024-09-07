@@ -4,6 +4,7 @@
 ;; testing post-merge hook 2
 ;; testing post-merge hook 3
 ;; testing post-merge hook 4
+;; testing post-merge hook 5
 
 ;;{{{ TODO
 
