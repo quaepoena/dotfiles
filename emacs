@@ -221,6 +221,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;;}}}
 ;;{{{ mu4e
 
+;; test comment
 (require 'mu4e)
 
 ;; TODO: Do you want this everywhere in dired-mode?
