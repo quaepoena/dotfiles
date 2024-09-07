@@ -2,6 +2,7 @@
 
 ;; testing post-merge hook
 ;; testing post-merge hook 2
+;; testing post-merge hook 3
 
 ;;{{{ TODO
 
