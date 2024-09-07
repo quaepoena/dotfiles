@@ -1,5 +1,7 @@
 ; -*- mode: Emacs-lisp; folded-file: t -*-
 
+;; testing post-merge hook
+
 ;;{{{ TODO
 
 ;; TODO: Add folding sections for everything.
