@@ -1,6 +1,7 @@
 ; -*- mode: Emacs-lisp; folded-file: t -*-
 
 ;; testing post-merge hook
+;; testing post-merge hook 2
 
 ;;{{{ TODO
 
