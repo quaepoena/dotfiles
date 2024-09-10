@@ -63,6 +63,7 @@
 (put 'downcase-region 'disabled nil)
 
 ;;}}}
+
 ;;}}}
 ;;{{{ Customize
 
@@ -545,9 +546,6 @@ Then switch to the process buffer. "
 				 'owd)))
 
 ;;}}}
-
-;; TODO: Can this be removed?
-(require 'dash)
 
 (defun dagens-ord ()
   "Få dagens ord frå Aasen."
