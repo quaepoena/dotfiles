@@ -222,6 +222,9 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;;}}}
 ;;{{{ mu4e
 
+;; Helpful link(s).
+;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
+
 (require 'mu4e)
 
 ;; TODO: Do you want this everywhere in dired-mode?
