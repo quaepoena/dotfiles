@@ -176,9 +176,7 @@ alias fu='sudo $(history -p !!)'
 alias telegram="telegram-desktop"
 alias x="xmodmap ~/.Xmodmaprc"
 
-# TODO: Is this still relevant?
-# https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
-append-to-path "/usr/local/texlive/2022/bin/x86_64-linux"
+append-to-path "/usr/local/texlive/2024/bin/x86_64-linux"
 
 # TODO: Emacs was unable to find info files when this line was active. Fix?
 #export INFOPATH="${INFOPATH}:/usr/local/texlive/2021/texmf-dist/doc/info"
