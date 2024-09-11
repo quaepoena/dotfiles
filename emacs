@@ -74,7 +74,8 @@
       '((folded-file . t)
         (indent-tabs-mode nil)
         (backup-inhibited . t)
-        (org-pretty-entities . t)))
+        (org-pretty-entities . t)
+        (TeX-master . t)))
 
 (load-theme 'wheatgrass)
 
