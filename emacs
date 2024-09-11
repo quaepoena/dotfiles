@@ -67,6 +67,7 @@
 ;;}}}
 ;;{{{ Customize
 
+;; Set but don't load.
 (setq custom-file "~/.emacs.d/custom.el")
 
 (setq safe-local-variable-values
