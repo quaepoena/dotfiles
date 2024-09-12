@@ -401,6 +401,9 @@ prefix arg set."
 
 ;;}}}
 ;;{{{ Dired
+
+(add-hook 'dired-mode-hook #'dired-set-shell-alist)
+
 (defun dired-set-shell-alist ()
   "Set preferred programs for shell commands in dired."
   (add-to-list 'dired-guess-shell-alist-user
@@ -419,6 +422,7 @@ prefix arg set."
                (quote ("\\.mkv\\'" "vlc")))
   (add-to-list 'dired-guess-shell-alist-user
                (quote ("\\.jpg\\'" "xviewer"))))
+
 ;;}}}
 ;;{{{ Scheme
 
@@ -648,8 +652,6 @@ Then switch to the process buffer. "
 (global-set-key (kbd "{") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "„") #'skeleton-pair-insert-maybe)
 (global-set-key (kbd "«") #'skeleton-pair-insert-maybe)
-
-(add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
 (defun erase-kill-ring ()
   "Set the kill ring to nil."
