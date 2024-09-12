@@ -696,7 +696,7 @@ interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
 
 (defun norrønt-input ()
   (interactive)
-  (load-file "~/links/norrønt.el")
+  (load-file "~/Links/norrønt.el")
   (set-input-method "norrønt"))
 
 (defun text-mode-hook-customization ()
