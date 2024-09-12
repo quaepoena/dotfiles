@@ -454,6 +454,39 @@ Then switch to the process buffer. "
               "\\|^\\[sudo\\] Passwort für .*:\\s *\\'"))
 
 ;;}}}
+;;{{{ Skeletons
+
+(setq skeleton-pair t
+      skeleton-pair-alist (list (quote (?„ _ ?“))))
+
+(defvar qp-skeletons t "t if your user-defined skeletons are enabled. Toggle
+interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
+
+(defun qp-skeletons (arg)
+  "Enable/disable your skeletons."
+
+  (let ((chars (list "'" "\"" "(" "[" "{" "„" "«")))
+    (if arg
+        (dolist (char chars)
+          (global-set-key (kbd char) #'skeleton-pair-insert-maybe))
+      (dolist (char chars)
+        (global-set-key (kbd char) #'self-insert-command))))
+
+  (setq qp-skeletons arg))
+
+(defun qp-toggle-skeletons ()
+  "Interactive command to toggle your skeletons."
+  (interactive)
+  (if qp-skeletons
+      (progn
+        (qp-skeletons nil)
+        (message "Die Skelette sind ausgeschaltet."))
+    (qp-skeletons t)
+    (message "Die Skelette sind eingeschaltet.")))
+
+(qp-skeletons t)
+
+;;}}}
 
 (add-hook 'write-file-functions 'delete-trailing-whitespace)
 
@@ -635,23 +668,6 @@ Then switch to the process buffer. "
   "Lineam divisam a virgula, SERIES, partire et ad `verbum|lingua|` convertere."
   (let ((split-s (split-string series "|")))
     (concat (cadr split-s) "|" (car split-s) "|")))
-
-;; Skeletons
-(setq skeleton-pair t
-      skeleton-pair-alist (list (quote (?„ _ ?“))))
-
-;; FIXME: Make this a usable solution.
-;; (global-set-key (kbd "'") #'self-insert-command)
-;; (global-set-key (kbd "[") #'self-insert-command)
-;; (global-set-key (kbd "\"") #'self-insert-command)
-
-(global-set-key (kbd "'") #'skeleton-pair-insert-maybe)
-(global-set-key (kbd "\"") #'skeleton-pair-insert-maybe)
-(global-set-key (kbd "(") #'skeleton-pair-insert-maybe)
-(global-set-key (kbd "[") #'skeleton-pair-insert-maybe)
-(global-set-key (kbd "{") #'skeleton-pair-insert-maybe)
-(global-set-key (kbd "„") #'skeleton-pair-insert-maybe)
-(global-set-key (kbd "«") #'skeleton-pair-insert-maybe)
 
 (defun erase-kill-ring ()
   "Set the kill ring to nil."
