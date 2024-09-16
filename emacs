@@ -179,23 +179,29 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (put 'LaTeX-narrow-to-environment 'disabled nil)
 
 ;;}}}
-;;{{{ Org
+;;{{{ Dired
 
-(require 'org)
+(add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
-(global-set-key (kbd "C-c o l") 'org-store-link)
-(global-set-key (kbd "C-c o a") 'org-agenda)
-(global-set-key (kbd "C-c o c") 'org-capture)
+(defun dired-set-shell-alist ()
+  "Set preferred programs for shell commands in dired."
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.pdf\\'" "okular")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.doc\\(x\\)?\\'" "soffice")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.epub\\'" "calibre")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.djvu\\'" "xreader")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.png\\'" "xviewer")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.mp4\\'" "vlc")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.mkv\\'" "vlc")))
+  (add-to-list 'dired-guess-shell-alist-user
+               (quote ("\\.jpg\\'" "xviewer"))))
 
-(setq org-agenda-files '("~/org/")
-      org-export-backends '(ascii html icalendar latex md man)
-      org-capture-templates '(("t" "Create a TODO item."
-			                   entry
-			                   (file "~/org/todo.org")
-			                   (function (lambda () "* TODO %?")))))
-
-(add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
-(add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
 ;;}}}
 ;;{{{ Linguae
 
@@ -400,29 +406,23 @@ prefix arg set."
     (TeX-command-run-all nil)))
 
 ;;}}}
-;;{{{ Dired
+;;{{{ Org
 
-(add-hook 'dired-mode-hook #'dired-set-shell-alist)
+(require 'org)
 
-(defun dired-set-shell-alist ()
-  "Set preferred programs for shell commands in dired."
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.pdf\\'" "okular")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.doc\\(x\\)?\\'" "soffice")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.epub\\'" "calibre")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.djvu\\'" "xreader")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.png\\'" "xviewer")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.mp4\\'" "vlc")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.mkv\\'" "vlc")))
-  (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.jpg\\'" "xviewer"))))
+(global-set-key (kbd "C-c o l") 'org-store-link)
+(global-set-key (kbd "C-c o a") 'org-agenda)
+(global-set-key (kbd "C-c o c") 'org-capture)
 
+(setq org-agenda-files '("~/org/")
+      org-export-backends '(ascii html icalendar latex md man)
+      org-capture-templates '(("t" "Create a TODO item."
+			                   entry
+			                   (file "~/org/todo.org")
+			                   (function (lambda () "* TODO %?")))))
+
+(add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
+(add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
 ;;}}}
 ;;{{{ Scheme
 
