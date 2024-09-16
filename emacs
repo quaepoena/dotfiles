@@ -243,8 +243,8 @@ upon unbalanced input is desired, use `paste (1)` directly."
       message-kill-buffer-on-exit t
       message-send-mail-function #'message-send-mail-with-sendmail
       mu4e-attachment-dir "~/Downloads"
-      mu4e-context-policy 'pick-first
       mu4e-compose-context-policy 'ask-if-none
+      mu4e-context-policy 'pick-first
       mu4e-headers-fields '((:human-date . 12)
 			                (:flags . 6)
 			                (:mailing-list . 10)
