@@ -179,6 +179,43 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (put 'LaTeX-narrow-to-environment 'disabled nil)
 
 ;;}}}
+;;{{{ Linguae
+
+(defun lang-oe ()
+  "\'ǿ\' et \'Ǿ\' in registra ?ø et ?Ø servāre."
+  (interactive)
+
+  (set-register ?ø "ǿ")
+  (set-register ?Ø "Ǿ"))
+
+(defun o-med-kvist ()
+  (interactive)
+
+  (set-register ?, "ǫ")
+  (set-register ?< "Ǫ"))
+
+;;}}}
+;;{{{ Modes (hooks, customizations, etc.)
+
+;; Not technically a mode hook, but I want it to apply for Fundamental Mode
+;; (which has no hooks).
+(electric-indent-mode -1)
+
+(defun qp-disable-electric-indent ()
+  (electric-indent-local-mode -1))
+
+(add-hook 'prog-mode-hook #'qp-disable-electric-indent)
+
+;;{{{ disable-mouse
+
+;; https://melpa.org/#/disable-mouse
+(global-disable-mouse-mode)
+(global-unset-key (kbd "<C-down-mouse-1>"))
+
+(setq disable-mouse-mode-lighter nil
+      disable-mouse-mode-global-lighter nil)
+
+;;}}}
 ;;{{{ Dired
 
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
@@ -203,30 +240,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
                (quote ("\\.jpg\\'" "xviewer"))))
 
 ;;}}}
-;;{{{ Linguae
-
-(defun lang-oe ()
-  "\'ǿ\' et \'Ǿ\' in registra ?ø et ?Ø servāre."
-  (interactive)
-
-  (set-register ?ø "ǿ")
-  (set-register ?Ø "Ǿ"))
-
-(defun o-med-kvist ()
-  (interactive)
-
-  (set-register ?, "ǫ")
-  (set-register ?< "Ǫ"))
-
-;;}}}
-;;{{{ Mode hooks
-
-;; Not technically a mode hook, but I want it to apply for Fundamental Mode
-;; (which has no hooks).
-(electric-indent-mode -1)
-
-(add-hook 'prog-mode-hook (lambda () (electric-indent-local-mode -1)))
-
 ;;}}}
 ;;{{{ mu4e
 
@@ -488,11 +501,7 @@ interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
 
 ;;}}}
 
-(add-hook 'write-file-functions 'delete-trailing-whitespace)
-
-;; https://melpa.org/#/disable-mouse
-(global-disable-mouse-mode)
-(global-unset-key (kbd "<C-down-mouse-1>"))
+(add-hook 'write-file-functions #'delete-trailing-whitespace)
 
 (setq backup-by-copying t)
 
