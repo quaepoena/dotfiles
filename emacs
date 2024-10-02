@@ -14,7 +14,7 @@
 
 (add-to-list
  'package-archives
- (quote ("melpa-stable" . "https://stable.melpa.org/packages/"))
+ (quote ("melpa" . "https://melpa.org/packages/"))
  t)
 
 (package-initialize)
