@@ -250,6 +250,8 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
 ;; TODO: Do you want this everywhere in dired-mode?
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+(add-hook 'message-mode-hook #'turn-off-auto-fill)
+(add-hook 'message-mode-hook #'use-hard-newlines)
 
 (setq mail-user-agent 'mu4e-user-agent
       message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p
@@ -257,6 +259,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
       message-send-mail-function #'message-send-mail-with-sendmail
       mu4e-attachment-dir "~/Downloads"
       mu4e-compose-context-policy 'ask-if-none
+      mu4e-compose-format-flowed t
       mu4e-context-policy 'pick-first
       mu4e-headers-fields '((:human-date . 12)
 			                (:flags . 6)
