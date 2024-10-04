@@ -154,8 +154,8 @@ if [[ -f ~/.bash_aliases_mach_specific ]]; then
     . ~/.bash_aliases_mach_specific
 fi
 
-# Reuse existing ssh-agent. Adapted (slightly) from:
-# https://superuser.com/a/1469727 and https://unix.stackexchange.com/a/132117
+# Reuse existing ssh-agent. Adapted (slightly) from
+# https://superuser.com/a/1469727 and https://unix.stackexchange.com/a/132117.
 export SSH_AUTH_SOCK="${HOME}/.ssh/ssh-agent.sock"
 
 # Test whether SSH_AUTH_SOCK is valid.
