@@ -177,10 +177,6 @@ alias telegram="telegram-desktop"
 alias x="xmodmap ~/.Xmodmaprc"
 
 append-to-path "/usr/local/texlive/2024/bin/x86_64-linux"
-
-# TODO: Emacs was unable to find info files when this line was active. Fix?
-#export INFOPATH="${INFOPATH}:/usr/local/texlive/2021/texmf-dist/doc/info"
-#export MANPATH="${MANPATH}:/usr/local/texlive/2021/texmf-dist/doc/man"
 export TEXMFHOME="${HOME}/texmf"
 
 export -f error
