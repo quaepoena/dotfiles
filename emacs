@@ -223,7 +223,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (defun dired-set-shell-alist ()
   "Set preferred programs for shell commands in dired."
   (add-to-list 'dired-guess-shell-alist-user
-               (quote ("\\.pdf\\'" "okular")))
+               (quote ("\\.pdf\\'" "xreader")))
   (add-to-list 'dired-guess-shell-alist-user
                (quote ("\\.doc\\(x\\)?\\'" "soffice")))
   (add-to-list 'dired-guess-shell-alist-user
@@ -297,7 +297,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (setenv "PATH" "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
 
 (defun LaTeX-mode-hook-customizations ()
-  (add-to-list 'TeX-view-program-selection '(output-pdf "Okular"))
+  (add-to-list 'TeX-view-program-selection '(output-pdf "Xreader"))
   (add-to-list 'LaTeX-item-list '("outline" .
 				  LaTeX-insert-outline-level))
   (keymap-set LaTeX-mode-map "M-RET"
@@ -438,7 +438,7 @@ prefix arg set."
       org-export-backends '(ascii html icalendar latex md man)
       org-special-ctrl-a/e t)
 
-(add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
+(add-to-list 'org-file-apps '("\\.pdf\\'" . "xreader %s"))
 (add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
 ;;}}}
 ;;{{{ Scheme
