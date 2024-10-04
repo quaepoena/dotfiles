@@ -431,11 +431,12 @@ prefix arg set."
 (global-set-key (kbd "C-c o c") 'org-capture)
 
 (setq org-agenda-files '("~/org/")
-      org-export-backends '(ascii html icalendar latex md man)
       org-capture-templates '(("t" "Create a TODO item."
 			                   entry
 			                   (file "~/org/todo.org")
-			                   (function (lambda () "* TODO %?")))))
+			                   (function (lambda () "* TODO %?"))))
+      org-export-backends '(ascii html icalendar latex md man)
+      org-special-ctrl-a/e t)
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "okular %s"))
 (add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
