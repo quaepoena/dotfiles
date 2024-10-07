@@ -91,6 +91,7 @@
 (global-set-key (kbd "C-c g l") #'LaTeX-copy-ling-template-and-visit)
 (global-set-key (kbd "C-c g m") #'LaTeX-copy-mwe-and-visit)
 (global-set-key (kbd "C-c g s") #'eshell)
+(global-set-key (kbd "C-c g t") #'qp-toggle-skeletons)
 (global-set-key (kbd "C-c g v") #'vocabularium-fasciculos-agere)
 (global-set-key (kbd "C-c g w") #'erase-kill-ring)
 (global-set-key (kbd "C-c s o") #'owd)
