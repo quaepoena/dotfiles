@@ -173,7 +173,6 @@ alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
 alias fu='sudo $(history -p !!)'
-alias telegram="telegram-desktop"
 alias x="xmodmap ~/.Xmodmaprc"
 
 append-to-path "/usr/local/texlive/2024/bin/x86_64-linux"
