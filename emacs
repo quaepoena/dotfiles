@@ -483,7 +483,7 @@ interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
 (defun qp-skeletons (arg)
   "Enable/disable your skeletons."
 
-  (let ((chars (list "'" "\"" "(" "[" "{" "„" "«" "`")))
+  (let ((chars (list "'" "\"" "(" "[" "{" "„" "«" "`" "%")))
     (if arg
         (dolist (char chars)
           (global-set-key (kbd char) #'skeleton-pair-insert-maybe))
