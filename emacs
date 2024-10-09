@@ -219,7 +219,17 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;;}}}
 ;;{{{ Dired
 
-(add-hook 'dired-mode-hook #'dired-set-shell-alist)
+(require 'dired)
+
+(defun qp-dired-ctrl-a ()
+  "C-a moves point to the beginning of the file name, unless already there,
+in which case it moves to the beginning of the line."
+  (interactive)
+  (let ((file-pos (save-excursion (dired-move-to-filename) (point))))
+
+    (if (= (point) file-pos)
+        (move-beginning-of-line nil)
+      (dired-move-to-filename))))
 
 (defun dired-set-shell-alist ()
   "Set preferred programs for shell commands in dired."
@@ -239,6 +249,9 @@ upon unbalanced input is desired, use `paste (1)` directly."
                (quote ("\\.mkv\\'" "vlc")))
   (add-to-list 'dired-guess-shell-alist-user
                (quote ("\\.jpg\\'" "xviewer"))))
+
+(keymap-set dired-mode-map "C-a" #'qp-dired-ctrl-a)
+(add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
 ;;}}}
 ;;}}}
