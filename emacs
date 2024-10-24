@@ -221,6 +221,19 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
 (require 'dired)
 
+(defun qp-dired-beginning-of-buffer ()
+  "Move point to the first line of the directory. If already there, move to
+the beginning of the buffer."
+  (interactive)
+
+  (let ((first-dired-line-p (and (not (bobp))
+                                (save-excursion (dired-previous-line 2)
+                                                (bobp)))))
+    (if first-dired-line-p
+        (dired-previous-line 2)
+      (beginning-of-buffer)
+      (dired-next-line 2))))
+
 (defun qp-dired-ctrl-a ()
   "C-a moves point to the beginning of the file name, unless already there,
 in which case it moves to the beginning of the line."
@@ -230,6 +243,19 @@ in which case it moves to the beginning of the line."
     (if (= (point) file-pos)
         (move-beginning-of-line nil)
       (dired-move-to-filename))))
+
+(defun qp-dired-end-of-buffer ()
+  "Move point to the last line of the directory. If already there, move to
+the end of the buffer."
+  (interactive)
+
+  (let ((last-dired-line-p (and (not (eobp))
+                                (save-excursion (dired-next-line 1)
+                                                (eobp)))))
+    (if last-dired-line-p
+        (dired-next-line 1)
+      (end-of-buffer)
+      (dired-previous-line 1))))
 
 (defun dired-set-shell-alist ()
   "Set preferred programs for shell commands in dired."
@@ -251,6 +277,9 @@ in which case it moves to the beginning of the line."
                (quote ("\\.jpg\\'" "xviewer"))))
 
 (keymap-set dired-mode-map "C-a" #'qp-dired-ctrl-a)
+(keymap-set dired-mode-map "M-<" #'qp-dired-beginning-of-buffer)
+(keymap-set dired-mode-map "M->" #'qp-dired-end-of-buffer)
+
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
 ;;}}}
