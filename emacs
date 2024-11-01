@@ -309,6 +309,7 @@ the end of the buffer."
 			                (:mailing-list . 10)
 			                (:from-or-to . 22)
 			                (:thread-subject))
+      mu4e-modeline-support nil
       read-mail-command 'mu4e
       sendmail-program "/usr/bin/msmtp")
 
