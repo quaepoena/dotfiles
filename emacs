@@ -478,7 +478,24 @@ prefix arg set."
       org-capture-templates '(("t" "Create a TODO item."
 			                   entry
 			                   (file "~/org/todo.org")
-			                   (function (lambda () "* TODO %?"))))
+                               "* TODO %?")
+                              ("v" "Verbum novum aut ignotum.")
+                              ("vg" "Lingua Graeca."
+                               entry
+                               (file+olp "~/org/språk.org" "Vocābulārium" "Lingua Graeca")
+                               "*** %?")
+                              ("vl" "Lingua Lātīna."
+                               entry
+                               (file+olp "~/org/språk.org" "Vocābulārium" "Lingua Lātīna")
+                               "*** %?")
+                              ("vs" "Verbum substituendum."
+                               entry
+                               (file+olp "~/org/språk.org" "Vocābulārium" "Verbum substituendum")
+                               "*** %?")
+                              ("vå" "Lingua Aasensis."
+                               entry
+                               (file+olp "~/org/språk.org" "Vocābulārium" "Lingua Aasensis")
+                               "*** %?"))
       org-export-backends '(ascii html icalendar latex md man)
       org-special-ctrl-a/e t)
 
