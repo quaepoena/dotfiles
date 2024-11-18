@@ -247,7 +247,7 @@ the beginning of the buffer."
                                                 (bobp)))))
     (if first-dired-line-p
         (dired-previous-line 2)
-      (beginning-of-buffer)
+      (goto-char (point-min))
       (dired-next-line 2))))
 
 (defun qp-dired-ctrl-a ()
@@ -270,7 +270,7 @@ the end of the buffer."
                                                 (eobp)))))
     (if last-dired-line-p
         (dired-next-line 1)
-      (end-of-buffer)
+      (goto-char (point-max))
       (dired-previous-line 1))))
 
 (defun dired-set-shell-alist ()
