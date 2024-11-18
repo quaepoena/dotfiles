@@ -603,6 +603,22 @@ interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
 ;; https://stackoverflow.com/a/47587185
 (add-to-list 'display-buffer-alist
 	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+(require 'comint)
+
+(defun qp-comment-and-send-input ()
+  "Comment the current line and return, as `insert-comment' in bash."
+  (interactive)
+
+  (let ((bol (save-excursion
+               (move-beginning-of-line nil)
+               (point)))
+        (eol (save-excursion
+               (move-end-of-line nil)
+               (point))))
+    (comment-or-uncomment-region bol eol)
+    (comint-send-input)))
+
+(keymap-set comint-mode-map "M-#" #'qp-comment-and-send-input)
 
 ;; Fix error wherein visiting a .gpg file (occasionally) failed while gpg on
 ;; the command line worked without issue.
