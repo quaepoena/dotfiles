@@ -600,9 +600,47 @@ interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;; https://stackoverflow.com/a/47587185
+;; https://www.masteringemacs.org/article/demystifying-emacs-window-manager
+(setq switch-to-buffer-in-dedicated-window 'pop)
+(setq switch-to-buffer-obey-display-actions t)
+(setq window-sides-slots '(1 0 2 0))
+
 (add-to-list 'display-buffer-alist
-	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+	         '("\\*Async Shell Command\\*"
+               display-buffer-no-window))
+(add-to-list 'display-buffer-alist
+             `(,(rx (| "*info*"
+                       "*Help*"
+                       "*Compile-Log*"
+                       "*Shortdoc"
+                       "*Man"
+                       "*Flycheck"
+                       "*Apropos*"))
+               (display-buffer-reuse-window
+                display-buffer-in-previous-window
+                display-buffer-in-side-window)
+               (side . right)
+               (window-width . 0.35)))
+(add-to-list 'display-buffer-alist
+             `(,(rx (| "*xref*"
+                       "*grep*"
+                       "*Occur*"))
+               (display-buffer-reuse-window
+                display-buffer-in-previous-window)))
+(add-to-list 'display-buffer-alist
+             '("\\*SQLite"
+               (display-buffer-in-direction)
+               (direction . bottom)
+               (window-height . 0.5)
+               (window . root)))
+(add-to-list 'display-buffer-alist
+             '("\\*e?shell"
+               (display-buffer-reuse-window
+                display-buffer-in-previous-window
+                display-buffer-in-direction)
+               (direction . bottom)
+               (window-height . 0.40)))
+
 (defun qp-display-help-buffer ()
   "Display the *Help* buffer, creating a blank buffer if it doesn't exist.
 Intended to allow for quick switching back to the *Help* buffer."
