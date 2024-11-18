@@ -607,7 +607,9 @@ interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
 ;; Fix error wherein visiting a .gpg file (occasionally) failed while gpg on
 ;; the command line worked without issue.
 ;; https://colinxy.github.io/software-installation/2016/09/24/emacs25-easypg-issue.html
-(setq epg-pinentry-mode 'loopback)
+;; TODO: See if this breaks anything.
+;; Commented out - Sa 9. Nov 20:57:50 CET 2024
+;; (setq epg-pinentry-mode 'loopback)
 
 (setq fill-column 80)
 
