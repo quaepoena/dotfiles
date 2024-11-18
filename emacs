@@ -489,7 +489,7 @@ prefix arg set."
 (global-set-key (kbd "C-c o l") 'org-store-link)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o c") 'org-capture)
-(keymap-set org-mode-map "C-'" #'open-text-right)
+(keymap-set org-mode-map "C-'" #'qp-open-text-right)
 
 (setq org-agenda-files '("~/org/")
       org-capture-templates '(("t" "Create a TODO item."
