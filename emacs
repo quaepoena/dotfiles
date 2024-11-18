@@ -505,6 +505,10 @@ prefix arg set."
                                entry
                                (file+olp "~/org/språk.org" "Vocābulārium" "Lingua Lātīna")
                                "*** %?")
+                              ("vn" "Lingua gesticulatoria norvegica."
+                               entry
+                               (file+olp "~/org/språk.org" "Vocābulārium" "Lingua gesticulatoria norvegica")
+                               "*** %?")
                               ("vs" "Verbum substituendum."
                                entry
                                (file+olp "~/org/språk.org" "Vocābulārium" "Verbum substituendum")
