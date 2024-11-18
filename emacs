@@ -603,6 +603,14 @@ interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
 ;; https://stackoverflow.com/a/47587185
 (add-to-list 'display-buffer-alist
 	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+(defun qp-display-help-buffer ()
+  "Display the *Help* buffer, creating a blank buffer if it doesn't exist.
+Intended to allow for quick switching back to the *Help* buffer."
+  (interactive)
+  (display-buffer (get-buffer-create "*Help*")))
+
+(global-set-key (kbd "C-h C-h") #'qp-display-help-buffer)
+
 (require 'comint)
 
 (defun qp-comment-and-send-input ()
