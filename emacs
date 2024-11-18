@@ -1,5 +1,7 @@
 ; -*- mode: Emacs-lisp; folded-file: t -*-
 
+;;; Code:
+
 ;;{{{ TODO
 
 ;; TODO: Add folding sections for everything.
@@ -23,6 +25,9 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
+(require 'tramp)     ; tramp-default-method
+(require 'find-func) ; find-function-C-source-directory
+
 (setq indent-line-function 'insert-tab
       require-final-newline t
       tramp-default-method "ssh")
@@ -32,19 +37,21 @@
 
 ;; https://masteringemacs.org/article/fixing-mark-commands-transient-mark-mode
 (defun push-mark-no-activate ()
-  "Pushes `point' to `mark-ring' and does not activate the region
-   Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
+  "Pushes `point' to `mark-ring' and does not activate the region.
+Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
   (interactive)
   (push-mark (point) t nil)
   (message "Pushed mark to ring"))
 
 (defun jump-to-mark ()
   "Jumps to the local mark, respecting the `mark-ring' order.
-  This is the same as using \\[set-mark-command] with the prefix argument."
+This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (set-mark-command 1))
 
 ;;{{{ Variables
+
+
 
 ;; TODO: Document anything non-trivial.
 (setq enable-recursive-minibuffers t)
@@ -63,6 +70,13 @@
 (put 'downcase-region 'disabled nil)
 
 ;;}}}
+
+;;}}}
+;;{{{ Flycheck
+
+(require 'flycheck)
+(global-flycheck-mode)
+(setq flycheck-emacs-lisp-load-path 'inherit)
 
 ;;}}}
 ;;{{{ Customize
@@ -584,7 +598,7 @@ interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
 	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
 
 ;; Fix error wherein visiting a .gpg file (occasionally) failed while gpg on
-;; the command line worked without problem.
+;; the command line worked without issue.
 ;; https://colinxy.github.io/software-installation/2016/09/24/emacs25-easypg-issue.html
 (setq epg-pinentry-mode 'loopback)
 
@@ -769,6 +783,7 @@ interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
 			("Ø'" ?Ǿ))))
 
 (defun norrønt-input ()
+  "Define my own input-method for writing Old Norse."
   (interactive)
   (load-file "~/Links/norrønt.el")
   (set-input-method "norrønt"))
