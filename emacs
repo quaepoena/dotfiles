@@ -11,6 +11,8 @@
 ;;}}}
 ;;{{{ General Emacs tweaks
 
+(setq load-prefer-newer t)
+
 ;; https://www.emacswiki.org/emacs/MELPA
 (require 'package)
 
