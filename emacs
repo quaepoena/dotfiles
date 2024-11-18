@@ -115,7 +115,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; https://emacs.stackexchange.com/a/3471
 (global-set-key (kbd "C-x o") nil)
 (global-set-key (kbd "C-.") #'other-window)
-(global-set-key (kbd "C-'") #'open-text-right)
+(global-set-key (kbd "C-'") #'qp-open-text-right)
 (global-set-key (kbd "M-z") #'zap-up-to-char)
 
 ;;}}}
@@ -139,13 +139,13 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;;}}}
 ;;{{{ Not-so trivial
 
-(defun open-text-right ()
-  "Inspired by open-line. Insert a space to the right of point while keeping
-point in the same place."
+(defun qp-open-text-right ()
+  "Insert a space to the right of point.
+Inspired by `open-line'."
   (interactive)
 
   (save-excursion
-    (insert " ")))
+    (insert ? )))
 
 (defun external-paste ()
   "Divide the region in two and call `paste (1)` on the two halves.
@@ -489,6 +489,7 @@ prefix arg set."
 (global-set-key (kbd "C-c o l") 'org-store-link)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o c") 'org-capture)
+(keymap-set org-mode-map "C-'" #'open-text-right)
 
 (setq org-agenda-files '("~/org/")
       org-capture-templates '(("t" "Create a TODO item."
