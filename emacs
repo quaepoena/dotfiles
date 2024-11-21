@@ -423,7 +423,7 @@ prefix arg set."
   (interactive "P")
 
   (unless (string-equal (LaTeX-current-environment) "outline")
-    (error "Not in an outline environment."))
+    (error "Not in an outline environment"))
 
   (let ((cur-level-int (string-to-number (LaTeX-find-outline-level)))
 	(step)
@@ -564,11 +564,10 @@ Then switch to the process buffer."
 (setq skeleton-pair t
       skeleton-pair-alist (list (quote (?„ _ ?“))))
 
-(defvar qp-skeletons t "t if your user-defined skeletons are enabled. Toggle
-interactively with `qp-toggle-skeletons' or set in Lisp with `qp-skeletons'.")
+(defvar qp-skeletons t "Set to t if user-defined skeletons are enabled.")
 
 (defun qp-skeletons (arg)
-  "Enable/disable your skeletons."
+  "Enable skeletons if ARG, otherwise disable them."
 
   (let ((chars (list "'" "\"" "(" "[" "{" "„" "«" "`" "%")))
     (if arg
