@@ -53,8 +53,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 ;;{{{ Variables
 
-
-
 ;; TODO: Document anything non-trivial.
 (setq enable-recursive-minibuffers t)
 (setq sentence-end-double-space nil)
@@ -538,11 +536,12 @@ prefix arg set."
 
 (defun scheme-send-buffer-and-go ()
   "Send the current buffer to the inferior Scheme process.
-Then switch to the process buffer. "
+Then switch to the process buffer."
   (interactive)
   (scheme-send-region-and-go (point-min) (point-max)))
 
 (defun scheme-mode-hook-customizations ()
+  "Scheme mode customizations."
   (keymap-set scheme-mode-map "C-c C-b" #'scheme-send-buffer)
   (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
 
