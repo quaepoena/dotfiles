@@ -359,7 +359,7 @@ the end of the buffer."
       TeX-auto-save t
       TeX-parse-self t)
 
-(setenv "PATH" "/usr/local/texlive/2022/bin/x86_64-linux:$PATH" t)
+(setenv "PATH" "/usr/local/texlive/2024/bin/x86_64-linux:$PATH" t)
 
 (defun LaTeX-mode-hook-customizations ()
   (add-to-list 'TeX-view-program-selection '(output-pdf "Xreader"))
