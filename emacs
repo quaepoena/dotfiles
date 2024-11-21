@@ -723,7 +723,8 @@ Intended to allow for quick switching back to the *Help* buffer."
         (beginning-of-line))))
 
 (defun eshell/mcd (path)
-  "mkdir PATH && cd PATH"
+  "Make and create PATH.
+Equivalent to mkdir PATH && cd PATH."
   (mkdir path t)
   (cd path))
 
