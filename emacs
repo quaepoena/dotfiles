@@ -466,7 +466,7 @@ prefix arg set."
     (find-file full-name)))
 
 (defun LaTeX-not-tex-sty-p (x)
-  "Return t if the file is regular and not a .tex or .sty file."
+  "Return t if X is a regular file and not a .tex or .sty file."
   (and (file-regular-p x)
        (not (string-match-p (rx line-start
 				(one-or-more anychar)
