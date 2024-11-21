@@ -173,6 +173,8 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
   (yank))
 
+(require 'esh-mode)
+
 (defun owd ()
   "From a shell: Get pwd from the other window and cd there."
   (interactive)
@@ -350,6 +352,10 @@ the end of the buffer."
 ;;}}}
 ;;{{{ LaTeX
 
+(require 'bibtex)
+(require 'latex)
+(require 'tex)
+
 (setq bibtex-dialect 'biblatex
       LaTeX-electric-left-right-brace t
       LaTeX-csquotes-open-quote "\\enquote{"
@@ -490,6 +496,7 @@ prefix arg set."
 ;;{{{ Org
 
 (require 'org)
+(require 'org-capture)
 
 (global-set-key (kbd "C-c o l") 'org-store-link)
 (global-set-key (kbd "C-c o a") 'org-agenda)
@@ -530,6 +537,8 @@ prefix arg set."
 ;;}}}
 ;;{{{ Scheme
 
+(require 'cmuscheme)
+
 (defun scheme-send-buffer ()
   "Send the current buffer to the inferior Scheme process."
   (interactive)
@@ -560,6 +569,8 @@ Then switch to the process buffer."
 
 ;;}}}
 ;;{{{ Skeletons
+
+(require 'skeleton)
 
 (setq skeleton-pair t
       skeleton-pair-alist (list (quote (?„ _ ?“))))
@@ -687,6 +698,8 @@ Intended to allow for quick switching back to the *Help* buffer."
   (message "Library `folding' not found."))
 
 ;;{{{ eshell
+
+(require 'em-unix)
 
 ;; https://emacs.stackexchange.com/a/54769
 (defun eshell/bcat (&rest args)
