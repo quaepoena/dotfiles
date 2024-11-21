@@ -136,8 +136,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (find-file "~/.emacs"))
 
-;;}}}
-;;{{{ Not-so trivial
+(defun qp-imperium-cursūs-acquīrere ()
+  "Imperium cursūs acquīrere."
+  (interactive)
+  (message "%s" (process-command (get-buffer-process (buffer-name)))))
 
 (defun qp-open-text-right ()
   "Insert a space to the right of point.
@@ -146,6 +148,9 @@ Inspired by `open-line'."
 
   (save-excursion
     (insert ? )))
+
+;;}}}
+;;{{{ Not-so trivial
 
 (defun external-paste ()
   "Divide the region in two and call `paste (1)` on the two halves.
