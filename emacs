@@ -206,6 +206,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (set-register ?Ø "Ǿ"))
 
 (defun o-med-kvist ()
+"Load the ogonek into two registers."
   (interactive)
 
   (set-register ?, "ǫ")
