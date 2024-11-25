@@ -190,6 +190,17 @@ upon unbalanced input is desired, use `paste (1)` directly."
 	(eshell-send-input)
       (comint-send-input))))
 
+(defun qp-litterās-fortuītās (n)
+  "Litterās ASCII imprimendās longitūdine N forte parere."
+  (let ((s "")
+        (x 0))
+
+    (while (< (length s) n)
+      (setf x (mod (random) 128))
+      (when (> x 32)
+          (setf s (concat s (format "%c" x)))))
+    s))
+
 ;;}}}
 
 ;;}}}
@@ -651,9 +662,7 @@ Then switch to the process buffer."
                (window . root)))
 (add-to-list 'display-buffer-alist
              '("\\*e?shell"
-               (display-buffer-reuse-window
-                display-buffer-in-previous-window
-                display-buffer-in-direction)
+               (display-buffer-in-direction)
                (direction . bottom)
                (window-height . 0.40)))
 
