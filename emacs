@@ -196,7 +196,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
         (x 0))
 
     (while (< (length s) n)
-      (setf x (mod (random) 128))
+      (setf x (mod (random) 127))
       (when (> x 32)
           (setf s (concat s (format "%c" x)))))
     s))
