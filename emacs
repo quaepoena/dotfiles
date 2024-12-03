@@ -702,6 +702,8 @@ Intended to allow for quick switching back to the *Help* buffer."
 
 ;; TODO: Wrap all such calls to packages.
 ;; https://raw.githubusercontent.com/jaalto/project-emacs--folding-mode/master/folding.el
+(require 'folding)
+
 (if (require 'folding nil 'noerror)
     (folding-mode-add-find-file-hook)
   (message "Library `folding' not found."))
