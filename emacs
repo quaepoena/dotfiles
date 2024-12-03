@@ -243,12 +243,13 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
 ;;{{{ disable-mouse
 
+;; TODO: Re-enable when magit/transient is > 0.7.4.
 ;; https://melpa.org/#/disable-mouse
-(global-disable-mouse-mode)
-(global-unset-key (kbd "<C-down-mouse-1>"))
+;; (global-disable-mouse-mode)
+;; (global-unset-key (kbd "<C-down-mouse-1>"))
 
-(setq disable-mouse-mode-lighter nil
-      disable-mouse-mode-global-lighter nil)
+;; (setq disable-mouse-mode-lighter nil
+;;       disable-mouse-mode-global-lighter nil)
 
 ;;}}}
 ;;{{{ Dired
