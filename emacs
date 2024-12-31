@@ -135,6 +135,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (find-file "~/.emacs"))
 
+(defun qp-file-empty-p (x)
+  "Return t if file X is empty."
+
+  (eq 0 (file-attribute-size (file-attributes x))))
+
 (defun qp-imperium-cursūs-acquīrere ()
   "Imperium cursūs acquīrere."
   (interactive)
@@ -292,6 +297,17 @@ the end of the buffer."
       (goto-char (point-max))
       (dired-previous-line 1))))
 
+(defun qp-dired-mark-empty ()
+  "Mark empty files/directories in Dired mode."
+  (interactive)
+
+  (dired-mark-if
+   (let ((fn (dired-get-filename nil t)))
+     (and fn
+          (or (directory-empty-p fn)
+              (qp-file-empty-p fn))))
+   "empty file"))
+
 (defun dired-set-shell-alist ()
   "Set preferred programs for shell commands in dired."
   (add-to-list 'dired-guess-shell-alist-user
@@ -311,6 +327,7 @@ the end of the buffer."
   (add-to-list 'dired-guess-shell-alist-user
                (quote ("\\.jpg\\'" "xviewer"))))
 
+(keymap-set dired-mode-map "% e" #'qp-dired-mark-empty)
 (keymap-set dired-mode-map "C-a" #'qp-dired-ctrl-a)
 (keymap-set dired-mode-map "M-<" #'qp-dired-beginning-of-buffer)
 (keymap-set dired-mode-map "M->" #'qp-dired-end-of-buffer)
