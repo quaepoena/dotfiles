@@ -234,6 +234,30 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (set-register ?, "ǫ")
   (set-register ?< "Ǫ"))
 
+;;{{{ Scheme
+
+(require 'cmuscheme)
+
+(defun scheme-send-buffer ()
+  "Send the current buffer to the inferior Scheme process."
+  (interactive)
+  (scheme-send-region (point-min) (point-max)))
+
+(defun scheme-send-buffer-and-go ()
+  "Send the current buffer to the inferior Scheme process.
+Then switch to the process buffer."
+  (interactive)
+  (scheme-send-region-and-go (point-min) (point-max)))
+
+(defun scheme-mode-hook-customizations ()
+  "Scheme mode customizations."
+  (keymap-set scheme-mode-map "C-c C-b" #'scheme-send-buffer)
+  (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
+
+(add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
+
+;;}}}
+
 ;;}}}
 ;;{{{ Modes (hooks, customizations, etc.)
 
@@ -563,29 +587,6 @@ prefix arg set."
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "xreader %s"))
 (add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
-;;}}}
-;;{{{ Scheme
-
-(require 'cmuscheme)
-
-(defun scheme-send-buffer ()
-  "Send the current buffer to the inferior Scheme process."
-  (interactive)
-  (scheme-send-region (point-min) (point-max)))
-
-(defun scheme-send-buffer-and-go ()
-  "Send the current buffer to the inferior Scheme process.
-Then switch to the process buffer."
-  (interactive)
-  (scheme-send-region-and-go (point-min) (point-max)))
-
-(defun scheme-mode-hook-customizations ()
-  "Scheme mode customizations."
-  (keymap-set scheme-mode-map "C-c C-b" #'scheme-send-buffer)
-  (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
-
-(add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
-
 ;;}}}
 ;;{{{ Shells
 
