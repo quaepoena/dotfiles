@@ -87,6 +87,7 @@ function gs-pdf-concat() {
 
     local time="$(date "+%Y%m%d%H%M%S")"
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -o /tmp/gs-pdf-concat-output-"${time}".pdf "$@"
+    echo "Fasciculus scriptus est: /tmp/gs-pdf-concat-output-${time}.pdf" >&2
 }
 
 
@@ -98,6 +99,48 @@ function gs-pages() {
 
     local time="$(date "+%Y%m%d%H%M%S")"
     ghostscript -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o /tmp/gs-output-"${time}".pdf "$1"
+}
+
+
+function pdf-paginae-vacae-per-totum-indere() {
+    if [[ "$#" -ne 3 ]]; then
+        echo "Ūsus: ${FUNCNAME[0]} <numerus pāginārum scrīptī> <fōns.pdf> <ēventus.pdf>" >&2
+        return 1
+   fi
+
+    local numerus="$1"
+    local fons="$2"
+    local eventus="$3"
+    local vacua="/tmp/pāgina-vacua.pdf"
+
+    pdf-paginam-vacuam-facere
+
+    pars_iussus="$(for n in $(seq "${numerus}"); do
+        echo B1 "A${n}"
+        done | xargs)"
+
+    pdftk A="${fons}" B="${vacua}" cat ${pars_iussus} B1 output "${eventus}"
+}
+
+# https://unix.stackexchange.com/a/15995
+function pdf-paginam-vacuam-indere() {
+    if [[ "$#" -ne 3 ]]; then
+        echo "Ūsus: ${FUNCNAME[0]} <numerus pāginae> <fōns.pdf> <ēventus.pdf>" >&2
+        return 1
+   fi
+
+    local numerus="$1"
+    local fons="$2"
+    local eventus="$3"
+    local vacua="/tmp/pāgina-vacua.pdf"
+
+    pdf-paginam-vacuam-facere
+
+    pdftk A="${fons}" B="${vacua}" cat "A1-$(( ${numerus} - 1 ))" B1 "A${numerus}-end" output "${eventus}"
+}
+
+function pdf-paginam-vacuam-facere() {
+    echo "" | ps2pdf -sPAPERSIZE=a4 - /tmp/pāgina-vacua.pdf
 }
 
 
