@@ -234,6 +234,14 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (set-register ?, "ǫ")
   (set-register ?< "Ǫ"))
 
+;;{{{ APL
+
+(add-to-list 'load-path "~/src/gnu-apl-mode")
+
+(require 'gnu-apl-mode)
+(setq gnu-apl-show-keymap-on-startup t)
+
+;;}}}
 ;;{{{ Scheme
 
 (require 'cmuscheme)
