@@ -528,6 +528,7 @@ Intended to allow for quick switching back to the *Help* buffer."
 
 ;; TODO: Wrap all such calls to packages.
 ;; https://raw.githubusercontent.com/jaalto/project-emacs--folding-mode/master/folding.el
+(add-to-list 'load-path "~/src/folding-mode")
 (require 'folding)
 
 (if (require 'folding nil 'noerror)
