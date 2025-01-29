@@ -491,17 +491,6 @@ the end of the buffer."
                        "*Occur*"))
                (display-buffer-reuse-window
                 display-buffer-in-previous-window)))
-(add-to-list 'display-buffer-alist
-             '("\\*SQLite"
-               (display-buffer-in-direction)
-               (direction . bottom)
-               (window-height . 0.5)
-               (window . root)))
-(add-to-list 'display-buffer-alist
-             '("\\*e?shell"
-               (display-buffer-in-direction)
-               (direction . bottom)
-               (window-height . 0.40)))
 
 (defun qp-display-help-buffer ()
   "Display the *Help* buffer, creating a blank buffer if it doesn't exist.
