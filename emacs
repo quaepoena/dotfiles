@@ -88,8 +88,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
       '((folded-file . t)
         (indent-tabs-mode nil)
         (backup-inhibited . t)
-        (org-pretty-entities . t)
-        (TeX-master . t)))
+        (org-pretty-entities . t)))
 
 (load-theme 'wheatgrass)
 
@@ -103,8 +102,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-c g e") #'open-dot-emacs)
 (global-set-key (kbd "C-c g i") #'qp-imperium-cursūs-acquīrere)
 (global-set-key (kbd "C-c g k") #'kill-restart-emacs)
-(global-set-key (kbd "C-c g l") #'LaTeX-copy-ling-template-and-visit)
-(global-set-key (kbd "C-c g m") #'LaTeX-copy-mwe-and-visit)
 (global-set-key (kbd "C-c g s") #'eshell)
 (global-set-key (kbd "C-c g t") #'qp-toggle-skeletons)
 (global-set-key (kbd "C-c g v") #'vocabularium-fasciculos-agere)
@@ -214,8 +211,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
-(put 'TeX-narrow-to-group 'disabled nil)
-(put 'LaTeX-narrow-to-environment 'disabled nil)
 
 ;;}}}
 ;;{{{ Linguae
@@ -368,149 +363,6 @@ the end of the buffer."
 
 ;;}}}
 ;;}}}
-;;{{{ LaTeX
-
-(require 'bibtex)
-(require 'latex)
-(require 'tex)
-
-(setq bibtex-dialect 'biblatex
-      LaTeX-electric-left-right-brace t
-      LaTeX-csquotes-open-quote "\\enquote{"
-      LaTeX-csquotes-close-quote "}"
-      LaTeX-indent-level 4
-      TeX-engine 'luatex
-      TeX-auto-save t
-      TeX-parse-self t)
-
-(setenv "PATH" "/usr/local/texlive/2024/bin/x86_64-linux:$PATH" t)
-
-(defun LaTeX-mode-hook-customizations ()
-  (add-to-list 'TeX-view-program-selection '(output-pdf "Xreader"))
-  (add-to-list 'LaTeX-item-list '("outline" .
-				  LaTeX-insert-outline-level))
-  (define-key LaTeX-mode-map "M-RET"
-	      #'LaTeX-insert-item-line-empty-p)
-  (define-key LaTeX-mode-map "C-c l" #'LaTeX-outline-change-level)
-  (define-key LaTeX-mode-map "C-c r" #'LaTeX-compile-from-scratch))
-
-(add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
-
-(defun LaTeX-insert-item-line-empty-p ()
-  "Insert a new item in an environment.
-You may use `LaTeX-item-list' to change the routines used to insert the item.
-
-Changed from the original, `LaTeX-insert-item', to add a newline only if the
-current line isn't empty."
-  (interactive "*")
-
-  (let ((environment (LaTeX-current-environment)))
-    (when (and (TeX-active-mark)
-               (> (point) (mark)))
-      (exchange-point-and-mark))
-    (unless (line-empty-p) (LaTeX-newline))
-    (if (assoc environment LaTeX-item-list)
-        (funcall (cdr (assoc environment LaTeX-item-list)))
-      (TeX-insert-macro "item"))
-    (indent-according-to-mode)))
-
-(defun LaTeX-beginning-of-outline-p ()
-  "Return t if point is on the line that begins an outline environment."
-  (save-excursion
-    (forward-line 0)
-    (looking-at-p (rx bol (zero-or-more space) "\\begin{outline}"))))
-
-(defun LaTeX-find-outline-level ()
-  "Find the current level in an outline environment.
-
-Since this is ultimately called from `LaTeX-insert-item-line-empty-p', which
-knows the current environment, we don't need to initially check that we're in an
-outline environment."
-  (save-excursion
-    (forward-line 0)
-    (cond ((LaTeX-beginning-of-outline-p) "1")
-	  ((looking-at (rx bol (zero-or-more space) "\\"
-			   (group (= 1 digit))))
-	   (substring-no-properties (match-string 1)))
-	  (t (forward-line -1)
-	     (LaTeX-find-outline-level)))))
-
-(defun LaTeX-insert-outline-level ()
-  "Insert the current outline level. Stored in `LaTeX-item-list' so as to be
-called by `LaTeX-insert-item-line-empty-p'."
-  (let ((level (LaTeX-find-outline-level)))
-    (TeX-insert-macro (concat level " "))))
-
-(defun LaTeX-outline-change-level (&optional decrease)
-  "Increase the level in an outline environment by default, increase with the
-prefix arg set."
-  (interactive "P")
-
-  (unless (string-equal (LaTeX-current-environment) "outline")
-    (error "Not in an outline environment"))
-
-  (let ((cur-level-int (string-to-number (LaTeX-find-outline-level)))
-	(step)
-	(new-level-str)
-	(outline-item-rx (rx (group bol (zero-or-more space) "\\")
-			     (= 1 digit)
-			     (group (zero-or-more print) eol)))
-	(current-outline-pos (save-excursion
-			       (re-search-backward
-				(rx bol (zero-or-more space)
-				    "\\begin{outline}")))))
-
-    (if decrease
-	(setq step -1)
-      (setq step 1))
-
-    (setq new-level-str (int-to-string (+ cur-level-int step)))
-
-    (save-excursion
-      (end-of-line)
-      (if (re-search-backward outline-item-rx current-outline-pos t)
-	  (replace-match (concat "\\1" new-level-str "\\2"))
-	(message "No outline item to in-/decrease.")))))
-
-(defun LaTeX-copy-ling-template-and-visit ()
-  "Copy your linguistics template to the current directory and visit the new file."
-  (interactive)
-
-  (let* ((basename (read-from-minibuffer "Basename: "))
-	 (full-name (concat basename ".tex")))
-    (copy-file "~/Dokumente/latex/linguistics-template/linguistics-template.tex" full-name)
-    (find-file full-name)))
-
-(defun LaTeX-copy-mwe-and-visit ()
-  "Copy your MWE to the current directory and visit the new file."
-  (interactive)
-
-  (let* ((basename (read-from-minibuffer "Basename: "))
-	 (full-name (concat basename ".tex")))
-    (copy-file "~/Dokumente/latex/mwe/mwe.tex" full-name)
-    (find-file full-name)))
-
-(defun LaTeX-not-tex-sty-p (x)
-  "Return t if X is a regular file and not a .tex or .sty file."
-  (and (file-regular-p x)
-       (not (string-match-p (rx line-start
-				                (one-or-more anychar)
-				                ?.
-				                (or "tex" "sty")
-				                line-end)
-			                x))))
-
-(defun LaTeX-compile-from-scratch ()
-  "Delete all regular, non-tex/sty files and recompile."
-  (interactive)
-  (let ((files (seq-filter #'LaTeX-not-tex-sty-p (directory-files "." t))))
-
-    (dolist (file files)
-      (delete-file file))
-
-    (TeX-command-run-all nil)))
-
-;;}}}
 ;;{{{ Org
 
 (require 'org)
@@ -547,7 +399,7 @@ prefix arg set."
                                entry
                                (file+olp "~/org/språk.org" "Vocābulārium" "Lingua Aasensis")
                                "*** %?"))
-      org-export-backends '(ascii html icalendar latex md man)
+      org-export-backends '(ascii html icalendar md man)
       org-special-ctrl-a/e t)
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "xreader %s"))
@@ -872,12 +724,6 @@ Equivalent to mkdir PATH && cd PATH."
   (interactive)
   (load-file "~/Links/norrønt.el")
   (set-input-method "norrønt"))
-
-(defun text-mode-hook-customization ()
-  "Customizations for text mode."
-  (latin-postfix-customizations))
-
-(add-hook 'text-mode-hook #'text-mode-hook-customization)
 
 (defun count-occurrences (p1 p2 regexp)
   "Count occurrences of REGEXP in the region."
