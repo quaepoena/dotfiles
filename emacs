@@ -770,3 +770,9 @@ Equivalent to mkdir PATH && cd PATH."
 (setq conda-anaconda-home (expand-file-name "~/miniconda3/"))
 (setq-default mode-line-format (cons '(:exec conda-env-current-name) mode-line-format))
 
+(defun qp-imperium-cursūs-acquīrere ()
+  "Imperium cursūs acquīrere."
+  (interactive)
+  (message "%s" (process-command (get-buffer-process (buffer-name)))))
+
+(global-set-key (kbd "C-c g i") #'qp-imperium-cursūs-acquīrere)
