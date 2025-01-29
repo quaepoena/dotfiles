@@ -14,6 +14,7 @@
 (setq load-prefer-newer t)
 
 ;; https://www.emacswiki.org/emacs/MELPA
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (require 'package)
 
 (add-to-list
