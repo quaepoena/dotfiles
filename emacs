@@ -368,49 +368,6 @@ the end of the buffer."
 
 ;;}}}
 ;;}}}
-;;{{{ mu4e
-
-;; Helpful link(s).
-;; https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/
-
-(require 'mu4e)
-
-;; TODO: Do you want this everywhere in dired-mode?
-(add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
-(add-hook 'message-mode-hook #'turn-off-auto-fill)
-(add-hook 'message-mode-hook #'use-hard-newlines)
-
-(setq mail-user-agent 'mu4e-user-agent
-      message-dont-reply-to-names #'mu4e-personal-or-alternative-address-p
-      message-kill-buffer-on-exit t
-      message-send-mail-function #'message-send-mail-with-sendmail
-      mu4e-attachment-dir "~/Downloads"
-      mu4e-compose-context-policy 'ask-if-none
-      mu4e-compose-format-flowed t
-      mu4e-context-policy 'pick-first
-      mu4e-headers-fields '((:human-date . 12)
-			                (:flags . 6)
-			                (:mailing-list . 10)
-			                (:from-or-to . 22)
-			                (:thread-subject))
-      mu4e-modeline-support nil
-      read-mail-command 'mu4e
-      sendmail-program "/usr/bin/msmtp")
-
-;; Hat tip to Dalker, adapted from https://emacs.stackexchange.com/a/58461.
-(defun qp-mu4e-switch-mail-account ()
-  "Quit and reload mu4e to properly change context."
-  (interactive)
-  (mu4e-context-switch)
-  (mu4e-quit)
-  (sit-for .5)
-  (mu4e))
-
-;; Redefine context switching in a few places.
-(define-key mu4e-main-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
-(define-key mu4e-headers-mode-map (kbd ";") #'qp-mu4e-switch-mail-account)
-
-;;}}}
 ;;{{{ LaTeX
 
 (require 'bibtex)
