@@ -259,8 +259,8 @@ Then switch to the process buffer."
 
 (defun scheme-mode-hook-customizations ()
   "Scheme mode customizations."
-  (keymap-set scheme-mode-map "C-c C-b" #'scheme-send-buffer)
-  (keymap-set scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
+  (define-key scheme-mode-map "C-c C-b" #'scheme-send-buffer)
+  (define-key scheme-mode-map "C-c M-b" #'scheme-send-buffer-and-go))
 
 (add-hook 'scheme-mode-hook #'scheme-mode-hook-customizations)
 
@@ -359,10 +359,10 @@ the end of the buffer."
   (add-to-list 'dired-guess-shell-alist-user
                (quote ("\\.jpg\\'" "xviewer"))))
 
-(keymap-set dired-mode-map "% e" #'qp-dired-mark-empty)
-(keymap-set dired-mode-map "C-a" #'qp-dired-ctrl-a)
-(keymap-set dired-mode-map "M-<" #'qp-dired-beginning-of-buffer)
-(keymap-set dired-mode-map "M->" #'qp-dired-end-of-buffer)
+(define-key dired-mode-map "% e" #'qp-dired-mark-empty)
+(define-key dired-mode-map [remap move-beginning-of-line] #'qp-dired-ctrl-a)
+(define-key dired-mode-map [remap beginning-of-buffer] #'qp-dired-ctrl-a)
+(define-key dired-mode-map [remap end-of-buffer] #'qp-dired-ctrl-a)
 
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
@@ -432,10 +432,10 @@ the end of the buffer."
   (add-to-list 'TeX-view-program-selection '(output-pdf "Xreader"))
   (add-to-list 'LaTeX-item-list '("outline" .
 				  LaTeX-insert-outline-level))
-  (keymap-set LaTeX-mode-map "M-RET"
+  (define-key LaTeX-mode-map "M-RET"
 	      #'LaTeX-insert-item-line-empty-p)
-  (keymap-set LaTeX-mode-map "C-c l" #'LaTeX-outline-change-level)
-  (keymap-set LaTeX-mode-map "C-c r" #'LaTeX-compile-from-scratch))
+  (define-key LaTeX-mode-map "C-c l" #'LaTeX-outline-change-level)
+  (define-key LaTeX-mode-map "C-c r" #'LaTeX-compile-from-scratch))
 
 (add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
 
@@ -562,7 +562,7 @@ prefix arg set."
 (global-set-key (kbd "C-c o l") 'org-store-link)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o c") 'org-capture)
-(keymap-set org-mode-map "C-'" #'qp-open-text-right)
+(define-key org-mode-map "C-'" #'qp-open-text-right)
 
 (setq org-agenda-files '("~/org/")
       org-capture-templates '(("t" "Create a TODO item."
@@ -716,7 +716,7 @@ Intended to allow for quick switching back to the *Help* buffer."
     (comment-or-uncomment-region bol eol)
     (comint-send-input)))
 
-(keymap-set comint-mode-map "M-#" #'qp-comment-and-send-input)
+(define-key comint-mode-map "M-#" #'qp-comment-and-send-input)
 
 ;; Fix error wherein visiting a .gpg file (occasionally) failed while gpg on
 ;; the command line worked without issue.
