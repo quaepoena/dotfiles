@@ -753,3 +753,19 @@ Equivalent to mkdir PATH && cd PATH."
 
 (when (file-exists-p "~/.emacs-local.el")
   (load-file "~/.emacs-local.el"))
+
+;; Local educloud additions
+(setq python-shell-interpreter "python3")
+
+;; Instruksar frå https://github.com/necaris/conda.el.
+(require 'conda)
+;; if you want interactive shell support, include:
+(conda-env-initialize-interactive-shells)
+;; if you want eshell support, include:
+(conda-env-initialize-eshell)
+;; if you want to automatically activate a conda environment on the opening of a file:
+(add-hook 'find-file-hook (lambda () (when (bound-and-true-p conda-project-env-path)
+                                       (conda-env-activate-for-buffer))))
+(setq conda-anaconda-home (expand-file-name "~/miniconda3/"))
+(setq-default mode-line-format (cons '(:exec conda-env-current-name) mode-line-format))
+
