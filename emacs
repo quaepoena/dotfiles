@@ -708,10 +708,10 @@ Intended to allow for quick switching back to the *Help* buffer."
   (interactive)
 
   (let ((bol (save-excursion
-               (move-beginning-of-line nil)
+               (comint-previous-prompt 1)
                (point)))
         (eol (save-excursion
-               (move-end-of-line nil)
+               (goto-char (point-max))
                (point))))
     (comment-or-uncomment-region bol eol)
     (comint-send-input)))
