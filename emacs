@@ -713,7 +713,7 @@ Intended to allow for quick switching back to the *Help* buffer."
         (eol (save-excursion
                (goto-char (point-max))
                (point))))
-    (comment-or-uncomment-region bol eol)
+    (comment-region bol eol)
     (comint-send-input)))
 
 (keymap-set comint-mode-map "M-#" #'qp-comment-and-send-input)
