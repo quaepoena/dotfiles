@@ -341,7 +341,7 @@ the end of the buffer."
    "empty file"))
 
 (defun dired-set-shell-alist ()
-  "Set preferred programs for shell commands in dired."
+  "Set preferred programs for shell commands in Dired."
   (add-to-list 'dired-guess-shell-alist-user
                (quote ("\\.pdf\\'" "xreader")))
   (add-to-list 'dired-guess-shell-alist-user
