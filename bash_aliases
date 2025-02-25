@@ -216,7 +216,7 @@ alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
 alias fu='sudo $(history -p !!)'
-alias x="xmodmap ~/.Xmodmaprc"
+alias x="setxkbmap -option ctrl:nocaps"
 
 append-to-path "/usr/local/texlive/2024/bin/x86_64-linux"
 export TEXMFHOME="${HOME}/texmf"
