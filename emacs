@@ -959,3 +959,7 @@ Equivalent to mkdir PATH && cd PATH."
 
 (when (file-exists-p "~/.emacs-local.el")
   (load-file "~/.emacs-local.el"))
+
+;; tab-bar-mode
+(tab-bar-mode)
+(setq tab-bar-show 1)
