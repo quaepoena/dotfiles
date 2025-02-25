@@ -674,7 +674,7 @@ prefix arg set."
                 display-buffer-in-previous-window
                 display-buffer-in-side-window)
                (side . right)
-               (window-width . 0.35)))
+               (window-width . 0.40)))
 (add-to-list 'display-buffer-alist
              `(,(rx (| "*xref*"
                        "*grep*"
