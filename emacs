@@ -293,8 +293,8 @@ Then switch to the process buffer."
 (require 'dired)
 
 (defun qp-dired-beginning-of-buffer ()
-  "Move point to the first line of the directory. If already there, move to
-the beginning of the buffer."
+  "Move point to the first line of the directory.
+If already there, move to the beginning of the buffer."
   (interactive)
 
   (let ((first-dired-line-p (and (not (bobp))
