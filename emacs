@@ -297,6 +297,8 @@ Then switch to the process buffer."
 If already there, move to the beginning of the buffer."
   (interactive)
 
+  (push-mark)
+
   (let ((first-dired-line-p (and (not (bobp))
                                  (save-excursion (dired-previous-line 2)
                                                  (bobp)))))
@@ -319,6 +321,8 @@ If already there move to the beginning of the line."
   "Move point to the last line of the directory.
 If already there, move to the end of the buffer."
   (interactive)
+
+  (push-mark)
 
   (let ((last-dired-line-p (and (not (eobp))
                                 (save-excursion (dired-next-line 1)
