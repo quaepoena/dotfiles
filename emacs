@@ -306,8 +306,8 @@ If already there, move to the beginning of the buffer."
       (dired-next-line 2))))
 
 (defun qp-dired-ctrl-a ()
-  "C-a moves point to the beginning of the file name, unless already there,
-in which case it moves to the beginning of the line."
+  "Move point to the beginning of the file name.
+If already there move to the beginning of the line."
   (interactive)
   (let ((file-pos (save-excursion (dired-move-to-filename) (point))))
 
@@ -316,8 +316,8 @@ in which case it moves to the beginning of the line."
       (dired-move-to-filename))))
 
 (defun qp-dired-end-of-buffer ()
-  "Move point to the last line of the directory. If already there, move to
-the end of the buffer."
+  "Move point to the last line of the directory.
+If already there, move to the end of the buffer."
   (interactive)
 
   (let ((last-dired-line-p (and (not (eobp))
