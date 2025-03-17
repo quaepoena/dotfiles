@@ -298,8 +298,8 @@ If already there, move to the beginning of the buffer."
   (interactive)
 
   (let ((first-dired-line-p (and (not (bobp))
-                                (save-excursion (dired-previous-line 2)
-                                                (bobp)))))
+                                 (save-excursion (dired-previous-line 2)
+                                                 (bobp)))))
     (if first-dired-line-p
         (dired-previous-line 2)
       (goto-char (point-min))
