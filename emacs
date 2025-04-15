@@ -37,6 +37,7 @@
 ;; https://masteringemacs.org/article/disabling-prompts-emacs
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; TODO: Still relevant?
 ;; https://masteringemacs.org/article/fixing-mark-commands-transient-mark-mode
 (defun push-mark-no-activate ()
   "Pushes `point' to `mark-ring' and does not activate the region.
