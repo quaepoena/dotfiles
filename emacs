@@ -447,6 +447,7 @@ If already there, move to the end of the buffer."
   (keymap-set LaTeX-mode-map "C-c r" #'LaTeX-compile-from-scratch))
 
 (add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 
 (defun LaTeX-insert-item-line-empty-p ()
   "Insert a new item in an environment.
