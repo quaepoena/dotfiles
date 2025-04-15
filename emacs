@@ -434,6 +434,10 @@ If already there, move to the end of the buffer."
 (setenv "PATH" "/usr/local/texlive/2024/bin/x86_64-linux:$PATH" t)
 
 (defun LaTeX-mode-hook-customizations ()
+  "My LaTeX customization."
+  ;; TODO: Make this work.
+  ;; (add-to-list 'TeX-view-program-list '("Emacs" . '("emacsclient %o")))
+  ;; (add-to-list 'TeX-view-program-selection '(output-pdf "Emacs"))
   (add-to-list 'TeX-view-program-selection '(output-pdf "Xreader"))
   (add-to-list 'LaTeX-item-list '("outline" .
 				  LaTeX-insert-outline-level))
