@@ -100,7 +100,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "M-DEL") nil)
 (global-set-key (kbd "M-`") #'jump-to-mark)
 (global-set-key (kbd "<M-backspace>") #'kill-region)
-(global-set-key (kbd "C-`") #'push-mark-no-activate)
+(global-set-key (kbd "M-`") #'push-mark-no-activate)
 (global-set-key (kbd "C-c g e") #'open-dot-emacs)
 (global-set-key (kbd "C-c g i") #'qp-imperium-cursūs-acquīrere)
 (global-set-key (kbd "C-c g k") #'kill-restart-emacs)
