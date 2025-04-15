@@ -553,16 +553,6 @@ prefix arg set."
 				                line-end)
 			                x))))
 
-(defun LaTeX-compile-from-scratch ()
-  "Delete all regular, non-tex/sty files and recompile."
-  (interactive)
-  (let ((files (seq-filter #'LaTeX-not-tex-sty-p (directory-files "." t))))
-
-    (dolist (file files)
-      (delete-file file))
-
-    (TeX-command-run-all nil)))
-
 ;;}}}
 ;;{{{ Org
 
