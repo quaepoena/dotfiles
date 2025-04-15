@@ -703,6 +703,7 @@ prefix arg set."
                (direction . bottom)
                (window-height . 0.40)))
 
+;; TODO: Make this toggle.
 (defun qp-display-help-buffer ()
   "Display the *Help* buffer, creating a blank buffer if it doesn't exist.
 Intended to allow for quick switching back to the *Help* buffer."
@@ -713,6 +714,7 @@ Intended to allow for quick switching back to the *Help* buffer."
 
 (require 'comint)
 
+;; TODO: Improve this to first check if you're at a prompt.
 (defun qp-comment-and-send-input ()
   "Comment the current line and return, as `insert-comment' in bash."
   (interactive)
