@@ -448,6 +448,7 @@ If already there, move to the end of the buffer."
   (keymap-set LaTeX-mode-map "C-c l" #'LaTeX-outline-change-level)
   (keymap-set LaTeX-mode-map "C-c r" #'LaTeX-compile-from-scratch))
 
+;; LaTeX-mode-hook
 (add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 
