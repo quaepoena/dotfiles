@@ -614,14 +614,15 @@ prefix arg set."
 (require 'skeleton)
 
 (setq skeleton-pair t
-      skeleton-pair-alist (list (quote (?„ _ ?“))))
+      skeleton-pair-alist (list (quote (?„ _ ?“))
+                                (quote (?「 _ ?」))))
 
 (defvar qp-skeletons t "Set to t if user-defined skeletons are enabled.")
 
 (defun qp-skeletons (arg)
   "Enable skeletons if ARG, otherwise disable them."
 
-  (let ((chars (list "'" "\"" "(" "[" "{" "„" "«" "`" "%")))
+  (let ((chars (list "'" "\"" "(" "[" "{" "„" "«" "<" "`" "%" "「")))
     (if arg
         (dolist (char chars)
           (global-set-key (kbd char) #'skeleton-pair-insert-maybe))
