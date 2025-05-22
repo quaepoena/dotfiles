@@ -23,9 +23,11 @@
 
 (package-initialize)
 
-(setq-default backup-by-copying-when-linked t)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+(setq backup-by-copying t)
+
+(setq-default backup-by-copying-when-linked t
+              indent-tabs-mode nil
+              tab-width 4)
 
 (require 'tramp)     ; tramp-default-method
 (require 'find-func) ; find-function-C-source-directory
