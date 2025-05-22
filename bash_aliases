@@ -98,7 +98,7 @@ function gs-pages() {
     fi
 
     local time="$(date "+%Y%m%d%H%M%S")"
-    ghostscript -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o /tmp/gs-output-"${time}".pdf "$1"
+    ghostscript -dQUIET -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o "${output}" "$1"
 }
 
 
