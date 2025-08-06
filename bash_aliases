@@ -173,15 +173,15 @@ function ssh-add-init() {
 
 function timer() {
     if [[ $# -ne 1 ]]; then
-	echo "Geben Sie eins Zahl als Eingabewert." >&2
-	echo "Benutzung: ${FUNCNAME[0]} <Zahl>." >&2
-	return 1
+	    echo "Geben Sie eins Zahl als Eingabewert." >&2
+	    echo "Benutzung: ${FUNCNAME[0]} <Zahl>." >&2
+	    return 1
     fi
 
     if ! [[ "$1" -gt 0 ]]; then
-	echo "Geben Sie eine Zahl, die größer als null ist." >&2
-	echo "Benutzung: ${FUNCNAME[0]} <Zahl>." >&2
-	return 1
+	    echo "Geben Sie eine Zahl, die größer als null ist." >&2
+	    echo "Benutzung: ${FUNCNAME[0]} <Zahl>." >&2
+	    return 1
     fi
 
     date +%T
