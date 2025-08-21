@@ -86,8 +86,9 @@ function gs-pdf-concat() {
     fi
 
     local time="$(date "+%Y%m%d%H%M%S")"
+    local output="/tmp/gs-pdf-concat-${time}.pdf"
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -o /tmp/gs-pdf-concat-output-"${time}".pdf "$@"
-    echo "Fasciculus scriptus est: /tmp/gs-pdf-concat-output-${time}.pdf" >&2
+    echo "${output}"
 }
 
 
@@ -98,7 +99,7 @@ function gs-pages() {
     fi
 
     local time="$(date "+%Y%m%d%H%M%S")"
-    local output="/tmp/gs-output-${time}.pdf"
+    local output="/tmp/gs-pages-${time}.pdf"
     ghostscript -dQUIET -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o "${output}" "$1"
     echo "${output}"
 }
