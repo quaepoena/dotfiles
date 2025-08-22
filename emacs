@@ -107,7 +107,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-c g i") #'qp-imperium-cursūs-acquīrere)
 (global-set-key (kbd "C-c g k") #'kill-restart-emacs)
 (global-set-key (kbd "C-c g l") #'LaTeX-copy-ling-template-and-visit)
-(global-set-key (kbd "C-c g m") #'LaTeX-copy-mwe-and-visit)
 (global-set-key (kbd "C-c g s") #'eshell)
 (global-set-key (kbd "C-c g t") #'qp-toggle-skeletons)
 (global-set-key (kbd "C-c g v") #'vocabularium-fasciculos-agere)
@@ -535,15 +534,6 @@ prefix arg set."
   (let* ((basename (read-from-minibuffer "Basename: "))
 	 (full-name (concat basename ".tex")))
     (copy-file "~/Dokumente/latex/linguistics-template/linguistics-template.tex" full-name)
-    (find-file full-name)))
-
-(defun LaTeX-copy-mwe-and-visit ()
-  "Copy your MWE to the current directory and visit the new file."
-  (interactive)
-
-  (let* ((basename (read-from-minibuffer "Basename: "))
-	 (full-name (concat basename ".tex")))
-    (copy-file "~/Dokumente/latex/mwe/mwe.tex" full-name)
     (find-file full-name)))
 
 (defun LaTeX-not-tex-sty-p (x)
