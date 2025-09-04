@@ -87,7 +87,7 @@ function gs-pdf-concat() {
 
     local time="$(date "+%Y%m%d%H%M%S")"
     local output="/tmp/gs-pdf-concat-${time}.pdf"
-    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -o /tmp/gs-pdf-concat-output-"${time}".pdf "$@"
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -o "${output}" "$@"
     echo "${output}"
 }
 
