@@ -423,6 +423,7 @@ If already there, move to the end of the buffer."
 (require 'tex)
 
 (setq bibtex-dialect 'biblatex
+      bibtex-comment-start "%"
       reftex-plug-into-AUCTeX t
       LaTeX-electric-left-right-brace t
       LaTeX-csquotes-open-quote "\\enquote{"
