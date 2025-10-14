@@ -445,8 +445,7 @@ If already there, move to the end of the buffer."
 				  LaTeX-insert-outline-level))
   (keymap-set LaTeX-mode-map "M-RET"
 	      #'LaTeX-insert-item-line-empty-p)
-  (keymap-set LaTeX-mode-map "C-c l" #'LaTeX-outline-change-level)
-  (keymap-set LaTeX-mode-map "C-c r" #'LaTeX-compile-from-scratch))
+  (keymap-set LaTeX-mode-map "C-c l" #'LaTeX-outline-change-level))
 
 ;; LaTeX-mode-hook
 (add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
@@ -528,24 +527,6 @@ prefix arg set."
 	  (replace-match (concat "\\1" new-level-str "\\2"))
 	(message "No outline item to in-/decrease.")))))
 
-(defun LaTeX-copy-ling-template-and-visit ()
-  "Copy your linguistics template to the current directory and visit the new file."
-  (interactive)
-
-  (let* ((basename (read-from-minibuffer "Basename: "))
-	 (full-name (concat basename ".tex")))
-    (copy-file "~/Dokumente/latex/linguistics-template/linguistics-template.tex" full-name)
-    (find-file full-name)))
-
-(defun LaTeX-not-tex-sty-p (x)
-  "Return t if X is a regular file and not a .tex or .sty file."
-  (and (file-regular-p x)
-       (not (string-match-p (rx line-start
-				                (one-or-more anychar)
-				                ?.
-				                (or "tex" "sty")
-				                line-end)
-			                x))))
 
 ;;}}}
 ;;{{{ Org
