@@ -106,7 +106,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-c g e") #'open-dot-emacs)
 (global-set-key (kbd "C-c g i") #'qp-imperium-cursūs-acquīrere)
 (global-set-key (kbd "C-c g k") #'kill-restart-emacs)
-(global-set-key (kbd "C-c g l") #'LaTeX-copy-ling-template-and-visit)
 (global-set-key (kbd "C-c g s") #'eshell)
 (global-set-key (kbd "C-c g t") #'qp-toggle-skeletons)
 (global-set-key (kbd "C-c g v") #'vocabularium-fasciculos-agere)
