@@ -612,8 +612,6 @@ prefix arg set."
 
 (add-hook 'write-file-functions #'delete-trailing-whitespace)
 
-(setq backup-by-copying t)
-
 ;; https://melpa.org/#/buffer-move
 (require 'buffer-move)
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
