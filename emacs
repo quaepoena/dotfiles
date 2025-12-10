@@ -119,7 +119,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;;{{{ Trivial
 
 (defun kill-restart-emacs (arg)
-  "With ARG set, kill and restart Emacs, otherwise just kill."
+  "With ARG, kill and restart Emacs, otherwise just kill."
   (interactive "P")
 
   (if arg
