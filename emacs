@@ -68,12 +68,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq confirm-nonexistent-file-or-buffer nil)
 
 ;;}}}
-;;{{{ Previously disabled commands
-
-(put 'downcase-region 'disabled nil)
-
-;;}}}
-
 ;;}}}
 ;;{{{ Flycheck
 
@@ -212,6 +206,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;;}}}
 ;;{{{ Previously disabled commands
 
+(put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
