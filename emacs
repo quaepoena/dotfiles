@@ -221,20 +221,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;;}}}
 ;;{{{ Linguae
 
-(defun lang-oe ()
-  "\'ǿ\' et \'Ǿ\' in registra ?ø et ?Ø servāre."
-  (interactive)
-
-  (set-register ?ø "ǿ")
-  (set-register ?Ø "Ǿ"))
-
-(defun o-med-kvist ()
-"Load the ogonek into two registers."
-  (interactive)
-
-  (set-register ?, "ǫ")
-  (set-register ?< "Ǫ"))
-
 ;;{{{ APL
 
 (add-to-list 'load-path "~/src/gnu-apl-mode")
