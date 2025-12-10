@@ -465,14 +465,15 @@ outline environment."
 	     (LaTeX-find-outline-level)))))
 
 (defun LaTeX-insert-outline-level ()
-  "Insert the current outline level. Stored in `LaTeX-item-list' so as to be
-called by `LaTeX-insert-item-line-empty-p'."
+  "Insert the current outline level.
+
+Stored in `LaTeX-item-list' so as to be called by
+`LaTeX-insert-item-line-empty-p'."
   (let ((level (LaTeX-find-outline-level)))
     (TeX-insert-macro (concat level " "))))
 
-(defun LaTeX-outline-change-level (&optional decrease)
-  "Increase the level in an outline environment by default, increase with the
-prefix arg set."
+(defun LaTeX-outline-change-level (&optional arg)
+  "Increase (or decrease with ARG) the level in an outline environment."
   (interactive "P")
 
   (unless (string-equal (LaTeX-current-environment) "outline")
