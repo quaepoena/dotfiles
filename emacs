@@ -11,8 +11,6 @@
 ;;}}}
 ;;{{{ General Emacs tweaks
 
-(setq load-prefer-newer t)
-
 ;; https://www.emacswiki.org/emacs/MELPA
 (require 'package)
 
@@ -23,7 +21,9 @@
 
 (package-initialize)
 
-(setq backup-by-copying t)
+(setq backup-by-copying t
+      load-prefer-newer t
+      next-screen-context-lines 10)
 
 (setq-default backup-by-copying-when-linked t
               indent-tabs-mode nil
