@@ -919,6 +919,23 @@ Equivalent to mkdir PATH && cd PATH."
 (tab-bar-mode)
 (setq tab-bar-show 1)
 
+(require 'sql)
+(add-to-list 'sql-product-alist '(sqlite
+                                  :name "SQLite"
+                                  :free-software t
+                                  :font-lock sql-mode-sqlite-font-lock-keywords
+                                  :sqli-program sql-sqlite-program
+                                  :sqli-options sql-sqlite-options
+                                  :sqli-login sql-sqlite-login-params
+                                  :sqli-comint-func sql-comint-sqlite
+                                  :list-all ".tables"
+                                  :list-table ".schema %s"
+                                  :completion-object sql-sqlite-completion-object
+                                  :prompt-regexp "^sqlite> "
+                                  :prompt-length 8
+                                  :prompt-cont-regexp "^   \\.\\.\\.> "
+                                  :input-filter sql-remove-tabs-filter))
+
 (defface qp-accadica-scrīptūra-babylonica
   '((t . (:font "Santakku" :height 400)))
   "Scrīptūra cuneiforma cum signīs babylonicīs.")
