@@ -490,8 +490,8 @@ Stored in `LaTeX-item-list' so as to be called by
 				(rx bol (zero-or-more space)
 				    "\\begin{outline}")))))
 
-    (if decrease
-	(setq step -1)
+    (if arg
+	    (setq step -1)
       (setq step 1))
 
     (setq new-level-str (int-to-string (+ cur-level-int step)))
