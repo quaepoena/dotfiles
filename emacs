@@ -437,7 +437,7 @@ current line isn't empty."
     (when (and (TeX-active-mark)
                (> (point) (mark)))
       (exchange-point-and-mark))
-    (unless (line-empty-p) (LaTeX-newline))
+    (unless (qp-line-empty-p) (LaTeX-newline))
     (if (assoc environment LaTeX-item-list)
         (funcall (cdr (assoc environment LaTeX-item-list)))
       (TeX-insert-macro "item"))
@@ -839,7 +839,7 @@ Equivalent to mkdir PATH && cd PATH."
   (interactive)
   (setq kill-ring nil))
 
-(defun line-empty-p ()
+(defun qp-line-empty-p ()
   "Return t if the line at point is empty."
   (save-excursion
     (forward-line 0)
