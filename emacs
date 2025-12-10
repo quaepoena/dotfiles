@@ -565,8 +565,6 @@ Stored in `LaTeX-item-list' so as to be called by
                                 (quote (?「 _ ?」))
                                 (quote (?（ _ ?）))))
 
-(defvar qp-skeletons t "Set to t if user-defined skeletons are enabled.")
-
 (defun qp-skeletons (arg)
   "Enable skeletons if ARG, otherwise disable them."
 
@@ -580,13 +578,15 @@ Stored in `LaTeX-item-list' so as to be called by
   (setq qp-skeletons arg))
 
 (defun qp-toggle-skeletons ()
-  "Interactive command to toggle your skeletons."
+  "Interactive command to toggle skeletons."
   (interactive)
-  (if qp-skeletons
+  (if skeleton-pair
       (progn
         (qp-skeletons nil)
+        (setq skeleton-pair nil)
         (message "Die Skelette sind ausgeschaltet."))
     (qp-skeletons t)
+    (setq skeleton-pair t)
     (message "Die Skelette sind eingeschaltet.")))
 
 (qp-skeletons t)
