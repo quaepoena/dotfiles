@@ -568,14 +568,11 @@ Stored in `LaTeX-item-list' so as to be called by
 (defun qp-skeletons (arg)
   "Enable skeletons if ARG, otherwise disable them."
 
-  (let ((chars (list "'" "\"" "(" "[" "{" "„" "«" "<" "`" "%" "「" "（")))
-    (if arg
-        (dolist (char chars)
-          (global-set-key (kbd char) #'skeleton-pair-insert-maybe))
-      (dolist (char chars)
-        (global-set-key (kbd char) #'self-insert-command))))
+  (let ((chars (list "'" "\"" "(" "[" "{" "„" "«" "<" "`" "%" "「" "（"))
+        (func (if arg #'skeleton-pair-insert-maybe #'self-insert-command)))
 
-  (setq qp-skeletons arg))
+    (dolist (char chars)
+      (global-set-key (kbd char) func))))
 
 (defun qp-toggle-skeletons ()
   "Interactive command to toggle skeletons."
