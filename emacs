@@ -846,7 +846,6 @@ Equivalent to mkdir PATH && cd PATH."
     (looking-at (rx line-start (zero-or-more space) line-end))))
 
 (defun latin-postfix-customizations ()
-  (interactive)
   (set-input-method "latin-postfix")
   (deactivate-input-method)
 
