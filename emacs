@@ -916,6 +916,8 @@ Equivalent to mkdir PATH && cd PATH."
 (tab-bar-mode)
 (setq tab-bar-show 1)
 
+(add-to-list 'load-path "~/Links/oppgåve-elisp/")
+
 (require 'sql)
 (add-to-list 'sql-product-alist '(sqlite
                                   :name "SQLite"
