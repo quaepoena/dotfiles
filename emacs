@@ -107,6 +107,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-c s o") #'owd)
 (global-set-key (kbd "C-w") #'backward-kill-word)
 ;; https://emacs.stackexchange.com/a/3471
+(global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x o") nil)
 (global-set-key (kbd "C-.") #'other-window)
 (global-set-key (kbd "C-'") #'qp-open-text-right)
@@ -599,8 +600,6 @@ prefix arg set."
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
-
-(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; https://www.masteringemacs.org/article/demystifying-emacs-window-manager
 (setq switch-to-buffer-in-dedicated-window 'pop)
