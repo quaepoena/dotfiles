@@ -974,4 +974,8 @@ Equivalent to mkdir PATH && cd PATH."
 
   (qp-overlay-applicare inc fin 'qp-accadica-scrīptūra-neoassyrica))
 
+(unless (eq (file-attribute-inode-number (file-attributes "~/.emacs"))
+            (file-attribute-inode-number (file-attributes "~/src/dotfiles/publicus/emacs")))
+  (message "%s" "Fasciculus '~/.emacs' non īdem ut '~/src/dotfiles/publicus/emacs' est."))
+
 ;;; .emacs ends here
