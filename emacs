@@ -225,6 +225,20 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (setq gnu-apl-show-keymap-on-startup t)
 
 ;;}}}
+;;{{{ Haskell
+
+(defun qp-haskell-customizations ()
+  "Haskell mode customizations."
+  (setq-local skeleton-pair-alist
+              (list
+               (quote (?` _ ?`))
+               (quote (?„ _ ?“))
+               (quote (?「 _ ?」))
+               (quote (?（ _ ?）)))))
+
+(add-hook 'haskell-mode-hook #'qp-haskell-customizations)
+
+;;}}}
 ;;{{{ Scheme
 
 (require 'cmuscheme)
