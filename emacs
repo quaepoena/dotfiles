@@ -868,7 +868,7 @@ Equivalent to mkdir PATH && cd PATH."
 			("ø'" ?ǿ)
 			("Ø'" ?Ǿ))))
 
-(defun qp-indita-accadia ()
+(defun qp-indita-accadica ()
   "Methodus inditōrum ad scribendum linguam Accadicam."
   (interactive)
   (load-file "~/Links/qp-accadica.el")
