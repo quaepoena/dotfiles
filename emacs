@@ -143,6 +143,19 @@ Inspired by `open-line'."
   (save-excursion
     (insert ? )))
 
+(defun tessera ()
+  "Fasciculum de gpg in ~/pw/ aperīre."
+  (interactive)
+
+  (let* ((dir (expand-file-name "~/pw/"))
+         (fasciculi (with-temp-buffer
+                      (insert-directory dir "" nil t)
+                      (buffer-substring-no-properties (point-min) (point-max))))
+         (fasciculi′ (split-string fasciculi))
+         (fasciculus (completing-read "Fasciculus: " fasciculi′)))
+
+    (find-file (concat dir fasciculus))))
+
 ;;}}}
 ;;{{{ Not-so trivial
 
@@ -809,15 +822,6 @@ Intended to allow for quick switching back to the *Help* buffer."
 Equivalent to mkdir PATH && cd PATH."
   (mkdir path t)
   (cd path))
-
-(defun tessera (fasciculus)
-  "Fasciculum de gpg in ~/pw/ aperīre."
-  (interactive "sFasciculus: ")
-
-  (find-file (concat "~/pw/" fasciculus ".gpg")))
-
-(defun eshell/pw (fasciculus)
-  (tessera fasciculus))
 
 (defun eshell/pwcat (path)
   (eshell/cat (concat "~/pw/" path ".gpg")))
