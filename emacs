@@ -39,20 +39,13 @@
 ;; https://masteringemacs.org/article/disabling-prompts-emacs
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; TODO: Still relevant?
 ;; https://masteringemacs.org/article/fixing-mark-commands-transient-mark-mode
 (defun push-mark-no-activate ()
   "Pushes `point' to `mark-ring' and does not activate the region.
 Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
   (interactive)
   (push-mark (point) t nil)
-  (message "Pushed mark to ring"))
-
-(defun jump-to-mark ()
-  "Jumps to the local mark, respecting the `mark-ring' order.
-This is the same as using \\[set-mark-command] with the prefix argument."
-  (interactive)
-  (set-mark-command 1))
+  (message "Pushed mark to ring."))
 
 ;;{{{ Variables
 
@@ -94,7 +87,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;;{{{ Global keys
 
 (global-set-key (kbd "M-DEL") nil)
-(global-set-key (kbd "M-`") #'jump-to-mark)
 (global-set-key (kbd "<M-backspace>") #'kill-region)
 (global-set-key (kbd "M-`") #'push-mark-no-activate)
 (global-set-key (kbd "C-c g e") #'open-dot-emacs)
