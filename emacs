@@ -569,10 +569,26 @@ Stored in `LaTeX-item-list' so as to be called by
 (global-set-key (kbd "C-c o c") 'org-capture)
 (keymap-set org-mode-map "C-'" #'qp-open-text-right)
 
+(defun qp-malazan-encylopedia-template ()
+  "Return a string to be used in an org template for capturing section summaries."
+  "** %?
+:PROPERTIES:
+:Perspective:
+:Present:
+:Mentioned:
+:END:
+
+*** Summary
+*** Questions")
+
 (setq org-agenda-files '("~/org/")
-      org-capture-templates '(("t" "Create a TODO item."
-			                   entry
-			                   (file "~/org/todo.org")
+      org-capture-templates '(("m" "Malazan section summary."
+                               entry
+                               (file+olp "~/org/malazan/encyclopaedīa.org" "Unfiled summaries")
+                               (function qp-malazan-encylopedia-template))
+                              ("t" "Create a TODO item."
+	    	                   entry
+	    	                   (file "~/org/todo.org")
                                "* TODO %?")
                               ("v" "Verbum novum aut ignotum.")
                               ("vg" "Lingua Graeca."
