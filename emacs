@@ -96,6 +96,8 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 (global-set-key (kbd "C-c g t") #'qp-toggle-skeletons)
 (global-set-key (kbd "C-c g v") #'vocabularium-fasciculos-agere)
 (global-set-key (kbd "C-c g w") #'erase-kill-ring)
+;; TODO: Post sex mēnsēs (hodie 2025-12-14), Vīsne hanc fūnctiōnam retinēre?
+(global-set-key (kbd "C-c g z") #'qp-copy-kill-to-reg-z)
 (global-set-key (kbd "C-c s o") #'owd)
 (global-set-key (kbd "C-w") #'backward-kill-word)
 ;; https://emacs.stackexchange.com/a/3471
@@ -1006,6 +1008,13 @@ Equivalent to mkdir PATH && cd PATH."
                                   :prompt-length 8
                                   :prompt-cont-regexp "^   \\.\\.\\.> "
                                   :input-filter sql-remove-tabs-filter))
+
+(defun qp-copy-kill-to-reg-z ()
+  "Copy the latest kill to register ?z."
+  (interactive)
+
+  (set-register ?z (current-kill 0 t))
+  (message "Copied '%s' to register ?z." (current-kill 0 t)))
 
 (add-to-list 'load-path "~/Links/oppgåve-elisp/")
 
