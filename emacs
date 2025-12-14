@@ -970,14 +970,9 @@ Equivalent to mkdir PATH && cd PATH."
 
 (advice-add 'ediff-quit :around #'disable-y-or-n-p)
 
-(when (file-exists-p "~/.emacs-local.el")
-  (load-file "~/.emacs-local.el"))
-
 ;; tab-bar-mode
 (tab-bar-mode)
 (setq tab-bar-show 1)
-
-(add-to-list 'load-path "~/Links/oppgåve-elisp/")
 
 (require 'sql)
 (add-to-list 'sql-product-alist '(sqlite
@@ -996,8 +991,10 @@ Equivalent to mkdir PATH && cd PATH."
                                   :prompt-cont-regexp "^   \\.\\.\\.> "
                                   :input-filter sql-remove-tabs-filter))
 
+(add-to-list 'load-path "~/Links/oppgåve-elisp/")
 
-
+(when (file-exists-p "~/.emacs-local.el")
+  (load-file "~/.emacs-local.el"))
 
 (unless (eq (file-attribute-inode-number (file-attributes "~/.emacs"))
             (file-attribute-inode-number (file-attributes "~/src/dotfiles/publicus/emacs")))
