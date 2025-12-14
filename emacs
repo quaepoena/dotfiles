@@ -810,14 +810,14 @@ Equivalent to mkdir PATH && cd PATH."
   (mkdir path t)
   (cd path))
 
-(defun signum (fasciculus)
+(defun tessera (fasciculus)
   "Fasciculum de gpg in ~/pw/ aperīre."
   (interactive "sFasciculus: ")
 
   (find-file (concat "~/pw/" fasciculus ".gpg")))
 
 (defun eshell/pw (fasciculus)
-  (signum fasciculus))
+  (tessera fasciculus))
 
 (defun eshell/pwcat (path)
   (eshell/cat (concat "~/pw/" path ".gpg")))
