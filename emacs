@@ -209,6 +209,55 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;;}}}
 ;;{{{ Linguae
 
+;;{{{ Accadica
+
+(defun qp-indita-accadica ()
+  "Methodus inditōrum ad scribendum linguam Accadicam."
+  (interactive)
+  (load-file "~/Links/qp-accadica.el")
+  (set-input-method "Accadica"))
+
+(defface qp-accadica-scrīptūra-babylonica
+  '((t . (:font "Santakku" :height 400)))
+  "Scrīptūra cuneiforma cum signīs babylonicīs.")
+
+(defface qp-accadica-scrīptūra-babylonica-lapidaria
+  '((t . (:font "SantakkuM" :height 400)))
+  "Scrīptūra cuneiforma cum signīs babylonicīs lapidariīs.")
+
+(defface qp-accadica-scrīptūra-neoassyrica
+  '((t . (:font "Assurbanipal" :height 400)))
+  "Scrīptūra cuneiforma cum signīs neoassyricīs.")
+
+(defun qp-overlay-applicāre (inc fin typus)
+  "Faciem TYPUS ab INC ad FIN applicāre."
+
+  (remove-overlays inc fin 'group 'qp-lingua-accadica-scrīptūra)
+
+  (let ((overlay (make-overlay inc fin nil t nil)))
+    (overlay-put overlay 'face typus)
+    (overlay-put overlay 'group 'qp-lingua-accadica-scrīptūra)))
+
+(defun qp-indita-babylonica-applicāre (inc fin)
+  "Scrīptūram Babylonicam ab INC ad FIN applicāre."
+  (interactive "r")
+
+  (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-babylonica))
+
+(defun qp-indita-babylonica-lapidaria-applicāre (inc fin)
+  "Scrīptūram Babylonicam lapidāriam ab INC ad FIN applicāre."
+  (interactive "r")
+
+  (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-babylonica-lapidaria))
+
+(defun qp-indita-neoassyrica-applicāre (inc fin)
+  "Scrīptūram Neoassyricam ab INC ad FIN applicāre."
+  (interactive "r")
+
+  (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-neoassyrica))
+
+;;}}}
+
 ;;{{{ APL
 
 (add-to-list 'load-path "~/src/gnu-apl-mode")
@@ -874,12 +923,6 @@ Equivalent to mkdir PATH && cd PATH."
 			("ø'" ?ǿ)
 			("Ø'" ?Ǿ))))
 
-(defun qp-indita-accadica ()
-  "Methodus inditōrum ad scribendum linguam Accadicam."
-  (interactive)
-  (load-file "~/Links/qp-accadica.el")
-  (set-input-method "Accadica"))
-
 (defun norrønt-input ()
   "Define my own input-method for writing Old Norse."
   (interactive)
@@ -953,44 +996,8 @@ Equivalent to mkdir PATH && cd PATH."
                                   :prompt-cont-regexp "^   \\.\\.\\.> "
                                   :input-filter sql-remove-tabs-filter))
 
-(defface qp-accadica-scrīptūra-babylonica
-  '((t . (:font "Santakku" :height 400)))
-  "Scrīptūra cuneiforma cum signīs babylonicīs.")
 
-(defface qp-accadica-scrīptūra-babylonica-lapidaria
-  '((t . (:font "SantakkuM" :height 400)))
-  "Scrīptūra cuneiforma cum signīs babylonicīs lapidariīs.")
 
-(defface qp-accadica-scrīptūra-neoassyrica
-  '((t . (:font "Assurbanipal" :height 400)))
-  "Scrīptūra cuneiforma cum signīs neoassyricīs.")
-
-(defun qp-overlay-applicāre (inc fin typus)
-  "Faciem TYPUS ab INC ad FIN applicāre."
-
-  (remove-overlays inc fin 'group 'qp-lingua-accadica-scrīptūra)
-
-  (let ((overlay (make-overlay inc fin nil t nil)))
-    (overlay-put overlay 'face typus)
-    (overlay-put overlay 'group 'qp-lingua-accadica-scrīptūra)))
-
-(defun qp-apply-babylonica (inc fin)
-  "Scrīptūram Babylonicam ab INC ad FIN applicāre."
-  (interactive "r")
-
-  (qp-overlay-applicare inc fin 'qp-accadica-scrīptūra-babylonica))
-
-(defun qp-apply-babylonica-lapidaria (inc fin)
-  "Scrīptūram Babylonicam lapidāriam ab INC ad FIN applicāre."
-  (interactive "r")
-
-  (qp-overlay-applicare inc fin 'qp-accadica-scrīptūra-babylonica-lapidaria))
-
-(defun qp-apply-neoassyrica (inc fin)
-  "Scrīptūram Neoassyricam ab INC ad FIN applicāre."
-  (interactive "r")
-
-  (qp-overlay-applicare inc fin 'qp-accadica-scrīptūra-neoassyrica))
 
 (unless (eq (file-attribute-inode-number (file-attributes "~/.emacs"))
             (file-attribute-inode-number (file-attributes "~/src/dotfiles/publicus/emacs")))
