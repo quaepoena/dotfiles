@@ -213,6 +213,7 @@ alias x="setxkbmap -option ctrl:nocaps"
 append-to-path "${HOME}/.cabal/bin"
 append-to-path "/usr/local/texlive/2024/bin/x86_64-linux"
 export TEXMFHOME="${HOME}/texmf"
+export EDITOR="emacsclient -t"
 
 export -f error
 export -f line
