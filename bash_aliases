@@ -56,7 +56,7 @@ function line() {
 # Return 0 if <item> is in <list>, else 1.
 function member() {
     if [[ $# -lt 2 ]]; then
-	error "Bruk: ${FUNCNAME[0]} <item> <list>"
+	    error "Bruk: ${FUNCNAME[0]} <item> <list>"
     fi
 
     local item="$1"
@@ -64,9 +64,9 @@ function member() {
     local -a list="$@"
 
     for i in ${list[@]}; do
-	if [[ "${item}" == "${i}" ]]; then
-	    return 0
-	fi
+	    if [[ "${item}" == "${i}" ]]; then
+	        return 0
+	    fi
     done
 
     return 1
