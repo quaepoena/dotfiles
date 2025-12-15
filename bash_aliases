@@ -9,11 +9,13 @@ function append-to-path() {
     fi
 }
 
+
 function cd-et-ls() {
     cd "$1"
     ls -1
     return "$?"
 }
+
 
 # TODO: Is this behavior correct in other programs?
 function error() {
@@ -87,32 +89,6 @@ function pw() {
 }
 
 
-function gs-pdf-concat() {
-    if [[ $# -lt 2 ]]; then
-	    echo "Usage: gs-concat <fil01.pdf> <fil02.pdf> […]" >&2
-	    return 1
-    fi
-
-    local time="$(date "+%Y%m%d%H%M%S")"
-    local output="/tmp/gs-pdf-concat-${time}.pdf"
-    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -o "${output}" "$@"
-    echo "${output}"
-}
-
-
-function gs-pages() {
-    if [[ $# -ne 2 ]]; then
-	    echo "Usage: gs-pages <input> <page range>" >&2
-	    return 1
-    fi
-
-    local time="$(date "+%Y%m%d%H%M%S")"
-    local output="/tmp/gs-pages-${time}.pdf"
-    ghostscript -dQUIET -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPageList="$2" -o "${output}" "$1"
-    echo "${output}"
-}
-
-
 function pdf-paginae-vacae-per-totum-indere() {
     if [[ "$#" -ne 3 ]]; then
         echo "Ūsus: ${FUNCNAME[0]} <numerus pāginārum scrīptī> <fōns.pdf> <ēventus.pdf>" >&2
@@ -133,6 +109,7 @@ function pdf-paginae-vacae-per-totum-indere() {
     pdftk A="${fons}" B="${vacua}" cat ${pars_iussus} B1 output "${eventus}"
 }
 
+
 # https://unix.stackexchange.com/a/15995
 function pdf-paginam-vacuam-indere() {
     if [[ "$#" -ne 3 ]]; then
@@ -149,6 +126,7 @@ function pdf-paginam-vacuam-indere() {
 
     pdftk A="${fons}" B="${vacua}" cat "A1-$(( ${numerus} - 1 ))" B1 "A${numerus}-end" output "${eventus}"
 }
+
 
 function pdf-paginam-vacuam-facere() {
     echo "" | ps2pdf -sPAPERSIZE=a4 - /tmp/pāgina-vacua.pdf
