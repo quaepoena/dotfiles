@@ -9,6 +9,12 @@ function append-to-path() {
     fi
 }
 
+function cd-et-ls() {
+    cd "$1"
+    ls -1
+    return "$?"
+}
+
 # TODO: Is this behavior correct in other programs?
 function error() {
     echo "error: $@" >&2
@@ -203,6 +209,7 @@ fi
 # for pinentry-tty
 export GPG_TTY="$(tty)"
 
+alias cd='cd-et-ls'
 alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
