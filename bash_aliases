@@ -22,6 +22,7 @@ function error() {
 }
 
 
+# Insert a line at the beginning of a file.
 function ins() {
     if [[ $# -ne 2 ]]; then
 	    echo "Bruk: ins <str> <fil>" >&2
@@ -52,6 +53,7 @@ function line() {
 }
 
 
+# Return 0 if <item> is in <list>, else 1.
 function member() {
     if [[ $# -lt 2 ]]; then
 	error "Bruk: ${FUNCNAME[0]} <item> <list>"
