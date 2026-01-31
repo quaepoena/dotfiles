@@ -253,11 +253,17 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (defun qp-overlay-applicāre (inc fin typus)
   "Faciem TYPUS ab INC ad FIN applicāre."
 
-  (remove-overlays inc fin 'group 'qp-lingua-accadica-scrīptūra)
+  (qp-overlay-removēre inc fin)
 
   (let ((overlay (make-overlay inc fin nil t nil)))
     (overlay-put overlay 'face typus)
     (overlay-put overlay 'group 'qp-lingua-accadica-scrīptūra)))
+
+(defun qp-overlay-removēre (inc fin)
+  "Faciem TYPUS ab INC ad FIN removēre."
+  (interactive "r")
+
+  (remove-overlays inc fin 'group 'qp-lingua-accadica-scrīptūra))
 
 (defun qp-indita-babylonica-applicāre (inc fin)
   "Scrīptūram Babylonicam ab INC ad FIN applicāre."
