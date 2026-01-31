@@ -956,12 +956,16 @@ Equivalent to mkdir PATH && cd PATH."
 
   (let ((quail-current-package (assoc "latin-postfix" quail-package-alist)))
     (quail-define-rules ((append . t))
-			("a," ?ą)
-			("&-" ["&" "⁊"])
-			("y-" ?ȳ)
-			("Y-" ?Ȳ)
-			("ø'" ?ǿ)
-			("Ø'" ?Ǿ))))
+			            ("a," ?ą)
+                        ("o," ?ǫ)
+                        ("O," ?Ǫ)
+			            ("y-" ?ȳ)
+			            ("Y-" ?Ȳ)
+			            ("ø'" ?ǿ)
+			            ("Ø'" ?Ǿ)
+			            ("&-" ?⁊)
+			            ("&--" ["&-"])
+                        ("\"," ?„))))
 
 (defun norrønt-input ()
   "Define my own input-method for writing Old Norse."
