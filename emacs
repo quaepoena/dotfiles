@@ -152,9 +152,11 @@ Inspired by `open-line'."
                       (insert-directory dir "" nil t)
                       (buffer-substring-no-properties (point-min) (point-max))))
          (fasciculi′ (split-string fasciculi))
-         (fasciculus (completing-read "Fasciculus: " fasciculi′)))
+         (fasciculi′′ (mapcar (lambda (x) (string-remove-suffix ".gpg" x)) fasciculi′))
+         (fasciculus (completing-read "Fasciculus: " fasciculi′′)))
 
-    (find-file (concat dir fasciculus))))
+    (find-file (concat dir fasciculus ".gpg"))
+    fasciculi′′))
 
 ;;}}}
 ;;{{{ Not-so trivial
