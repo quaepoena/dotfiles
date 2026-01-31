@@ -244,6 +244,10 @@ upon unbalanced input is desired, use `paste (1)` directly."
   '((t . (:font "Assurbanipal" :height 400)))
   "Scrīptūra cuneiforma cum signīs neoassyricīs.")
 
+(defface qp-accadica-scrīptūra-sumerica
+  '((t . (:font "Noto Sans Cuneiform" :height 300)))
+  "Scrīptūra cuneiforma cum signīs sumericīs.")
+
 (defun qp-overlay-applicāre (inc fin typus)
   "Faciem TYPUS ab INC ad FIN applicāre."
 
@@ -270,6 +274,12 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (interactive "r")
 
   (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-neoassyrica))
+
+(defun qp-indita-sumerica-applicāre (inc fin)
+  "Scrīptūram Neoassyricam ab INC ad FIN applicāre."
+  (interactive "r")
+
+  (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-sumerica))
 
 ;;}}}
 
