@@ -424,7 +424,8 @@ If already there, move to the end of the buffer."
   (add-to-list 'dired-guess-shell-alist-user (quote ("\\.mp3\\'" "vlc")))
   (add-to-list 'dired-guess-shell-alist-user (quote ("\\.mp4\\'" "vlc")))
   (add-to-list 'dired-guess-shell-alist-user (quote ("\\.pdf\\'" "xreader")))
-  (add-to-list 'dired-guess-shell-alist-user (quote ("\\.png\\'" "xviewer"))))
+  (add-to-list 'dired-guess-shell-alist-user (quote ("\\.png\\'" "xviewer")))
+  (add-to-list 'dired-guess-shell-alist-user (quote ("\\.ppt\\(x\\)?\\'" "soffice"))))
 
 (keymap-set dired-mode-map "% e" #'qp-dired-mark-empty)
 (keymap-set dired-mode-map "C-a" #'qp-dired-ctrl-a)
