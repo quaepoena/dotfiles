@@ -234,6 +234,18 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (load-file "~/Links/qp-accadica.el")
   (set-input-method "Accadica"))
 
+;;{{{ Key bindings
+
+(global-set-key (kbd "C-c a f b") #'qp-indita-babylonica-applicāre)
+(global-set-key (kbd "C-c a f l") #'qp-indita-babylonica-lapidaria-applicāre)
+(global-set-key (kbd "C-c a f n") #'qp-indita-neoassyrica-applicāre)
+(global-set-key (kbd "C-c a f s") #'qp-indita-sumerica-applicāre)
+(global-set-key (kbd "C-c a i") #'qp-indita-accadica)
+(global-set-key (kbd "C-c a r") #'qp-overlay-removēre)
+
+;;}}}
+;;{{{ Faces
+
 (defface qp-accadica-scrīptūra-babylonica
   '((t . (:font "Santakku" :height 400)))
   "Scrīptūra cuneiforma cum signīs babylonicīs.")
@@ -249,6 +261,9 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (defface qp-accadica-scrīptūra-sumerica
   '((t . (:font "Noto Sans Cuneiform" :height 300)))
   "Scrīptūra cuneiforma cum signīs sumericīs.")
+
+;;}}}
+;;{{{ Font overlays
 
 (defun qp-overlay-applicāre (inc fin typus)
   "Faciem TYPUS ab INC ad FIN applicāre."
@@ -291,6 +306,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
 ;;}}}
 
+;;}}}
 ;;{{{ APL
 
 (add-to-list 'load-path "~/src/gnu-apl-mode")
@@ -338,6 +354,7 @@ Then switch to the process buffer."
 ;;}}}
 
 ;;}}}
+
 ;;{{{ Modes (hooks, customizations, etc.)
 
 ;; Not technically a mode hook, but I want it to apply for Fundamental Mode
