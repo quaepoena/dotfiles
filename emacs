@@ -149,14 +149,15 @@ Inspired by `open-line'."
   (interactive)
 
   (let* ((dir (expand-file-name "~/pw/"))
+         (suffix ".gpg")
          (fasciculi (with-temp-buffer
                       (insert-directory dir "" nil t)
                       (buffer-substring-no-properties (point-min) (point-max))))
          (fasciculi′ (split-string fasciculi))
-         (fasciculi′′ (mapcar (lambda (x) (string-remove-suffix ".gpg" x)) fasciculi′))
+         (fasciculi′′ (mapcar (lambda (x) (string-remove-suffix suffix x)) fasciculi′))
          (fasciculus (completing-read "Fasciculus: " fasciculi′′)))
 
-    (find-file (concat dir fasciculus ".gpg"))
+    (find-file (concat dir fasciculus suffix))
     fasciculi′′))
 
 ;;}}}
