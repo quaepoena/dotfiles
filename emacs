@@ -272,7 +272,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
   (qp-overlay-removēre inc fin)
 
-  (let ((overlay (make-overlay inc fin nil t nil)))
+  (let ((overlay (make-overlay inc fin nil nil t)))
     (overlay-put overlay 'face typus)
     (overlay-put overlay 'group 'qp-lingua-accadica-scrīptūra)))
 
