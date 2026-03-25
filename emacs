@@ -242,7 +242,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (global-set-key (kbd "C-c a f l") #'qp-indita-babylonica-lapidaria-applicāre)
 (global-set-key (kbd "C-c a f n") #'qp-indita-neoassyrica-applicāre)
 (global-set-key (kbd "C-c a f s") #'qp-indita-sumerica-applicāre)
-(global-set-key (kbd "C-c a i") #'qp-indita-accadica)
+(global-set-key (kbd "C-c a \\") #'qp-indita-accadica)
 (global-set-key (kbd "C-c a r") #'qp-overlay-removēre)
 
 ;;}}}
