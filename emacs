@@ -75,11 +75,12 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 (setq custom-file "~/.emacs.d/custom.el")
 
 (setq safe-local-variable-values
-      '((folded-file . t)
-        (indent-tabs-mode nil)
+      '((TeX-master . t)
         (backup-inhibited . t)
+        (folded-file . t)
+        (indent-tabs-mode nil)
         (org-pretty-entities . t)
-        (TeX-master . t)))
+        (org-confirm-babel-evaluate)))
 
 (load-theme 'wheatgrass)
 
