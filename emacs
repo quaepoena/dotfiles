@@ -89,7 +89,7 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 
 (global-set-key (kbd "M-DEL") nil)
 (global-set-key (kbd "<M-backspace>") #'kill-region)
-(global-set-key (kbd "M-`") #'push-mark-no-activate)
+(global-set-key (kbd "M-3") #'push-mark-no-activate)
 (global-set-key (kbd "C-c g e") #'open-dot-emacs)
 (global-set-key (kbd "C-c g i") #'qp-imperium-cursūs-acquīrere)
 (global-set-key (kbd "C-c g k") #'kill-restart-emacs)
