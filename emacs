@@ -103,6 +103,7 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 (global-set-key (kbd "C-w") #'backward-kill-word)
 ;; https://emacs.stackexchange.com/a/3471
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x n n") #'qp-narrow-to-region)
 (global-set-key (kbd "C-x o") nil)
 (global-set-key (kbd "C-.") #'other-window)
 (global-set-key (kbd "C-'") #'qp-open-text-right)
@@ -159,6 +160,19 @@ Inspired by `open-line'."
 
     (find-file (concat dir fasciculus suffix))
     fasciculi′′))
+
+(defun qp-narrow-to-region (start end &optional arg)
+  "Narrow from START to END.
+With optional ARG, narrow to the previously narrowed-to region."
+  (interactive "r\nP")
+
+  (when (and arg (not (boundp 'qp-narrow-to-region)))
+    (error "Function qp-narrow-to-region called with ARG, but region was not previously set"))
+
+  (if arg
+      (narrow-to-region (car qp-narrow-to-region) (cdr qp-narrow-to-region))
+    (setq-local qp-narrow-to-region (cons start end))
+    (narrow-to-region start end)))
 
 ;;}}}
 ;;{{{ Not-so trivial
