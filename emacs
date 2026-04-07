@@ -387,6 +387,7 @@ Then switch to the process buffer."
 ;; https://melpa.org/#/disable-mouse
 (global-disable-mouse-mode)
 (global-unset-key (kbd "<C-down-mouse-1>"))
+(setq disable-mouse-mode-global-lighter nil)
 
 ;; (setq disable-mouse-mode-lighter nil
 ;;       disable-mouse-mode-global-lighter nil)
