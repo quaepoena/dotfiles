@@ -456,6 +456,7 @@ If already there, move to the end of the buffer."
   (add-to-list 'dired-guess-shell-alist-user (quote ("\\.epub\\'" "calibre")))
   (add-to-list 'dired-guess-shell-alist-user (quote ("\\.flac\\'" "vlc")))
   (add-to-list 'dired-guess-shell-alist-user (quote ("\\.jpg\\'" "xviewer")))
+  (add-to-list 'dired-guess-shell-alist-user (quote ("\\.jpeg\\'" "xviewer")))
   (add-to-list 'dired-guess-shell-alist-user (quote ("\\.mkv\\'" "vlc")))
   (add-to-list 'dired-guess-shell-alist-user (quote ("\\.mp3\\'" "vlc")))
   (add-to-list 'dired-guess-shell-alist-user (quote ("\\.mp4\\'" "vlc")))
