@@ -637,7 +637,7 @@ Stored in `LaTeX-item-list' so as to be called by
 (global-set-key (kbd "C-c o l") 'org-store-link)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o c") 'org-capture)
-(keymap-set org-mode-map "C-'" #'qp-open-text-right)
+(keymap-unset org-mode-map "C-'")
 
 (defun qp-malazan-encylopedia-template ()
   "Return a string to be used in an org template for capturing section summaries."
