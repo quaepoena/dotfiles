@@ -790,19 +790,20 @@ Intended to allow for quick switching back to the *Help* buffer."
 
 (require 'comint)
 
-;; TODO: Improve this to first check if you're at a prompt.
 (defun qp-comment-and-send-input ()
   "Comment the current line and return, as `insert-comment' in bash."
   (interactive)
 
-  (let ((bol (save-excursion
-               (comint-previous-prompt 1)
-               (point)))
-        (eol (save-excursion
+  (let ((start (save-excursion
+                 (comint-previous-prompt 1)
+                 (point)))
+        (end (save-excursion
                (goto-char (point-max))
                (point))))
-    (comment-region bol eol)
-    (comint-send-input)))
+    (if (looking-back sql-prompt-regexp)
+        (message "Nothing to comment when at prompt")
+      (comment-region start end)
+      (comint-send-input))))
 
 (keymap-set comint-mode-map "M-#" #'qp-comment-and-send-input)
 
