@@ -23,7 +23,8 @@
 
 (setq backup-by-copying t
       load-prefer-newer t
-      next-screen-context-lines 10)
+      next-screen-context-lines 10
+      history-delete-duplicates t)
 
 (setq-default backup-by-copying-when-linked t
               indent-tabs-mode nil
