@@ -158,14 +158,13 @@ Inspired by `open-line'."
   (let* ((dir (expand-file-name "~/pw/"))
          (suffix ".gpg")
          (fasciculi (with-temp-buffer
-                      (insert-directory dir "" nil t)
+                      (insert-directory dir nil nil t)
                       (buffer-substring-no-properties (point-min) (point-max))))
          (fasciculi′ (split-string fasciculi))
          (fasciculi′′ (mapcar (lambda (x) (string-remove-suffix suffix x)) fasciculi′))
          (fasciculus (completing-read "Fasciculus: " fasciculi′′)))
 
-    (find-file (concat dir fasciculus suffix))
-    fasciculi′′))
+    (find-file (concat dir fasciculus suffix))))
 
 (defun qp-narrow-to-region (start end &optional arg)
   "Narrow from START to END.
