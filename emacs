@@ -88,32 +88,44 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 ;;}}}
 ;;{{{ Global keys
 
-(keymap-global-set "C-c o l" 'org-store-link)
-(keymap-global-set "C-c o a" 'org-agenda)
-(keymap-global-set "C-c o c" 'org-capture)
+(keymap-global-set "C-c o l" #'org-store-link)
+(keymap-global-set "C-c o a" #'org-agenda)
+(keymap-global-set "C-c o c" #'org-capture)
 
-;; TODO: global-set-key -> keymap-global-set
-(global-set-key (kbd "M-DEL") nil)
-(global-set-key (kbd "<M-backspace>") #'kill-region)
-(global-set-key (kbd "M-3") #'push-mark-no-activate)
-(global-set-key (kbd "C-c g d") #'delete-trailing-whitespace)
-(global-set-key (kbd "C-c g e") #'open-dot-emacs)
-(global-set-key (kbd "C-c g i") #'qp-imperium-cursūs-acquīrere)
-(global-set-key (kbd "C-c g k") #'kill-restart-emacs)
-(global-set-key (kbd "C-c g p") #'tessera)
-(global-set-key (kbd "C-c g s") #'eshell)
-(global-set-key (kbd "C-c g t") #'qp-toggle-skeletons)
-(global-set-key (kbd "C-c g v") #'vocabularium-fasciculos-agere)
-(global-set-key (kbd "C-c g w") #'erase-kill-ring)
-(global-set-key (kbd "C-c s o") #'owd)
-(global-set-key (kbd "C-w") #'backward-kill-word)
+(keymap-global-unset "M-DEL")
+
 ;; https://emacs.stackexchange.com/a/3471
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x n n") #'qp-narrow-to-region)
-(global-set-key (kbd "C-x o") nil)
-(global-set-key (kbd "C-.") #'other-window)
-(global-set-key (kbd "C-'") #'qp-open-text-right)
-(global-set-key (kbd "M-z") #'zap-up-to-char)
+(keymap-global-unset "C-x o")
+(keymap-global-set "C-." #'other-window)
+
+(keymap-global-set "C-'" #'qp-open-text-right)
+(keymap-global-set "C-S-<down>" 'buf-move-down)
+(keymap-global-set "C-S-<left>" 'buf-move-left)
+(keymap-global-set "C-S-<right>" 'buf-move-right)
+(keymap-global-set "C-S-<up>" 'buf-move-up)
+(keymap-global-set "C-c a \\" #'qp-indita-accadica)
+(keymap-global-set "C-c a f b" #'qp-indita-babylonica-applicāre)
+(keymap-global-set "C-c a f l" #'qp-indita-babylonica-lapidaria-applicāre)
+(keymap-global-set "C-c a f n" #'qp-indita-neoassyrica-applicāre)
+(keymap-global-set "C-c a f s" #'qp-indita-sumerica-applicāre)
+(keymap-global-set "C-c a r" #'qp-overlay-removēre)
+(keymap-global-set "C-c g d" #'delete-trailing-whitespace)
+(keymap-global-set "C-c g e" #'open-dot-emacs)
+(keymap-global-set "C-c g i" #'qp-imperium-cursūs-acquīrere)
+(keymap-global-set "C-c g k" #'kill-restart-emacs)
+(keymap-global-set "C-c g p" #'tessera)
+(keymap-global-set "C-c g s" #'eshell)
+(keymap-global-set "C-c g t" #'qp-toggle-skeletons)
+(keymap-global-set "C-c g v" #'vocabularium-fasciculos-agere)
+(keymap-global-set "C-c g w" #'erase-kill-ring)
+(keymap-global-set "C-c s o" #'owd)
+(keymap-global-set "C-h C-h" #'qp-display-help-buffer)
+(keymap-global-set "C-w" #'backward-kill-word)
+(keymap-global-set "C-x g" 'magit-status)
+(keymap-global-set "C-x n n" #'qp-narrow-to-region)
+(keymap-global-set "M-3" #'push-mark-no-activate)
+(keymap-global-set "M-<backspace>" #'kill-region)
+(keymap-global-set "M-z" #'zap-up-to-char)
 
 ;;}}}
 ;;{{{ Convenience functions
@@ -255,16 +267,6 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (load-file "~/Links/qp-accadica.el")
   (set-input-method "Accadica"))
 
-;;{{{ Key bindings
-
-(global-set-key (kbd "C-c a f b") #'qp-indita-babylonica-applicāre)
-(global-set-key (kbd "C-c a f l") #'qp-indita-babylonica-lapidaria-applicāre)
-(global-set-key (kbd "C-c a f n") #'qp-indita-neoassyrica-applicāre)
-(global-set-key (kbd "C-c a f s") #'qp-indita-sumerica-applicāre)
-(global-set-key (kbd "C-c a \\") #'qp-indita-accadica)
-(global-set-key (kbd "C-c a r") #'qp-overlay-removēre)
-
-;;}}}
 ;;{{{ Faces
 
 (defface qp-accadica-scrīptūra-babylonica
@@ -716,7 +718,7 @@ Stored in `LaTeX-item-list' so as to be called by
         (func (if arg #'skeleton-pair-insert-maybe #'self-insert-command)))
 
     (dolist (char chars)
-      (global-set-key (kbd char) func))))
+      (keymap-global-set char func))))
 
 (defun qp-toggle-skeletons ()
   "Interactive command to toggle skeletons."
@@ -738,10 +740,6 @@ Stored in `LaTeX-item-list' so as to be called by
 
 ;; https://melpa.org/#/buffer-move
 (require 'buffer-move)
-(global-set-key (kbd "<C-S-up>")     'buf-move-up)
-(global-set-key (kbd "<C-S-down>")   'buf-move-down)
-(global-set-key (kbd "<C-S-left>")   'buf-move-left)
-(global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
 ;; https://www.masteringemacs.org/article/demystifying-emacs-window-manager
 (setq switch-to-buffer-in-dedicated-window 'pop)
@@ -788,8 +786,6 @@ Stored in `LaTeX-item-list' so as to be called by
 Intended to allow for quick switching back to the *Help* buffer."
   (interactive)
   (display-buffer (get-buffer-create "*Help*")))
-
-(global-set-key (kbd "C-h C-h") #'qp-display-help-buffer)
 
 (require 'comint)
 
