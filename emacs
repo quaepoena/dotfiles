@@ -88,12 +88,6 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 ;;}}}
 ;;{{{ Global keys
 
-(keymap-global-set "C-c o l" #'org-store-link)
-(keymap-global-set "C-c o a" #'org-agenda)
-(keymap-global-set "C-c o c" #'org-capture)
-
-(keymap-global-unset "M-DEL")
-
 ;; https://emacs.stackexchange.com/a/3471
 (keymap-global-unset "C-x o")
 (keymap-global-set "C-." #'other-window)
@@ -118,6 +112,10 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 (keymap-global-set "C-c g t" #'qp-toggle-skeletons)
 (keymap-global-set "C-c g v" #'vocabularium-fasciculos-agere)
 (keymap-global-set "C-c g w" #'erase-kill-ring)
+(keymap-global-set "C-c n \\" #'norrønt-input)
+(keymap-global-set "C-c o a" #'org-agenda)
+(keymap-global-set "C-c o c" #'org-capture)
+(keymap-global-set "C-c o l" #'org-store-link)
 (keymap-global-set "C-c s o" #'owd)
 (keymap-global-set "C-h C-h" #'qp-display-help-buffer)
 (keymap-global-set "C-w" #'backward-kill-word)
@@ -126,6 +124,8 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 (keymap-global-set "M-3" #'push-mark-no-activate)
 (keymap-global-set "M-<backspace>" #'kill-region)
 (keymap-global-set "M-z" #'zap-up-to-char)
+
+(keymap-global-unset "M-DEL")
 
 ;;}}}
 ;;{{{ Convenience functions
