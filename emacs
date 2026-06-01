@@ -285,6 +285,10 @@ upon unbalanced input is desired, use `paste (1)` directly."
   '((t . (:font "Noto Sans Cuneiform" :height 300)))
   "Scrīptūra cuneiforma cum signīs sumericīs.")
 
+(defface qp-norvegia
+  '((t . (:font "Norvegia" :height 300)))
+  "Norvegia ljodskrift.")
+
 ;;}}}
 ;;{{{ Font overlays
 
@@ -295,13 +299,13 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
   (let ((overlay (make-overlay inc fin nil nil t)))
     (overlay-put overlay 'face typus)
-    (overlay-put overlay 'group 'qp-lingua-accadica-scrīptūra)))
+    (overlay-put overlay 'group typus)))
 
 (defun qp-overlay-removēre (inc fin)
   "Faciem TYPUS ab INC ad FIN removēre."
   (interactive "r")
 
-  (remove-overlays inc fin 'group 'qp-lingua-accadica-scrīptūra))
+  (remove-overlays inc fin))
 
 (defun qp-indita-babylonica-applicāre (inc fin)
   "Scrīptūram Babylonicam ab INC ad FIN applicāre."
@@ -326,6 +330,12 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (interactive "r")
 
   (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-sumerica))
+
+(defun qp-norvegiam-applicāre (inc fin)
+  "Scrīptūram Norvegiam ab INC ad FIN applicāre."
+  (interactive "r")
+
+  (qp-overlay-applicāre inc fin 'qp-norvegia))
 
 ;;}}}
 
