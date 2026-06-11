@@ -1050,7 +1050,7 @@ Equivalent to mkdir PATH && cd PATH."
   (length (matching-strings-regexp start end regexp)))
 
 (defun matching-strings (start end regexp)
-  "Return a list of the strings matching REGEXP in the region."
+  "Return a list of strings matching REGEXP from START to END."
   (interactive "r\nsString (regexp): ")
 
   (let ((strings (matching-strings-regexp start end regexp)))
