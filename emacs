@@ -190,7 +190,7 @@ Inspired by `open-line'."
                       (buffer-substring-no-properties (point-min) (point-max))))
          (fasciculi′ (split-string fasciculi))
          (fasciculi′′ (mapcar (lambda (x) (string-remove-suffix suffix x)) fasciculi′))
-         (fasciculus (completing-read "Fasciculus: " fasciculi′′)))
+         (fasciculus (completing-read "Fasciculus: " fasciculi′′ nil t)))
 
     (find-file (concat dir fasciculus suffix))))
 
