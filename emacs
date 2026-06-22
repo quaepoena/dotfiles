@@ -504,6 +504,11 @@ If already there, move to the end of the buffer."
 
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
+;; Change options to `find-dired' to enable displaying of non-ASCII characters.
+;; Cf. UNUSUAL FILENAMES in find(1).
+;; https://stackoverflow.com/a/42512294
+(setq find-ls-option '("-exec ls -ldh {} +" . "-ldh"))
+
 ;;}}}
 ;;}}}
 ;;{{{ mu4e
