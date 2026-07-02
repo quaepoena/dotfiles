@@ -271,6 +271,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 (put 'set-goal-column 'disabled nil)
 (put 'TeX-narrow-to-group 'disabled nil)
 (put 'LaTeX-narrow-to-environment 'disabled nil)
+(put 'scroll-left 'disabled nil)
 
 ;;}}}
 ;;{{{ Linguae
