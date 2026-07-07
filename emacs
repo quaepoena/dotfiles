@@ -415,6 +415,8 @@ Then switch to the process buffer."
 
 (add-hook 'prog-mode-hook #'qp-disable-electric-indent)
 
+(add-to-list 'auto-mode-alist '("\\.hdl\\'" . java-mode))
+
 ;;{{{ disable-mouse
 
 ;; https://melpa.org/#/disable-mouse
