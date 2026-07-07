@@ -404,7 +404,6 @@ Then switch to the process buffer."
 ;;}}}
 
 ;;}}}
-
 ;;{{{ Modes (hooks, customizations, etc.)
 
 ;; Not technically a mode hook, but I want it to apply for Fundamental Mode
@@ -818,25 +817,6 @@ Stored in `LaTeX-item-list' so as to be called by
 Intended to allow for quick switching back to the *Help* buffer."
   (interactive)
   (display-buffer (get-buffer-create "*Help*")))
-
-(require 'comint)
-
-(defun qp-comment-and-send-input ()
-  "Comment the current line and return, as `insert-comment' in bash."
-  (interactive)
-
-  (let ((start (save-excursion
-                 (comint-previous-prompt 1)
-                 (point)))
-        (end (save-excursion
-               (goto-char (point-max))
-               (point))))
-    (if (looking-back sql-prompt-regexp)
-        (message "Nothing to comment when at prompt")
-      (comment-region start end)
-      (comint-send-input))))
-
-(keymap-set comint-mode-map "M-#" #'qp-comment-and-send-input)
 
 (setq fill-column 80)
 
