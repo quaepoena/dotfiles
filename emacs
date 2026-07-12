@@ -564,6 +564,7 @@ If already there, move to the end of the buffer."
 
 (setq bibtex-dialect 'biblatex
       bibtex-comment-start "%"
+      flycheck-chktex-extra-flags `(,(concat "-l" (expand-file-name "~/texmf/tex/latex/chktexrc")))
       reftex-plug-into-AUCTeX t
       LaTeX-electric-left-right-brace t
       LaTeX-csquotes-open-quote "\\enquote{"
