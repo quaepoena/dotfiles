@@ -840,8 +840,8 @@ Intended to allow for quick switching back to the *Help* buffer."
 
 ;; TODO: Remove this when folding.el is updated.
 ;; https://github.com/jaalto/project-emacs--folding-mode/issues/12
-;; TODO: Interestingly, this doesn't work.
-;; (defalias 'font-lock-reference-face font-lock-constant-face)
+;; Interestingly, this doesn't work.
+;; (defalias 'font-lock-reference-face 'font-lock-constant-face)
 (setq font-lock-reference-face nil)
 
 ;; TODO: Wrap all such calls to packages.
