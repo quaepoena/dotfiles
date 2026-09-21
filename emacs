@@ -115,6 +115,9 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 (keymap-global-set "C-S-<up>" 'buf-move-up)
 (keymap-global-set "C-c a \\" #'qp-indita-accadica)
 (keymap-global-set "C-c a f b" #'qp-indita-babylonica-applicāre)
+(keymap-global-set "C-c a f h a" #'qp-indita-hetthaea-a-applicāre)
+(keymap-global-set "C-c a f h b" #'qp-indita-hetthaea-b-applicāre)
+(keymap-global-set "C-c a f h c" #'qp-indita-hetthaea-c-applicāre)
 (keymap-global-set "C-c a f l" #'qp-indita-babylonica-lapidaria-applicāre)
 (keymap-global-set "C-c a f n" #'qp-indita-neoassyrica-applicāre)
 (keymap-global-set "C-c a f s" #'qp-indita-sumerica-applicāre)
@@ -287,19 +290,32 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;;{{{ Faces
 
 (defface qp-accadica-scrīptūra-babylonica
-  '((t . (:font "Santakku" :height 400)))
+  ;; '((t . (:font "Santakku" :height 400)))
+  '((t . (:font "Santakku")))
   "Scrīptūra cuneiforma cum signīs babylonicīs.")
 
 (defface qp-accadica-scrīptūra-babylonica-lapidaria
-  '((t . (:font "SantakkuM" :height 400)))
+  '((t . (:font "SantakkuM")))
   "Scrīptūra cuneiforma cum signīs babylonicīs lapidariīs.")
 
+(defface qp-accadica-scrīptūra-hetthaea-a
+  '((t . (:font "UllikummiA" :height 350)))
+  "Scrīptūra cuneiforma cum signīs Hetthaeīs (A).")
+
+(defface qp-accadica-scrīptūra-hetthaea-b
+  '((t . (:font "UllikummiB")))
+  "Scrīptūra cuneiforma cum signīs Hetthaeīs (B).")
+
+(defface qp-accadica-scrīptūra-hetthaea-c
+  '((t . (:font "UllikummiC")))
+  "Scrīptūra cuneiforma cum signīs Hetthaeīs (C).")
+
 (defface qp-accadica-scrīptūra-neoassyrica
-  '((t . (:font "Assurbanipal" :height 400)))
+  '((t . (:font "Assurbanipal")))
   "Scrīptūra cuneiforma cum signīs neoassyricīs.")
 
 (defface qp-accadica-scrīptūra-sumerica
-  '((t . (:font "Noto Sans Cuneiform" :height 300)))
+  '((t . (:font "Noto Sans Cuneiform")))
   "Scrīptūra cuneiforma cum signīs sumericīs.")
 
 (defface qp-norvegia
@@ -335,6 +351,24 @@ upon unbalanced input is desired, use `paste (1)` directly."
   (interactive "r")
 
   (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-babylonica-lapidaria))
+
+(defun qp-indita-hetthaea-a-applicāre (inc fin)
+  "Scrīptūram Hetthaeam (A) ab INC ad FIN applicāre."
+  (interactive "r")
+
+  (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-hetthaea-a))
+
+(defun qp-indita-hetthaea-b-applicāre (inc fin)
+  "Scrīptūram Hetthaeam (B) ab INC ad FIN applicāre."
+  (interactive "r")
+
+  (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-hetthaea-b))
+
+(defun qp-indita-hetthaea-c-applicāre (inc fin)
+  "Scrīptūram Hetthaeam (C) ab INC ad FIN applicāre."
+  (interactive "r")
+
+  (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-hetthaea-c))
 
 (defun qp-indita-neoassyrica-applicāre (inc fin)
   "Scrīptūram Neoassyricam ab INC ad FIN applicāre."
