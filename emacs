@@ -263,6 +263,18 @@ upon unbalanced input is desired, use `paste (1)` directly."
           (setf s (concat s (format "%c" x)))))
     s))
 
+;; TODO: Kan desse funksjonane forenklast?
+(defun qp-litterās-fortuītās-hex (n)
+  "Litterās ASCII imprimendās longitūdine N forte parere."
+  (let ((s "")
+        (x 0))
+
+    (while (< (length s) n)
+      (setf x (mod (random) 127))
+      (when (> x 32)
+          (setf s (concat s (format "%c" x)))))
+    s))
+
 ;;}}}
 
 ;;}}}
