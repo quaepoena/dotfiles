@@ -179,6 +179,7 @@ if [[ -f ~/.bash_aliases_mach_specific ]]; then
     . ~/.bash_aliases_mach_specific
 fi
 
+# TODO: Test if this is still needed.
 # for pinentry-tty
 export GPG_TTY="$(tty)"
 
