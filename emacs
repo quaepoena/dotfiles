@@ -302,12 +302,11 @@ upon unbalanced input is desired, use `paste (1)` directly."
 ;;{{{ Faces
 
 (defface qp-accadica-scrīptūra-babylonica
-  ;; '((t . (:font "Santakku" :height 400)))
-  '((t . (:font "Santakku")))
+  '((t . (:font "Santakku" :height 400)))
   "Scrīptūra cuneiforma cum signīs babylonicīs.")
 
 (defface qp-accadica-scrīptūra-babylonica-lapidaria
-  '((t . (:font "SantakkuM")))
+  '((t . (:font "SantakkuM" :height 400)))
   "Scrīptūra cuneiforma cum signīs babylonicīs lapidariīs.")
 
 (defface qp-accadica-scrīptūra-hetthaea-a
@@ -315,19 +314,19 @@ upon unbalanced input is desired, use `paste (1)` directly."
   "Scrīptūra cuneiforma cum signīs Hetthaeīs (A).")
 
 (defface qp-accadica-scrīptūra-hetthaea-b
-  '((t . (:font "UllikummiB")))
+  '((t . (:font "UllikummiB" :heigt 350)))
   "Scrīptūra cuneiforma cum signīs Hetthaeīs (B).")
 
 (defface qp-accadica-scrīptūra-hetthaea-c
-  '((t . (:font "UllikummiC")))
+  '((t . (:font "UllikummiC" :heigt 350)))
   "Scrīptūra cuneiforma cum signīs Hetthaeīs (C).")
 
 (defface qp-accadica-scrīptūra-neoassyrica
-  '((t . (:font "Assurbanipal")))
+  '((t . (:font "Assurbanipal" :heigt 400)))
   "Scrīptūra cuneiforma cum signīs neoassyricīs.")
 
 (defface qp-accadica-scrīptūra-sumerica
-  '((t . (:font "Noto Sans Cuneiform")))
+  '((t . (:font "Noto Sans Cuneiform" :height 350)))
   "Scrīptūra cuneiforma cum signīs sumericīs.")
 
 (defface qp-norvegia
