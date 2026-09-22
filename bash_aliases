@@ -190,9 +190,10 @@ alias fu='sudo $(history -p !!)'
 alias l1="ls -1"
 alias x="setxkbmap -option ctrl:nocaps"
 
-append-to-path /usr/local/go/bin
-append-to-path "${HOME}/.cabal/bin"
-append-to-path "/usr/local/texlive/2024/bin/x86_64-linux"
+append-to-path "/usr/local/texlive/2026/bin/x86_64-linux"
+MANPATH="${MANPATH:+"${MANPATH}:"}/usr/local/texlive/2026/texmf-dist/doc/man"
+INFOPATH="${INFOPATH:+"${INFOPATH}:"}/usr/local/texlive/2026/texmf-dist/doc/info"
+
 export TEXMFHOME="${HOME}/texmf"
 export EDITOR="emacsclient -t"
 
