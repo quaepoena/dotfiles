@@ -194,7 +194,6 @@ append-to-path "/usr/local/texlive/2026/bin/x86_64-linux"
 MANPATH="${MANPATH:+"${MANPATH}:"}/usr/local/texlive/2026/texmf-dist/doc/man"
 INFOPATH="${INFOPATH:+"${INFOPATH}:"}/usr/local/texlive/2026/texmf-dist/doc/info"
 
-export TEXMFHOME="${HOME}/texmf"
 export EDITOR="emacsclient -t"
 
 export -f error
