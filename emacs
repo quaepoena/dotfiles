@@ -346,7 +346,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
     (overlay-put overlay 'group typus)))
 
 (defun qp-overlay-removēre (inc fin)
-  "Faciem TYPUS ab INC ad FIN removēre."
+  "Overlays ab INC ad FIN removēre."
   (interactive "r")
 
   (remove-overlays inc fin))
