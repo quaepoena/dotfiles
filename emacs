@@ -370,12 +370,14 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
   (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-hetthaea-a))
 
+;; TODO: Font isn't found/applied.
 (defun qp-indita-hetthaea-b-applicāre (inc fin)
   "Scrīptūram Hetthaeam (B) ab INC ad FIN applicāre."
   (interactive "r")
 
   (qp-overlay-applicāre inc fin 'qp-accadica-scrīptūra-hetthaea-b))
 
+;; TODO: Font isn't found/applied.
 (defun qp-indita-hetthaea-c-applicāre (inc fin)
   "Scrīptūram Hetthaeam (C) ab INC ad FIN applicāre."
   (interactive "r")
