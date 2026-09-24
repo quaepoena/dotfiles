@@ -264,7 +264,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
     s))
 
 ;; TODO: Kan desse funksjonane forenklast?
-(defun qp-litterās-fortuītās-hex (n)
+(defun qp-litterās-fortuītās-sēdecimālēs (n)
   "Litterās sēdecimālēs imprimendās longitūdine N forte parere."
   (let ((s "")
         (x 0))
