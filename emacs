@@ -1072,7 +1072,7 @@ Equivalent to mkdir PATH && cd PATH."
                         ("\"," ?„))))
 
 (defun norrønt-input ()
-  "Define my own input-method for writing Old Norse."
+  "Define an input method for writing Old Norse."
   (interactive)
   (load-file "~/Links/norrønt.el")
   (set-input-method "norrønt"))
