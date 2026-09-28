@@ -1083,11 +1083,11 @@ Equivalent to mkdir PATH && cd PATH."
 
 (add-hook 'text-mode-hook #'text-mode-hook-customization)
 
-(defun count-occurrences (p1 p2 regexp)
-  "Count occurrences of REGEXP in the region."
+(defun count-occurrences (start end regexp)
+  "Count occurrences of REGEXP between START and END."
   (interactive "r\nsString: ")
 
-  (let ((count (count-occurrences-regexp p1 p2 regexp)))
+  (let ((count (count-occurrences-regexp start end regexp)))
     (message "%s occurrence(s) of %s in the region." count regexp)))
 
 (defun count-occurrences-regexp (start end regexp)
