@@ -1078,8 +1078,12 @@ Equivalent to mkdir PATH && cd PATH."
   (set-input-method "norrønt"))
 
 (defun text-mode-hook-customization ()
-  "Customizations for text mode."
-  (latin-postfix-customizations))
+  "Customizations for `text-mode'."
+  (latin-postfix-customizations)
+  (auto-fill-mode)
+  (flycheck-mode -1)
+  (set-fill-column 80)
+  (setq indent-line-function 'insert-relative))
 
 (add-hook 'text-mode-hook #'text-mode-hook-customization)
 
