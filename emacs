@@ -613,10 +613,14 @@ If already there, move to the end of the buffer."
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(use-package bibtex)
+(use-package reftex)
+
+(require 'tex)
+(require 'latex)
 (use-package auctex
-  :require (tex latex bibtex reftex-auc)
+  :defines flycheck-chktex-extra-flags
   :init
-  (defvar flycheck-chktex-extra-flags)
   (setq bibtex-dialect 'biblatex
         bibtex-comment-start "%"
         flycheck-chktex-extra-flags `(,(concat "-l" "/usr/local/texlive/texmf-local/tex/latex/chktexrc"))
