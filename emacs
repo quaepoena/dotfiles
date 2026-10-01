@@ -625,8 +625,6 @@ If already there, move to the end of the buffer."
       TeX-auto-save t
       TeX-parse-self t)
 
-(setenv "PATH" "/usr/local/texlive/2024/bin/x86_64-linux:$PATH" t)
-
 (defun LaTeX-mode-hook-customizations ()
   "My LaTeX customization."
   ;; TODO: Make this work.
