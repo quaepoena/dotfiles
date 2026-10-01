@@ -631,8 +631,7 @@ If already there, move to the end of the buffer."
         LaTeX-indent-level 4
         TeX-engine 'luatex
         TeX-auto-save t
-        TeX-parse-self t
-        indent-line-function 'LaTeX-indent-line)
+        TeX-parse-self t)
   :hook LaTeX-mode)
 
 (add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
@@ -646,7 +645,8 @@ If already there, move to the end of the buffer."
   ;; (add-to-list 'TeX-view-program-selection '(output-pdf "Emacs"))
   (add-to-list 'TeX-view-program-selection '(output-pdf "Xreader"))
   (add-to-list 'LaTeX-item-list '("outline" .
-				                  LaTeX-insert-outline-level)))
+				                  LaTeX-insert-outline-level))
+  (setq indent-line-function 'LaTeX-indent-line))
 
 ;; TODO: Hoc etiamnunc habes?
 (defun LaTeX-insert-item-line-empty-p ()
