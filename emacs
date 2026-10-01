@@ -611,9 +611,9 @@ If already there, move to the end of the buffer."
 
 (defvar use-package-always-defer t)
 
-(require 'bibtex)
-(require 'latex)
 (require 'tex)
+(require 'latex)
+(require 'bibtex)
 
 (setq bibtex-dialect 'biblatex
       bibtex-comment-start "%"
