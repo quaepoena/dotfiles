@@ -609,6 +609,8 @@ If already there, move to the end of the buffer."
 ;;}}}
 ;;{{{ LaTeX
 
+(defvar use-package-always-defer t)
+
 (require 'bibtex)
 (require 'latex)
 (require 'tex)
