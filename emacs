@@ -610,6 +610,9 @@ If already there, move to the end of the buffer."
 ;;{{{ LaTeX
 
 (defvar use-package-always-defer t)
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
 
 (require 'tex)
 (require 'latex)
