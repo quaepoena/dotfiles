@@ -634,10 +634,7 @@ If already there, move to the end of the buffer."
   ;; (add-to-list 'TeX-view-program-selection '(output-pdf "Emacs"))
   (add-to-list 'TeX-view-program-selection '(output-pdf "Xreader"))
   (add-to-list 'LaTeX-item-list '("outline" .
-				  LaTeX-insert-outline-level))
-  (keymap-set LaTeX-mode-map "M-RET"
-	      #'LaTeX-insert-item-line-empty-p)
-  (keymap-set LaTeX-mode-map "C-c l" #'LaTeX-outline-change-level))
+				                  LaTeX-insert-outline-level)))
 
 ;; LaTeX-mode-hook
 (add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
