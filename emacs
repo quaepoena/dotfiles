@@ -628,7 +628,7 @@ If already there, move to the end of the buffer."
       TeX-parse-self t)
 
 (defun LaTeX-mode-hook-customizations ()
-  "My LaTeX customization."
+  "LaTeX customization."
   ;; TODO: Make this work.
   ;; (add-to-list 'TeX-view-program-list '("Emacs" . '("emacsclient %o")))
   ;; (add-to-list 'TeX-view-program-selection '(output-pdf "Emacs"))
