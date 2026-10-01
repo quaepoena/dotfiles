@@ -634,12 +634,12 @@ If already there, move to the end of the buffer."
         TeX-parse-self t)
   :hook LaTeX-mode)
 
-(add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
+(add-hook 'LaTeX-mode-hook #'LaTeX-customizations)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
 
-(defun LaTeX-mode-hook-customizations ()
-  "LaTeX customization."
+(defun LaTeX-customizations ()
+  "LaTeX customizations."
   ;; TODO: Make this work.
   ;; (add-to-list 'TeX-view-program-list '("Emacs" . '("emacsclient %o")))
   ;; (add-to-list 'TeX-view-program-selection '(output-pdf "Emacs"))
