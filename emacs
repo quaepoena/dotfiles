@@ -698,15 +698,15 @@ Stored in `LaTeX-item-list' so as to be called by
     (error "Not in an outline environment"))
 
   (let ((cur-level-int (string-to-number (LaTeX-find-outline-level)))
-	(step)
-	(new-level-str)
-	(outline-item-rx (rx (group bol (zero-or-more space) "\\")
-			     (= 1 digit)
-			     (group (zero-or-more print) eol)))
-	(current-outline-pos (save-excursion
-			       (re-search-backward
-				(rx bol (zero-or-more space)
-				    "\\begin{outline}")))))
+	    (step)
+	    (new-level-str)
+	    (outline-item-rx (rx (group bol (zero-or-more space) "\\")
+			                 (= 1 digit)
+			                 (group (zero-or-more print) eol)))
+	    (current-outline-pos (save-excursion
+			                   (re-search-backward
+				                (rx bol (zero-or-more space)
+				                    "\\begin{outline}")))))
 
     (if arg
 	    (setq step -1)
@@ -717,8 +717,8 @@ Stored in `LaTeX-item-list' so as to be called by
     (save-excursion
       (end-of-line)
       (if (re-search-backward outline-item-rx current-outline-pos t)
-	  (replace-match (concat "\\1" new-level-str "\\2"))
-	(message "No outline item to in-/decrease.")))))
+	      (replace-match (concat "\\1" new-level-str "\\2"))
+	    (message "No outline item to in-/decrease.")))))
 
 
 ;;}}}
