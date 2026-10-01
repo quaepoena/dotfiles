@@ -1089,7 +1089,7 @@ Equivalent to mkdir PATH && cd PATH."
   (auto-fill-mode)
   (flycheck-mode -1)
   (set-fill-column 80)
-  (setq indent-line-function 'insert-relative))
+  (setq indent-line-function 'indent-relative))
 
 (add-hook 'text-mode-hook #'text-mode-hook-customization)
 
