@@ -613,22 +613,27 @@ If already there, move to the end of the buffer."
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(use-package auctex
+  :require (tex latex bibtex reftex-auc)
+  :init
+  (defvar flycheck-chktex-extra-flags)
+  (setq bibtex-dialect 'biblatex
+        bibtex-comment-start "%"
+        flycheck-chktex-extra-flags `(,(concat "-l" "/usr/local/texlive/texmf-local/tex/latex/chktexrc"))
+        reftex-plug-into-AUCTeX t
+        LaTeX-electric-left-right-brace t
+        LaTeX-csquotes-open-quote "\\enquote{"
+        LaTeX-csquotes-close-quote "}"
+        LaTeX-indent-level 4
+        TeX-engine 'luatex
+        TeX-auto-save t
+        TeX-parse-self t
+        indent-line-function 'LaTeX-indent-line)
+  :hook LaTeX-mode)
 
-(require 'tex)
-(require 'latex)
-(require 'bibtex)
-
-(setq bibtex-dialect 'biblatex
-      bibtex-comment-start "%"
-      flycheck-chktex-extra-flags `(,(concat "-l" (expand-file-name "~/texmf/tex/latex/chktexrc")))
-      reftex-plug-into-AUCTeX t
-      LaTeX-electric-left-right-brace t
-      LaTeX-csquotes-open-quote "\\enquote{"
-      LaTeX-csquotes-close-quote "}"
-      LaTeX-indent-level 4
-      TeX-engine 'luatex
-      TeX-auto-save t
-      TeX-parse-self t)
+(add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
 
 (defun LaTeX-mode-hook-customizations ()
   "LaTeX customization."
@@ -638,10 +643,6 @@ If already there, move to the end of the buffer."
   (add-to-list 'TeX-view-program-selection '(output-pdf "Xreader"))
   (add-to-list 'LaTeX-item-list '("outline" .
 				                  LaTeX-insert-outline-level)))
-
-;; LaTeX-mode-hook
-(add-hook 'LaTeX-mode-hook #'LaTeX-mode-hook-customizations)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 
 (defun LaTeX-insert-item-line-empty-p ()
   "Insert a new item in an environment.
