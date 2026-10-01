@@ -644,6 +644,7 @@ If already there, move to the end of the buffer."
   (add-to-list 'LaTeX-item-list '("outline" .
 				                  LaTeX-insert-outline-level)))
 
+;; TODO: Hoc etiamnunc habes?
 (defun LaTeX-insert-item-line-empty-p ()
   "Insert a new item in an environment.
 You may use `LaTeX-item-list' to change the routines used to insert the item.
