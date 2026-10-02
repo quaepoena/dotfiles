@@ -83,6 +83,7 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
         (org-pretty-entities . t)
         (org-confirm-babel-evaluate)))
 
+(use-package descr-text)
 (setq describe-char-unidata-list
       '(name
         old-name
