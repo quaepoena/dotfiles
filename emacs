@@ -197,13 +197,14 @@ Inspired by `open-line'."
 
     (find-file (concat dir fasciculus suffix))))
 
+(defvar qp-narrow-to-region nil "Used to store the previously narrowed-to region.")
 (defun qp-narrow-to-region (start end &optional arg)
   "Narrow from START to END.
 With optional ARG, narrow to the previously narrowed-to region."
   (interactive "r\nP")
 
-  (when (and arg (not (boundp 'qp-narrow-to-region)))
-    (error "Function qp-narrow-to-region called with ARG, but region was not previously set"))
+  (when (and arg (not qp-narrow-to-region))
+    (error "Function `qp-narrow-to-region' called with ARG, but region was not previously set"))
 
   (if arg
       (narrow-to-region (car qp-narrow-to-region) (cdr qp-narrow-to-region))
