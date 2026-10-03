@@ -617,7 +617,11 @@ If already there, move to the end of the buffer."
 
 (use-package tex
   :ensure auctex
-  :function TeX-active-mark)
+  :config
+  (setq TeX-engine 'luatex
+        TeX-auto-save t
+        TeX-parse-self t)
+  (setq-default TeX-master nil))
 
 (use-package reftex
     :after tex
@@ -627,7 +631,10 @@ If already there, move to the end of the buffer."
 (require 'latex)
 (use-package auctex)
 
-(use-package bibtex)
+(use-package bibtex
+  :config
+  (setq bibtex-dialect 'biblatex
+        bibtex-comment-start "%"))
 
 (add-hook 'LaTeX-mode-hook #'LaTeX-customizations)
 (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
@@ -643,7 +650,12 @@ If already there, move to the end of the buffer."
   (add-to-list 'TeX-view-program-selection '(output-pdf "Xreader"))
   (add-to-list 'LaTeX-item-list '("outline" .
 				                  LaTeX-insert-outline-level))
-  (setq indent-line-function 'LaTeX-indent-line))
+  (setq indent-line-function 'LaTeX-indent-line)
+  (setq flycheck-chktex-extra-flags `(,(concat "-l" "/usr/local/texlive/texmf-local/tex/latex/chktexrc"))
+        LaTeX-electric-left-right-brace t
+        LaTeX-indent-level 4
+        LaTeX-csquotes-open-quote "\\enquote{"
+        LaTeX-csquotes-close-quote "}"))
 
 ;; TODO: Hoc etiamnunc habes?
 (defun LaTeX-insert-item-line-empty-p ()
