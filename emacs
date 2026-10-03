@@ -961,16 +961,16 @@ Equivalent to mkdir PATH && cd PATH."
 
 (add-hook 'eshell-mode-hook
           (lambda () (define-key eshell-mode-map (kbd "C-a")
-				 'eshell/maybe-bol)))
+				                 'eshell/maybe-bol)))
 (add-hook 'eshell-mode-hook
           (lambda () (define-key eshell-mode-map (kbd "C-c b")
-				 'eshell/insert-buffer-name-syntax)))
+				                 'eshell/insert-buffer-name-syntax)))
 (add-hook 'eshell-mode-hook
-	  (lambda () (define-key eshell-mode-map (kbd "C-c l")
-				 'eshell/clear-buffer)))
+	      (lambda () (define-key eshell-mode-map (kbd "C-c l")
+				                 'eshell/clear-buffer)))
 (add-hook 'eshell-mode-hook
-	  (lambda () (define-key eshell-mode-map (kbd "C-c s o")
-				 'owd)))
+	      (lambda () (define-key eshell-mode-map (kbd "C-c s o")
+				                 'owd)))
 
 ;;}}}
 
