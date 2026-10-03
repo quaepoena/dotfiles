@@ -955,7 +955,8 @@ Equivalent to mkdir PATH && cd PATH."
   (mkdir path t)
   (cd path))
 
-(defun eshell/pwcat (path)
+(defun eshell/pw (path)
+  "Cat the password file, PATH, under ~/pw."
   (eshell/cat (concat "~/pw/" path ".gpg")))
 
 (add-hook 'eshell-mode-hook
