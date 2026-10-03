@@ -615,30 +615,25 @@ If already there, move to the end of the buffer."
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-(use-package bibtex)
-(use-package reftex)
+(use-package tex
+  :ensure auctex
+  :function TeX-active-mark)
 
-(require 'tex)
+(use-package reftex
+    :after tex
+    :config
+    (setq reftex-plug-into-AUCTeX t))
+
 (require 'latex)
-(use-package auctex
-  :defines flycheck-chktex-extra-flags
-  :init
-  (setq bibtex-dialect 'biblatex
-        bibtex-comment-start "%"
-        flycheck-chktex-extra-flags `(,(concat "-l" "/usr/local/texlive/texmf-local/tex/latex/chktexrc"))
-        reftex-plug-into-AUCTeX t
-        LaTeX-electric-left-right-brace t
-        LaTeX-csquotes-open-quote "\\enquote{"
-        LaTeX-csquotes-close-quote "}"
-        LaTeX-indent-level 4
-        TeX-engine 'luatex
-        TeX-auto-save t
-        TeX-parse-self t)
-  :hook LaTeX-mode)
+(use-package auctex)
+
+(use-package bibtex)
 
 (add-hook 'LaTeX-mode-hook #'LaTeX-customizations)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook #'turn-on-reftex)
 (add-hook 'LaTeX-mode-hook (lambda () (auto-fill-mode -1)))
+
+(defvar flycheck-chktex-extra-flags)
 
 (defun LaTeX-customizations ()
   "LaTeX customizations."
