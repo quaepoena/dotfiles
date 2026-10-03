@@ -734,6 +734,7 @@ Stored in `LaTeX-item-list' so as to be called by
 
 (require 'org)
 (require 'org-capture)
+(require 'ol)
 
 (keymap-unset org-mode-map "C-'")
 
