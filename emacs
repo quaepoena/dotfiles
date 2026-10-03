@@ -915,6 +915,7 @@ Intended to allow for quick switching back to the *Help* buffer."
 
 ;; https://emacs.stackexchange.com/a/54769
 (defun eshell/bcat (&rest args)
+  "Cat the content of the buffer(s) specified in ARGS."
   (if (bufferp (car args))
       (with-current-buffer (car args)
         (buffer-string))
@@ -929,6 +930,7 @@ Intended to allow for quick switching back to the *Help* buffer."
     (eshell-send-input)))
 
 (defun eshell/ff (path)
+  "Find file at PATH."
   (find-file path))
 
 (defun eshell/insert-buffer-name-syntax ()
@@ -948,6 +950,7 @@ Intended to allow for quick switching back to the *Help* buffer."
 
 (defun eshell/mcd (path)
   "Make and create PATH.
+
 Equivalent to mkdir PATH && cd PATH."
   (mkdir path t)
   (cd path))
