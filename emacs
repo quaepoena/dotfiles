@@ -1076,6 +1076,7 @@ Equivalent to mkdir PATH && cd PATH."
     (looking-at (rx line-start (zero-or-more space) line-end))))
 
 (defun latin-postfix-customizations ()
+  "Customizations for latin-postfix."
   (set-input-method "latin-postfix")
   (deactivate-input-method)
 
@@ -1087,6 +1088,8 @@ Equivalent to mkdir PATH && cd PATH."
                         ("O," ?Ǫ)
 			            ("y-" ?ȳ)
 			            ("Y-" ?Ȳ)
+			            ("y--" ["y-"])
+			            ("Y--" ["Y-"])
 			            ("o/'" ?ǿ)
 			            ("O/'" ?Ǿ)
 			            ("&&" ?§)
