@@ -4,7 +4,6 @@
 
 ;;{{{ TODO
 
-;; TODO: Add folding sections for everything.
 ;; TODO: Make explicit your key binding hierarchy.
 ;; TODO: Make this work: (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
@@ -50,7 +49,6 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 
 ;;{{{ Variables
 
-;; TODO: Document anything non-trivial.
 (setq enable-recursive-minibuffers t)
 (setq sentence-end-double-space nil)
 (setq async-shell-command-buffer 'new-buffer)
@@ -914,7 +912,6 @@ Intended to allow for quick switching back to the *Help* buffer."
 ;; (defalias 'font-lock-reference-face 'font-lock-constant-face)
 (setq font-lock-reference-face nil)
 
-;; TODO: Wrap all such calls to packages.
 ;; (if (require 'folding nil 'noerror)
 ;;     (folding-mode-add-find-file-hook)
 ;;   (message "Library `folding' not found."))
