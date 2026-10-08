@@ -785,6 +785,7 @@ Stored in `LaTeX-item-list' so as to be called by
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "xreader %s"))
 (add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
 
+(use-package go-mode)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
