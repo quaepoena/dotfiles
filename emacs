@@ -786,9 +786,12 @@ Stored in `LaTeX-item-list' so as to be called by
 (add-to-list 'org-file-apps '("\\.epub\\'" . "calibre %s"))
 
 (use-package go-mode)
+(use-package ob-go)
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
+   (go . t)
    (shell . t)))
 
 ;;}}}
