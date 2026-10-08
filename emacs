@@ -457,15 +457,6 @@ Then switch to the process buffer."
 ;;}}}
 ;;{{{ Modes (hooks, customizations, etc.)
 
-;; Not technically a mode hook, but I want it to apply for Fundamental Mode
-;; (which has no hooks).
-(electric-indent-mode -1)
-
-(defun qp-disable-electric-indent ()
-  (electric-indent-local-mode -1))
-
-(add-hook 'prog-mode-hook #'qp-disable-electric-indent)
-
 (add-to-list 'auto-mode-alist '("\\.hdl\\'" . java-mode))
 
 ;;{{{ disable-mouse
