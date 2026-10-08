@@ -1078,6 +1078,8 @@ Equivalent to mkdir PATH && cd PATH."
     (quail-define-rules ((append . t))
                         ("o," ?ǫ)
                         ("O," ?Ǫ)
+                        ("o,," ["o,"])
+                        ("O,," ["O,"])
 			            ("y-" ?ȳ)
 			            ("Y-" ?Ȳ)
 			            ("y--" ["y-"])
