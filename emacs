@@ -554,7 +554,9 @@ If already there, move to the end of the buffer."
 ;; Change options to `find-dired' to enable displaying of non-ASCII characters.
 ;; Cf. UNUSUAL FILENAMES in find(1).
 ;; https://stackoverflow.com/a/42512294
-(setq find-ls-option '("-exec ls -ldh {} +" . "-ldh"))
+(use-package find-dired
+  :config
+  (setq find-ls-option '("-exec ls -ldh {} +" . "-ldh")))
 
 ;;}}}
 ;;}}}
