@@ -552,7 +552,7 @@ If already there, move to the end of the buffer."
 (add-hook 'dired-mode-hook #'dired-set-shell-alist)
 
 ;; Change options to `find-dired' to enable displaying of non-ASCII characters.
-;; Cf. UNUSUAL FILENAMES in find(1).
+;; Cf. (info "(find)Unusual Characters in File Names")
 ;; https://stackoverflow.com/a/42512294
 (use-package find-dired
   :config
@@ -567,7 +567,7 @@ If already there, move to the end of the buffer."
 
 (require 'mu4e)
 
-;; TODO: Do you want this everywhere in dired-mode?
+;; Jf. (info "(gnus)Other modes")
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 (add-hook 'message-mode-hook #'turn-off-auto-fill)
 (add-hook 'message-mode-hook #'use-hard-newlines)
