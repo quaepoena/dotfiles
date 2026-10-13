@@ -1140,7 +1140,6 @@ Equivalent to mkdir PATH && cd PATH."
                                   :prompt-cont-regexp "^   \\.\\.\\.> "
                                   :input-filter sql-remove-tabs-filter))
 
-(add-to-list 'load-path "~/Links/oppgåve-elisp/")
 (use-package magit)
 
 (when (file-exists-p "~/.emacs-local.el")
