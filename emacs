@@ -856,35 +856,11 @@ Stored in `LaTeX-item-list' so as to be called by
 	         '("\\*Async Shell Command\\*"
                display-buffer-no-window))
 (add-to-list 'display-buffer-alist
-             `(,(rx (| "*info*"
-                       "*Help*"
-                       "*Compile-Log*"
-                       "*Shortdoc"
-                       "*Man"
-                       "*Flycheck"
-                       "*Apropos*"))
-               (display-buffer-reuse-window
-                display-buffer-in-previous-window
-                display-buffer-in-side-window)
-               (side . right)
-               (window-width . 0.40)))
-(add-to-list 'display-buffer-alist
              `(,(rx (| "*xref*"
                        "*grep*"
                        "*Occur*"))
                (display-buffer-reuse-window
                 display-buffer-in-previous-window)))
-(add-to-list 'display-buffer-alist
-             '("\\*SQLite"
-               (display-buffer-in-direction)
-               (direction . bottom)
-               (window-height . 0.5)
-               (window . root)))
-(add-to-list 'display-buffer-alist
-             '("\\*e?shell"
-               (display-buffer-in-direction)
-               (direction . bottom)
-               (window-height . 0.40)))
 
 ;; TODO: Make this toggle.
 (defun qp-display-help-buffer ()
