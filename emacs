@@ -826,8 +826,6 @@ Intended to allow for quick switching back to the *Help* buffer."
   (interactive)
   (display-buffer (get-buffer-create "*Help*")))
 
-(setq fill-column 80)
-
 (use-package folding)
 
 ;; TODO: This doesn't work for some reason.
