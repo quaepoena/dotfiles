@@ -20,6 +20,10 @@
 
 (package-initialize)
 
+(defvar use-package-always-defer t)
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
 (setq backup-by-copying t
       load-prefer-newer t
       next-screen-context-lines 10
@@ -604,10 +608,6 @@ If already there, move to the end of the buffer."
 
 ;;}}}
 ;;{{{ LaTeX
-
-(defvar use-package-always-defer t)
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
 
 (use-package tex
   :ensure auctex
