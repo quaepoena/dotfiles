@@ -67,7 +67,7 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 ;;}}}
 ;;{{{ Flycheck
 
-(require 'flycheck)
+(use-package flycheck)
 (global-flycheck-mode)
 (setq flycheck-emacs-lisp-load-path 'inherit)
 
@@ -416,7 +416,7 @@ upon unbalanced input is desired, use `paste (1)` directly."
 
 (add-to-list 'load-path "~/src/gnu-apl-mode")
 
-(require 'gnu-apl-mode)
+(use-package gnu-apl-mode)
 (setq gnu-apl-show-keymap-on-startup t)
 
 ;;}}}
@@ -466,6 +466,7 @@ Then switch to the process buffer."
 ;;{{{ disable-mouse
 
 ;; https://melpa.org/#/disable-mouse
+(use-package disable-mouse)
 (global-disable-mouse-mode)
 (global-unset-key (kbd "<C-down-mouse-1>"))
 (setq disable-mouse-mode-global-lighter nil)
@@ -844,7 +845,7 @@ Stored in `LaTeX-item-list' so as to be called by
 (add-hook 'write-file-functions #'delete-trailing-whitespace)
 
 ;; https://melpa.org/#/buffer-move
-(require 'buffer-move)
+(use-package buffer-move)
 
 ;; https://www.masteringemacs.org/article/demystifying-emacs-window-manager
 (setq switch-to-buffer-in-dedicated-window 'pop)
@@ -894,7 +895,7 @@ Intended to allow for quick switching back to the *Help* buffer."
 
 (setq fill-column 80)
 
-(require 'folding)
+(use-package folding)
 
 ;; TODO: This doesn't work for some reason.
 ;; (setq folding-mode-prefix-key "\C-cf")
@@ -1164,6 +1165,7 @@ Equivalent to mkdir PATH && cd PATH."
                                   :input-filter sql-remove-tabs-filter))
 
 (add-to-list 'load-path "~/Links/oppgåve-elisp/")
+(use-package magit)
 
 (when (file-exists-p "~/.emacs-local.el")
   (load-file "~/.emacs-local.el"))
