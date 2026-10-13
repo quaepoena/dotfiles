@@ -1,4 +1,4 @@
-; -*- mode: Emacs-lisp; folded-file: t -*-
+; -*- mode: Emacs-lisp; folded-file: t; lexical-binding: t; -*-
 
 ;;; Code:
 
