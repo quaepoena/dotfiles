@@ -184,7 +184,7 @@ fi
 export GPG_TTY="$(tty)"
 
 alias em="emacsclient -c &"
-alias emd="env -u XMODIFIERS emacs --daemon"
+alias emd="emacs --daemon"
 alias emt="emacsclient -t"
 alias l1="ls -1"
 alias x="setxkbmap us -variant colemak -option ctrl:nocaps"
