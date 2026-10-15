@@ -186,6 +186,8 @@ alias ls='ls --color=auto'
 alias l1="ls -1"
 alias ll="ls -l"
 
+alias x="setxkbmap us -variant colemak -option ctrl:nocaps"
+
 # TeX paths set in /etc/profile.d/texlive.sh
 
 append-to-path "${HOME}/.ghcup/bin"
