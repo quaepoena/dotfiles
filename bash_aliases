@@ -189,9 +189,7 @@ alias emt="emacsclient -t"
 alias l1="ls -1"
 alias x="setxkbmap us -variant colemak -option ctrl:nocaps"
 
-append-to-path "/usr/local/texlive/2026/bin/x86_64-linux"
-
-# TeX info(1) and man(1) pages set in /etc/profile.d/texlive.sh
+# TeX paths set in /etc/profile.d/texlive.sh
 
 append-to-path "${HOME}/.ghcup/bin"
 append-to-path "${HOME}/.cabal/bin"
