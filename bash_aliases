@@ -178,6 +178,17 @@ function veke() {
 # for pinentry-tty
 export GPG_TTY="$(tty)"
 
+export EDITOR="emacsclient -t"
+
+export -f error
+export -f line
+export -f member
+
+append-to-path "${HOME}/.ghcup/bin"
+append-to-path "${HOME}/.cabal/bin"
+
+# TeX paths set in /etc/profile.d/texlive.sh
+
 alias em="emacsclient -c &"
 alias emd="emacs --daemon"
 alias emt="emacsclient -t"
@@ -187,17 +198,6 @@ alias l1="ls -1"
 alias ll="ls -l"
 
 alias x="setxkbmap us -variant colemak -option ctrl:nocaps"
-
-# TeX paths set in /etc/profile.d/texlive.sh
-
-append-to-path "${HOME}/.ghcup/bin"
-append-to-path "${HOME}/.cabal/bin"
-
-export EDITOR="emacsclient -t"
-
-export -f error
-export -f line
-export -f member
 
 ssh-add-init
 
