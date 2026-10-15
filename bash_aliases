@@ -199,16 +199,6 @@ export -f error
 export -f line
 export -f member
 
-# Reuse existing ssh-agent. Adapted (slightly) from
-# https://superuser.com/a/1469727 and https://unix.stackexchange.com/a/132117.
-export SSH_AUTH_SOCK="${HOME}/.ssh/ssh-agent.sock"
-
-# Test whether SSH_AUTH_SOCK is valid.
-ssh-add -l &>/dev/null
-
-# If not valid, then start ssh-agent using SSH_AUTH_SOCK.
-[[ "$?" -ge 2 ]] && ssh-agent -a "${SSH_AUTH_SOCK}" >/dev/null
-
 ssh-add-init
 
 if [[ -f ~/.bash_aliases_mach_specific ]]; then
