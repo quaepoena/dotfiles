@@ -75,9 +75,9 @@ function pw() {
     fi
 
     if [[ "$1" =~ ^.+\.gpg$ ]]; then
-	    gpg -qd "${1}";
+	    gpg -qd "${1}"
     else
-	    gpg -qd ~/pw/"${1}".gpg;
+	    gpg -qd "${HOME}/pw/${1}.gpg"
     fi
 }
 
