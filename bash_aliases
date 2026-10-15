@@ -181,7 +181,10 @@ export GPG_TTY="$(tty)"
 alias em="emacsclient -c &"
 alias emd="emacs --daemon"
 alias emt="emacsclient -t"
+
+alias ls='ls --color=auto'
 alias l1="ls -1"
+alias ll="ls -l"
 
 # TeX paths set in /etc/profile.d/texlive.sh
 
