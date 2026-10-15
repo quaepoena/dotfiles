@@ -174,11 +174,6 @@ function veke() {
     date "+%V"
 }
 
-
-if [[ -f ~/.bash_aliases_mach_specific ]]; then
-    . ~/.bash_aliases_mach_specific
-fi
-
 # TODO: Test if this is still needed.
 # for pinentry-tty
 export GPG_TTY="$(tty)"
@@ -210,3 +205,7 @@ ssh-add -l &>/dev/null
 [[ "$?" -ge 2 ]] && ssh-agent -a "${SSH_AUTH_SOCK}" >/dev/null
 
 ssh-add-init
+
+if [[ -f ~/.bash_aliases_mach_specific ]]; then
+    . ~/.bash_aliases_mach_specific
+fi
