@@ -186,7 +186,6 @@ export GPG_TTY="$(tty)"
 alias em="emacsclient -c &"
 alias emd="env -u XMODIFIERS emacs --daemon"
 alias emt="emacsclient -t"
-alias fu='sudo $(history -p !!)'
 alias l1="ls -1"
 alias x="setxkbmap -option ctrl:nocaps"
 
