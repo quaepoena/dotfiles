@@ -126,23 +126,6 @@ function pdf-paginam-vacuam-facere() {
 }
 
 
-# Prepend the first file to the second.
-# TODO: Write this in C.
-function prepend() {
-    if [[ $# -ne 2 ]]; then
-	error "Bruk: ${FUNCNAME[0]} <file> <file>"
-    fi
-
-    local tmp="$(mktemp)"
-
-    cp "$2" "${tmp}"
-    cp "$1" "$2"
-    cat "${tmp}" >> "$2"
-
-    rm "${tmp}"
-}
-
-
 function ssh-add-init() {
     ssh-add -l &>/dev/null
     if [[ "$?" -eq 1 ]]; then
